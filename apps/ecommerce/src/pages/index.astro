@@ -1,119 +1,120 @@
 ---
 // apps/ecommerce/src/pages/index.astro - YouTubeVolt Portal de Videos Musicales
-const title = "YouTubeVolt - Bóveda Musical: Salsa, Rock en Español & Charlie Zaa";
+const title = "YouTubeVolt - Bóveda Musical: Salsa, Cumbia & Rock Latino";
 
 const INITIAL_VIDEOS = [
   {
     id: 1,
-    youtubeVideoId: "HbGIN3GwD8s",
-    title: "Charlie Zaa - Nuestro Juramento (Sentimientos)",
-    channelName: "Charlie Zaa",
-    thumbnailUrl: "https://img.youtube.com/vi/HbGIN3GwD8s/hqdefault.jpg",
-    duration: "4:15",
-    collectionId: "baladas-charlie-zaa",
-    collectionName: "Baladas & Boleros de Charlie Zaa",
-    tags: ["Charlie Zaa", "Bolero", "Baladas", "Romántico"],
-    description: "El clásico bolero inolvidable interpretado por Charlie Zaa de su álbum más galardonado Sentimientos.",
-    notes: "Interpretación de bolero magistral. Canción imprescindible para la bóveda romántica."
+    youtubeVideoId: "SiVq_x_lfxE",
+    title: "Brunella Torpoco - Mix Héctor Lavoe (Live Session)",
+    channelName: "Brunella Torpoco Oficial",
+    thumbnailUrl: "https://img.youtube.com/vi/SiVq_x_lfxE/hqdefault.jpg",
+    duration: "6:49",
+    collectionId: "salsa",
+    collectionName: "Salsa Brava & Fania",
+    tags: ["Brunella Torpoco", "Mix Hector Lavoe", "Salsa", "Live Session"],
+    description: "Potente sesión en vivo rindiendo tributo a Héctor Lavoe con toda la fuerza y sentimiento de Brunella Torpoco.",
+    notes: "Salsa perucha en vivo con arreglos excepcionales de metales y percusión."
   },
   {
     id: 2,
-    youtubeVideoId: "jsek2g2lh-c",
-    title: "Soda Stereo - De Música Ligera (Video Oficial)",
-    channelName: "Soda Stereo",
-    thumbnailUrl: "https://img.youtube.com/vi/jsek2g2lh-c/hqdefault.jpg",
-    duration: "3:35",
-    collectionId: "rock-espanol",
-    collectionName: "Rock en Español Clásico",
-    tags: ["Soda Stereo", "Gustavo Cerati", "Rock en Español", "Himno"],
-    description: "Himno absoluto del rock en español grabado en Canción Animal (1990) por Gustavo Cerati y Soda Stereo.",
-    notes: "El riff de guitarra más influyente de la historia del rock latinoamericano."
+    youtubeVideoId: "a4Z5HRiN3rc",
+    title: "Corazón Serrano - Te Vas Y No Volverás (Estadio San Marcos)",
+    channelName: "Corazón Serrano",
+    thumbnailUrl: "https://img.youtube.com/vi/a4Z5HRiN3rc/hqdefault.jpg",
+    duration: "3:04",
+    collectionId: "pop-latino",
+    collectionName: "Cumbia & Fiesta Latina",
+    tags: ["Corazon Serrano", "Te Vas Y No Volveras", "Cumbia", "Estadio San Marcos"],
+    description: "Interpretación en vivo en el Estadio San Marcos durante el 32 Aniversario de Corazón Serrano - Camino a un Sueño.",
+    notes: "Éxito rotundo de cumbia sanjuanera ante más de 40 mil personas."
   },
   {
     id: 3,
     youtubeVideoId: "7KxkMLAZlzw",
-    title: "Grupo Niche - Cali Pachanguero (Oficial)",
-    channelName: "Grupo Niche",
+    title: "Grupo Niche - Cali Pachanguero (Video Oficial)",
+    channelName: "Codiscos / Grupo Niche",
     thumbnailUrl: "https://img.youtube.com/vi/7KxkMLAZlzw/hqdefault.jpg",
-    duration: "5:12",
+    duration: "4:50",
     collectionId: "salsa",
-    collectionName: "Salsa Brava & Clásica",
-    tags: ["Grupo Niche", "Salsa", "Cali", "Jairo Varela"],
-    description: "La composición legendaria del maestro Jairo Varela que recorrió el mundo y definió la salsa colombiana.",
+    collectionName: "Salsa Brava & Fania",
+    tags: ["Grupo Niche", "Cali Pachanguero", "Salsa", "Jairo Varela"],
+    description: "El himno absoluto de la salsa colombiana compuesto por el gran maestro Jairo Varela e interpretado por Grupo Niche.",
     notes: "Arreglos de metales y percusión insuperables. Clave para animar la clase."
   },
   {
     id: 4,
     youtubeVideoId: "hReAuaAuJOE",
-    title: "Los Enanitos Verdes - Lamento Boliviano (Oficial)",
-    channelName: "Los Enanitos Verdes",
+    title: "Los Enanitos Verdes - Lamento Boliviano (Video Oficial)",
+    channelName: "EnanitosVerdesVEVO",
     thumbnailUrl: "https://img.youtube.com/vi/hReAuaAuJOE/hqdefault.jpg",
-    duration: "3:45",
+    duration: "3:44",
     collectionId: "rock-espanol",
     collectionName: "Rock en Español Clásico",
-    tags: ["Enanitos Verdes", "Marciano Cantero", "Rock Latino", "Guitarra"],
-    description: "El tema más coreado y emblemático del rock en español con la voz inolvidable de Marciano Cantero.",
-    notes: "Solo de guitarra perfecto para cantar con los alumnos en el descanso."
+    tags: ["Los Enanitos Verdes", "Lamento Boliviano", "Latin Rock", "Marciano Cantero"],
+    description: "Uno de los clásicos más grandes e históricos del rock en español, lanzado en 1994 con la voz inolvidable de Marciano Cantero.",
+    notes: "El coro y solo de guitarra más coreado de la música en español."
   },
   {
     id: 5,
     youtubeVideoId: "YIbMejfd9KE",
-    title: "Charlie Zaa - Flor Sin Retoño (Video Oficial)",
-    channelName: "Charlie Zaa",
+    title: "Charlie Zaa ft. Leslie Grace - Nuestro Juramento (En Vivo)",
+    channelName: "CharlieZaaVEVO",
     thumbnailUrl: "https://img.youtube.com/vi/YIbMejfd9KE/hqdefault.jpg",
-    duration: "3:48",
+    duration: "4:06",
     collectionId: "baladas-charlie-zaa",
     collectionName: "Baladas & Boleros de Charlie Zaa",
-    tags: ["Charlie Zaa", "Bolero", "Flor Sin Retoño", "Acústico"],
-    description: "Hermoso bolero rítmico de desamor con requintos acústicos y trompeta.",
-    notes: "Arreglo de guitarras acústicas impecable, excelente para relajarse tras una sesión de código."
+    tags: ["Charlie Zaa", "Leslie Grace", "Nuestro Juramento", "Bolero", "Celebracion"],
+    description: "Versión acústica en vivo de Nuestro Juramento de Charlie Zaa en colaboración con Leslie Grace del álbum Celebración.",
+    notes: "Bolero moderno inolvidable con guitarras románticas y gran armonía vocal."
   },
   {
     id: 6,
     youtubeVideoId: "BNo0vkEYWRc",
     title: "Héctor Lavoe - El Cantante (Video Oficial Fania)",
-    channelName: "Héctor Lavoe & Fania",
+    channelName: "Fania Records",
     thumbnailUrl: "https://img.youtube.com/vi/BNo0vkEYWRc/hqdefault.jpg",
-    duration: "10:20",
+    duration: "10:52",
     collectionId: "salsa",
-    collectionName: "Salsa Brava & Clásica",
-    tags: ["Hector Lavoe", "Fania Records", "Salsa Dura", "Willie Colon"],
-    description: "La obra cumbre de la salsa dura neoyorquina escrita por Rubén Blades y producida por Willie Colón.",
-    notes: "Himno de la salsa. 'Yo soy el cantante, que hoy han venido a escuchar...'"
+    collectionName: "Salsa Brava & Fania",
+    tags: ["Hector Lavoe", "El Cantante", "Fania Records", "Salsa Dura"],
+    description: "La obra maestra de la salsa dura por Héctor Lavoe con Fania Records, compuesta por Rubén Blades y producida por Willie Colón.",
+    notes: "Himno legendario: 'Yo soy el cantante, que hoy han venido a escuchar...'"
   },
   {
     id: 7,
-    youtubeVideoId: "zzIOxHIZEis",
-    title: "Hombres G - Devuélveme a mi chica (Video Oficial)",
-    channelName: "Hombres G",
-    thumbnailUrl: "https://img.youtube.com/vi/zzIOxHIZEis/hqdefault.jpg",
-    duration: "3:15",
-    collectionId: "rock-espanol",
-    collectionName: "Rock en Español Clásico",
-    tags: ["Hombres G", "Pop Rock", "80s", "Espana"],
-    description: "El clásico pop rock de los 80s conocido popularmente como 'Sufre Mamón'.",
-    notes: "Un clásico divertido y enérgico que todos en el auditorio conocen y cantan."
+    youtubeVideoId: "IBlqPAkwKfY",
+    title: "Mix Cumbias Pegaditas (Grupo 5, Rossy War, Chane Meza)",
+    channelName: "Luis Rodriguez DJ",
+    thumbnailUrl: "https://img.youtube.com/vi/IBlqPAkwKfY/hqdefault.jpg",
+    duration: "17:03",
+    collectionId: "pop-latino",
+    collectionName: "Cumbia & Fiesta Latina",
+    tags: ["Grupo 5", "Rossy War", "Cumbia Peruana", "Mix", "Bailable"],
+    description: "Enganchado festivo de cumbias peruanas y colombianas con los mejores temas de Grupo 5, Rossy War y Chane Meza.",
+    notes: "Mix bailable de 17 minutos cargado de alegría y ritmo para festejar."
   },
   {
     id: 8,
     youtubeVideoId: "YXnjy5YlDwk",
     title: "Marc Anthony - Vivir Mi Vida (Video Oficial)",
-    channelName: "Marc Anthony",
+    channelName: "marcanthonyVEVO",
     thumbnailUrl: "https://img.youtube.com/vi/YXnjy5YlDwk/hqdefault.jpg",
-    duration: "4:14",
+    duration: "5:26",
     collectionId: "salsa",
-    collectionName: "Salsa Brava & Clásica",
-    tags: ["Marc Anthony", "Salsa", "Vivir Mi Vida", "Energía"],
-    description: "Uno de los temas de salsa más reproducidos de la historia moderna, producido por Sergio George.",
-    notes: "Ritmo contagioso para mantener la energía alta en la clase."
+    collectionName: "Salsa Brava & Fania",
+    tags: ["Marc Anthony", "Vivir Mi Vida", "Salsa", "Sergio George"],
+    description: "Video oficial de Vivir Mi Vida por Marc Anthony, uno de los himnos de salsa moderna más populares del mundo producido por Sergio George.",
+    notes: "Cierre lleno de energía y optimismo para la sesión y el auditorio."
   }
 ];
 
 const COLLECTIONS = [
   { id: "all", name: "🎵 Todos los Éxitos" },
-  { id: "salsa", name: "🎺 Salsa Brava & Clásica" },
+  { id: "salsa", name: "🎺 Salsa Brava & Fania" },
+  { id: "pop-latino", name: "🌴 Cumbia & Fiesta Latina" },
   { id: "rock-espanol", name: "🎸 Rock en Español" },
-  { id: "baladas-charlie-zaa", name: "🌹 Baladas de Charlie Zaa" }
+  { id: "baladas-charlie-zaa", name: "🌹 Boleros de Charlie Zaa" }
 ];
 ---
 
@@ -624,17 +625,17 @@ const COLLECTIONS = [
         </div>
       </div>
       <div class="hero-info">
-        <div class="hero-badge">🌹 Joya de la Bóveda Musical</div>
-        <h1 class="hero-title">Charlie Zaa - Nuestro Juramento</h1>
+        <div class="hero-badge">🌟 Joya de la Bóveda Musical</div>
+        <h1 class="hero-title">Mauricio Mesones - Cariñito</h1>
         <p class="hero-desc">
-          El clásico bolero inolvidable de Julio Jaramillo interpretado magistralmente por Charlie Zaa. Un himno al amor eterno con guitarras y requintos de leyenda.
+          Cumbia peruana con una increíble interpretación de Mauricio Mesones. Un clásico inolvidable con guitarras tropicales y toda la fiesta del folklore peruano.
         </p>
         <div class="hero-notes">
-          💡 <strong>Nota del Curador:</strong> "Interpretación cumbre de bolero acústico. Uno de los temas más aclamados y sentidos de la música hispana."
+          💡 <strong>Nota del Curador:</strong> "Interpretación vibrante y festiva que eleva el clásico de la cumbia con sonido moderno y energía contagiosa."
         </div>
         <div style="display: flex; gap: 0.75rem;">
           <button
-            onclick="openPlayerModal('HbGIN3GwD8s', 'Charlie Zaa - Nuestro Juramento (Sentimientos)', 'Charlie Zaa', 'El bolero cumbre del álbum Sentimientos, interpretado con el sentimiento y requinto inconfundible de Charlie Zaa.')"
+            onclick="openPlayerModal('C4aSVN3HOOY', 'Cariñito - Mauricio Mesones', 'Mauricio Mesones', 'Cumbia peruana con una increíble interpretación de Mauricio Mesones.')"
             class="btn-nav btn-pwa"
             style="border: none; cursor: pointer; padding: 0.75rem 1.5rem;"
           >
@@ -724,7 +725,7 @@ const COLLECTIONS = [
       <a href="/api/videos" class="footer-link">🎬 API REST</a>
     </div>
     <p>
-      YouTubeVolt &bull; Bóveda Musical: Salsa Brava, Rock en Español & Charlie Zaa &bull; Dokploy CI/CD Live MasterClass
+      YouTubeVolt &bull; Bóveda Musical: Salsa Brava, Cumbia & Rock Latino &bull; Dokploy CI/CD Live MasterClass
     </p>
   </footer>
 
