@@ -31,8 +31,26 @@ function hasBuild(dir) {
 
 // 1. Mobile PWA under /app
 if (hasBuild(pwaPath)) {
-  app.use('/app', express.static(pwaPath));
-  app.get('/app/*', (req, res) => {
+  app.use('/app', express.static(pwaPath, {
+    setHeaders: (res, filePath) => {
+      // index.html y sw.js no deben cachearse para permitir actualizaciones inmediatas en Dokploy/Cloudflare
+      if (filePath.endsWith('index.html') || filePath.endsWith('sw.js')) {
+        res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+        res.setHeader('Pragma', 'no-cache');
+        res.setHeader('Expires', '0');
+      } else if (filePath.includes(path.sep + 'assets' + path.sep) || filePath.includes('/assets/')) {
+        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+      }
+    }
+  }));
+
+  // SPA fallback para rutas internas de la PWA
+  app.get('/app*', (req, res) => {
+    // Si la petición es por un asset JS/CSS faltante, devolver 404 estricto para evitar MIME type error (text/html)
+    if (req.path.startsWith('/app/assets/') || path.extname(req.path)) {
+      return res.status(404).type('text/plain').send('Asset not found');
+    }
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
     res.sendFile(path.join(pwaPath, 'index.html'));
   });
 } else {
@@ -50,8 +68,23 @@ if (hasBuild(pwaPath)) {
 
 // 2. Control Panel under /admin
 if (hasBuild(adminPath)) {
-  app.use('/admin', express.static(adminPath));
-  app.get('/admin/*', (req, res) => {
+  app.use('/admin', express.static(adminPath, {
+    setHeaders: (res, filePath) => {
+      if (filePath.endsWith('index.html')) {
+        res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+        res.setHeader('Pragma', 'no-cache');
+        res.setHeader('Expires', '0');
+      } else if (filePath.includes(path.sep + 'assets' + path.sep) || filePath.includes('/assets/')) {
+        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+      }
+    }
+  }));
+
+  app.get('/admin*', (req, res) => {
+    if (req.path.startsWith('/admin/assets/') || path.extname(req.path)) {
+      return res.status(404).type('text/plain').send('Asset not found');
+    }
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
     res.sendFile(path.join(adminPath, 'index.html'));
   });
 } else {

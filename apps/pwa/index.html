@@ -25,8 +25,21 @@
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('/app/sw.js')
-          .then((reg) => console.log('✅ [PWA] Service Worker registrado:', reg.scope))
+          .then((reg) => {
+            console.log('✅ [PWA] Service Worker registrado:', reg.scope);
+            // Comprobar activamente si hay una nueva versión desplegada
+            reg.update();
+          })
           .catch((err) => console.error('❌ [PWA] Error registrando Service Worker:', err));
+
+        // Cuando el nuevo Service Worker toma el control, actualizar para sincronizar assets
+        let refreshing = false;
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          if (!refreshing) {
+            refreshing = true;
+            window.location.reload();
+          }
+        });
       });
     }
   </script>
