@@ -18,175 +18,192 @@ function extractYouTubeId(url) {
 
 const INITIAL_COLLECTIONS = [
   {
-    id: 'ia-agentes',
-    name: 'Inteligencia Artificial & Agentes',
-    description: 'LLMs, Agentes Autónomos, Modelos de Lenguaje y RAG.',
-    icon: 'Sparkles',
-    color: '#8b5cf6'
-  },
-  {
-    id: 'cloud-devops',
-    name: 'Cloud, Docker & Dokploy',
-    description: 'Despliegues continuos, contenedores y self-hosting.',
-    icon: 'Cloud',
-    color: '#06b6d4'
-  },
-  {
-    id: 'desarrollo-web-mobile',
-    name: 'Desarrollo Web & Mobile (PWA/Kotlin)',
-    description: 'Frontend reactivo, PWAs, Compose y arquitecturas móviles.',
-    icon: 'Smartphone',
+    id: 'salsa',
+    name: 'Salsa Brava & Clásica',
+    description: 'Héctor Lavoe, Grupo Niche, Marc Anthony, Frankie Ruiz y leyendas de Fania.',
+    icon: 'Music',
     color: '#ef4444'
   },
   {
-    id: 'arquitectura-clean',
-    name: 'Arquitectura Limpia & Clean Code',
-    description: 'Patrones de diseño, SOLID, MVI y buenas prácticas.',
-    icon: 'Layers',
+    id: 'rock-espanol',
+    name: 'Rock en Español Clásico',
+    description: 'Soda Stereo, Enanitos Verdes, Hombres G, Los Prisioneros y los 80s/90s.',
+    icon: 'Radio',
+    color: '#8b5cf6'
+  },
+  {
+    id: 'baladas-charlie-zaa',
+    name: 'Baladas & Boleros de Charlie Zaa',
+    description: 'Nuestro Juramento, Flor Sin Retoño, Rondando Tu Esquina y boleros del recuerdo.',
+    icon: 'Heart',
     color: '#f59e0b'
   },
   {
-    id: 'data-bi',
-    name: 'Data Engineering & Big Data',
-    description: 'Pipelines de datos, Analytics, SQL y Machine Learning.',
-    icon: 'Database',
-    color: '#10b981'
+    id: 'pop-latino',
+    name: 'Grandes Éxitos Latinos',
+    description: 'Joyas inolvidables de la música hispana y conciertos en vivo.',
+    icon: 'Headphones',
+    color: '#06b6d4'
   }
 ];
 
 const INITIAL_VIDEOS = [
   {
     id: 1,
-    youtubeVideoId: '5sLYA38pX4s',
-    originalUrl: 'https://www.youtube.com/watch?v=5sLYA38pX4s',
-    canonicalUrl: 'https://www.youtube.com/watch?v=5sLYA38pX4s',
-    title: '¿Qué son los Agentes de IA y cómo transformarán el software?',
-    channelName: 'DotCSV',
-    thumbnailUrl: 'https://img.youtube.com/vi/5sLYA38pX4s/hqdefault.jpg',
-    duration: '22:15',
-    durationSeconds: 1335,
-    description: 'Introducción conceptual profunda a los agentes autónomos de IA, bucles de razonamiento (ReAct) y herramientas.',
-    personalNotes: 'Concepto clave: Los agentes no solo predicen texto, ejecutan acciones en el mundo real mediante APIs y Tools.',
-    watchStatus: 'in_progress',
+    youtubeVideoId: 'HbGIN3GwD8s',
+    originalUrl: 'https://www.youtube.com/watch?v=HbGIN3GwD8s',
+    canonicalUrl: 'https://www.youtube.com/watch?v=HbGIN3GwD8s',
+    title: 'Charlie Zaa - Nuestro Juramento (Sentimientos)',
+    channelName: 'Charlie Zaa',
+    thumbnailUrl: 'https://img.youtube.com/vi/HbGIN3GwD8s/hqdefault.jpg',
+    duration: '4:15',
+    durationSeconds: 255,
+    description: 'El clásico bolero inolvidable interpretado por Charlie Zaa de su álbum más galardonado Sentimientos.',
+    personalNotes: 'Interpretación de bolero magistral. Canción imprescindible para la bóveda romántica.',
+    watchStatus: 'watched',
     isFavorite: true,
-    collectionId: 'ia-agentes',
-    collectionName: 'Inteligencia Artificial & Agentes',
-    tags: ['AI', 'Agentes', 'LLMs', 'Autonomía'],
+    collectionId: 'baladas-charlie-zaa',
+    collectionName: 'Baladas & Boleros de Charlie Zaa',
+    tags: ['Charlie Zaa', 'Bolero', 'Baladas', 'Romántico'],
     createdAt: new Date(Date.now() - 3600000 * 48).toISOString()
   },
   {
     id: 2,
-    youtubeVideoId: '31ieHmcTUOk',
-    originalUrl: 'https://www.youtube.com/watch?v=31ieHmcTUOk',
-    canonicalUrl: 'https://www.youtube.com/watch?v=31ieHmcTUOk',
-    title: 'Curso de Docker desde cero para principiantes',
-    channelName: 'Midudev',
-    thumbnailUrl: 'https://img.youtube.com/vi/31ieHmcTUOk/hqdefault.jpg',
-    duration: '45:30',
-    durationSeconds: 2730,
-    description: 'Aprende contenedores, Dockerfiles, docker-compose y cómo desplegar aplicaciones web completas.',
-    personalNotes: 'Revisar la configuración multi-stage build para optimizar el peso de imágenes en Dokploy.',
+    youtubeVideoId: 'k-V38a2G_gQ',
+    originalUrl: 'https://www.youtube.com/watch?v=k-V38a2G_gQ',
+    canonicalUrl: 'https://www.youtube.com/watch?v=k-V38a2G_gQ',
+    title: 'Soda Stereo - De Música Ligera (Video Oficial)',
+    channelName: 'Soda Stereo',
+    thumbnailUrl: 'https://img.youtube.com/vi/k-V38a2G_gQ/hqdefault.jpg',
+    duration: '3:35',
+    durationSeconds: 215,
+    description: 'Himno absoluto del rock en español grabado en Canción Animal (1990) por Gustavo Cerati y Soda Stereo.',
+    personalNotes: 'El riff de guitarra más influyente de la historia del rock latinoamericano.',
     watchStatus: 'watched',
     isFavorite: true,
-    collectionId: 'cloud-devops',
-    collectionName: 'Cloud, Docker & Dokploy',
-    tags: ['Docker', 'Containers', 'DevOps', 'Dokploy'],
+    collectionId: 'rock-espanol',
+    collectionName: 'Rock en Español Clásico',
+    tags: ['Soda Stereo', 'Gustavo Cerati', 'Rock en Español', 'Himno'],
     createdAt: new Date(Date.now() - 3600000 * 36).toISOString()
   },
   {
     id: 3,
-    youtubeVideoId: 'd3k5fH4u_0Y',
-    originalUrl: 'https://www.youtube.com/watch?v=d3k5fH4u_0Y',
-    canonicalUrl: 'https://www.youtube.com/watch?v=d3k5fH4u_0Y',
-    title: 'Arquitectura Limpia (Clean Architecture) explicada con ejemplos',
-    channelName: 'MoureDev by Brais Moure',
-    thumbnailUrl: 'https://img.youtube.com/vi/d3k5fH4u_0Y/hqdefault.jpg',
-    duration: '38:40',
-    durationSeconds: 2320,
-    description: 'Separación por capas: Dominio, Casos de Uso, Datos y Presentación con ejemplos prácticos.',
-    personalNotes: 'El dominio nunca debe depender del framework de interfaz ni del driver de base de datos.',
-    watchStatus: 'pending',
-    isFavorite: false,
-    collectionId: 'arquitectura-clean',
-    collectionName: 'Arquitectura Limpia & Clean Code',
-    tags: ['Clean Architecture', 'Software Design', 'SOLID', 'Buenas Prácticas'],
+    youtubeVideoId: 's5e8k0p_07o',
+    originalUrl: 'https://www.youtube.com/watch?v=s5e8k0p_07o',
+    canonicalUrl: 'https://www.youtube.com/watch?v=s5e8k0p_07o',
+    title: 'Grupo Niche - Cali Pachanguero (Oficial)',
+    channelName: 'Grupo Niche',
+    thumbnailUrl: 'https://img.youtube.com/vi/s5e8k0p_07o/hqdefault.jpg',
+    duration: '5:12',
+    durationSeconds: 312,
+    description: 'La composición legendaria del maestro Jairo Varela que recorrió el mundo y definió la salsa colombiana.',
+    personalNotes: 'Arreglos de metales y percusión insuperables. Clave para animar la clase.',
+    watchStatus: 'in_progress',
+    isFavorite: true,
+    collectionId: 'salsa',
+    collectionName: 'Salsa Brava & Clásica',
+    tags: ['Grupo Niche', 'Salsa', 'Cali', 'Jairo Varela'],
     createdAt: new Date(Date.now() - 3600000 * 24).toISOString()
   },
   {
     id: 4,
-    youtubeVideoId: 'T_wKhn5xNfA',
-    originalUrl: 'https://www.youtube.com/watch?v=T_wKhn5xNfA',
-    canonicalUrl: 'https://www.youtube.com/watch?v=T_wKhn5xNfA',
-    title: 'PWA (Progressive Web Apps) Tutorial Práctico con React y Vite',
-    channelName: 'Fazt Code',
-    thumbnailUrl: 'https://img.youtube.com/vi/T_wKhn5xNfA/hqdefault.jpg',
-    duration: '28:10',
-    durationSeconds: 1690,
-    description: 'Cómo transformar una aplicación React en una PWA instalable con Service Workers y caché offline.',
-    personalNotes: 'Utilizar el manifest.json con display standalone y theme-color oscuro #0b0f17.',
-    watchStatus: 'watched',
-    isFavorite: true,
-    collectionId: 'desarrollo-web-mobile',
-    collectionName: 'Desarrollo Web & Mobile (PWA/Kotlin)',
-    tags: ['PWA', 'React', 'ServiceWorker', 'Offline'],
+    youtubeVideoId: 'hReAuaAuJOE',
+    originalUrl: 'https://www.youtube.com/watch?v=hReAuaAuJOE',
+    canonicalUrl: 'https://www.youtube.com/watch?v=hReAuaAuJOE',
+    title: 'Los Enanitos Verdes - Lamento Boliviano (Oficial)',
+    channelName: 'Los Enanitos Verdes',
+    thumbnailUrl: 'https://img.youtube.com/vi/hReAuaAuJOE/hqdefault.jpg',
+    duration: '3:45',
+    durationSeconds: 225,
+    description: 'El tema más coreado y emblemático del rock en español con la voz inolvidable de Marciano Cantero.',
+    personalNotes: 'Solo de guitarra perfecto para cantar con los alumnos en el descanso.',
+    watchStatus: 'pending',
+    isFavorite: false,
+    collectionId: 'rock-espanol',
+    collectionName: 'Rock en Español Clásico',
+    tags: ['Enanitos Verdes', 'Marciano Cantero', 'Rock Latino', 'Guitarra'],
     createdAt: new Date(Date.now() - 3600000 * 18).toISOString()
   },
   {
     id: 5,
-    youtubeVideoId: 'NWONeJKn6kc',
-    originalUrl: 'https://www.youtube.com/watch?v=NWONeJKn6kc',
-    canonicalUrl: 'https://www.youtube.com/watch?v=NWONeJKn6kc',
-    title: 'Machine Learning & Big Data Analytics - Curso Completo',
-    channelName: 'NextCollege Tech',
-    thumbnailUrl: 'https://img.youtube.com/vi/NWONeJKn6kc/hqdefault.jpg',
-    duration: '1:15:00',
-    durationSeconds: 4500,
-    description: 'Fundamentos de analítica avanzada, procesamiento de datos masivos y modelos predictivos.',
-    personalNotes: 'Excelente para el módulo de ciencia de datos del máster.',
+    youtubeVideoId: 'k1t6F-N1D10',
+    originalUrl: 'https://www.youtube.com/watch?v=k1t6F-N1D10',
+    canonicalUrl: 'https://www.youtube.com/watch?v=k1t6F-N1D10',
+    title: 'Charlie Zaa - Flor Sin Retoño (Video Oficial)',
+    channelName: 'Charlie Zaa',
+    thumbnailUrl: 'https://img.youtube.com/vi/k1t6F-N1D10/hqdefault.jpg',
+    duration: '3:48',
+    durationSeconds: 228,
+    description: 'Hermoso bolero rítmico de desamor con requintos acústicos y trompeta.',
+    personalNotes: 'Arreglo de guitarras acústicas impecable, excelente para relajarse tras una sesión de código.',
     watchStatus: 'pending',
     isFavorite: true,
-    collectionId: 'data-bi',
-    collectionName: 'Data Engineering & Big Data',
-    tags: ['Machine Learning', 'Big Data', 'Python', 'Analytics'],
+    collectionId: 'baladas-charlie-zaa',
+    collectionName: 'Baladas & Boleros de Charlie Zaa',
+    tags: ['Charlie Zaa', 'Bolero', 'Flor Sin Retoño', 'Acústico'],
     createdAt: new Date(Date.now() - 3600000 * 12).toISOString()
   },
   {
     id: 6,
-    youtubeVideoId: 't2Pz0Wz7Z2Y',
-    originalUrl: 'https://www.youtube.com/watch?v=t2Pz0Wz7Z2Y',
-    canonicalUrl: 'https://www.youtube.com/watch?v=t2Pz0Wz7Z2Y',
-    title: 'Kotlin Multiplatform: Comparte lógica de negocio entre iOS y Android',
-    channelName: 'AristiDevs',
-    thumbnailUrl: 'https://img.youtube.com/vi/t2Pz0Wz7Z2Y/hqdefault.jpg',
-    duration: '32:45',
-    durationSeconds: 1965,
-    description: 'Estructura de proyectos KMP, Koin para inyección de dependencias y SQLDelight para persistencia nativa.',
-    personalNotes: 'Mapear este flujo con la versión PWA para la comparativa arquitectónica de la clase.',
-    watchStatus: 'pending',
+    youtubeVideoId: 'Qy12wV1a83g',
+    originalUrl: 'https://www.youtube.com/watch?v=Qy12wV1a83g',
+    canonicalUrl: 'https://www.youtube.com/watch?v=Qy12wV1a83g',
+    title: 'Héctor Lavoe - El Cantante (Video Oficial Fania)',
+    channelName: 'Héctor Lavoe & Fania',
+    thumbnailUrl: 'https://img.youtube.com/vi/Qy12wV1a83g/hqdefault.jpg',
+    duration: '10:20',
+    durationSeconds: 620,
+    description: 'La obra cumbre de la salsa dura neoyorquina escrita por Rubén Blades y producida por Willie Colón.',
+    personalNotes: 'Himno de la salsa. "Yo soy el cantante, que hoy han venido a escuchar..."',
+    watchStatus: 'in_progress',
     isFavorite: true,
-    collectionId: 'desarrollo-web-mobile',
-    collectionName: 'Desarrollo Web & Mobile (PWA/Kotlin)',
-    tags: ['Kotlin', 'KMP', 'Compose', 'Mobile'],
-    createdAt: new Date(Date.now() - 3600000 * 6).toISOString()
-  }
-];
-
-// Fallback legacy products for backward compatibility
-const INITIAL_PRODUCTS = [
+    collectionId: 'salsa',
+    collectionName: 'Salsa Brava & Clásica',
+    tags: ['Hector Lavoe', 'Fania Records', 'Salsa Dura', 'Willie Colon'],
+    createdAt: new Date(Date.now() - 3600000 * 8).toISOString()
+  },
   {
-    id: 1,
-    name: 'YouTubeVolt Bóveda Pro Edition',
-    category: 'Software',
-    price: 0,
-    stock: 999,
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&auto=format&fit=crop&q=80',
-    description: 'Acceso ilimitado a la bóveda personal offline-first de videos de YouTube.'
+    id: 7,
+    youtubeVideoId: 'kYJt2xZ1hD0',
+    originalUrl: 'https://www.youtube.com/watch?v=kYJt2xZ1hD0',
+    canonicalUrl: 'https://www.youtube.com/watch?v=kYJt2xZ1hD0',
+    title: 'Hombres G - Devuélveme a mi chica (Video Oficial)',
+    channelName: 'Hombres G',
+    thumbnailUrl: 'https://img.youtube.com/vi/kYJt2xZ1hD0/hqdefault.jpg',
+    duration: '3:15',
+    durationSeconds: 195,
+    description: 'El clásico pop rock de los 80s conocido popularmente como "Sufre Mamón".',
+    personalNotes: 'Un clásico divertido y enérgico que todos en el auditorio conocen y cantan.',
+    watchStatus: 'pending',
+    isFavorite: false,
+    collectionId: 'rock-espanol',
+    collectionName: 'Rock en Español Clásico',
+    tags: ['Hombres G', 'Pop Rock', '80s', 'Espana'],
+    createdAt: new Date(Date.now() - 3600000 * 4).toISOString()
+  },
+  {
+    id: 8,
+    youtubeVideoId: 'YXnjy5YlPwk',
+    originalUrl: 'https://www.youtube.com/watch?v=YXnjy5YlPwk',
+    canonicalUrl: 'https://www.youtube.com/watch?v=YXnjy5YlPwk',
+    title: 'Marc Anthony - Vivir Mi Vida (Video Oficial)',
+    channelName: 'Marc Anthony',
+    thumbnailUrl: 'https://img.youtube.com/vi/YXnjy5YlPwk/hqdefault.jpg',
+    duration: '4:14',
+    durationSeconds: 254,
+    description: 'Uno de los temas de salsa más reproducidos de la historia moderna, producido por Sergio George.',
+    personalNotes: 'Ritmo contagioso para mantener la energía alta en la clase.',
+    watchStatus: 'watched',
+    isFavorite: true,
+    collectionId: 'salsa',
+    collectionName: 'Salsa Brava & Clásica',
+    tags: ['Marc Anthony', 'Salsa', 'Vivir Mi Vida', 'Energía'],
+    createdAt: new Date().toISOString()
   }
 ];
 
 let inMemoryVideos = JSON.parse(JSON.stringify(INITIAL_VIDEOS));
 let inMemoryCollections = JSON.parse(JSON.stringify(INITIAL_COLLECTIONS));
-let inMemoryProducts = JSON.parse(JSON.stringify(INITIAL_PRODUCTS));
 let pool = null;
 let isConnectedToMySQL = false;
 let lastDbError = null;
@@ -220,7 +237,6 @@ async function initDB() {
     const conn = await pool.getConnection();
     console.log(`✅ [DB] Conexión establecida exitosamente con MySQL (${database})`);
 
-    // Crear tablas necesarias
     await conn.query(`
       CREATE TABLE IF NOT EXISTS collections (
         id VARCHAR(100) PRIMARY KEY,
@@ -255,41 +271,6 @@ async function initDB() {
       )
     `);
 
-    // Seed inicial si está vacía
-    const [existing] = await conn.query('SELECT COUNT(*) as count FROM videos');
-    if (existing[0].count === 0) {
-      console.log('🌱 [DB] Sembrando datos iniciales de YouTubeVolt en MySQL...');
-      for (const c of INITIAL_COLLECTIONS) {
-        await conn.query(
-          'INSERT IGNORE INTO collections (id, name, description, icon, color) VALUES (?, ?, ?, ?, ?)',
-          [c.id, c.name, c.description, c.icon, c.color]
-        );
-      }
-      for (const v of INITIAL_VIDEOS) {
-        await conn.query(
-          `INSERT INTO videos (youtubeVideoId, originalUrl, canonicalUrl, title, channelName, thumbnailUrl, duration, durationSeconds, description, personalNotes, watchStatus, isFavorite, collectionId, collectionName, tags)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-          [
-            v.youtubeVideoId,
-            v.originalUrl,
-            v.canonicalUrl,
-            v.title,
-            v.channelName,
-            v.thumbnailUrl,
-            v.duration,
-            v.durationSeconds,
-            v.description,
-            v.personalNotes,
-            v.watchStatus,
-            v.isFavorite,
-            v.collectionId,
-            v.collectionName,
-            JSON.stringify(v.tags)
-          ]
-        );
-      }
-    }
-
     conn.release();
     isConnectedToMySQL = true;
     lastDbError = null;
@@ -300,9 +281,6 @@ async function initDB() {
   }
 }
 
-// -------------------------------------------------------------
-// Operaciones de Bóveda: Videos
-// -------------------------------------------------------------
 async function getVideos(filters = {}) {
   let list = [];
   if (isConnectedToMySQL && pool) {
@@ -321,7 +299,6 @@ async function getVideos(filters = {}) {
     list = inMemoryVideos;
   }
 
-  // Filtrado local
   if (filters.search) {
     const q = filters.search.toLowerCase().trim();
     list = list.filter(v => 
@@ -369,23 +346,23 @@ async function getVideoById(id) {
 }
 
 async function addVideo(videoData) {
-  const youtubeVideoId = extractYouTubeId(videoData.url || videoData.originalUrl) || 'dQw4w9WgXcQ';
+  const youtubeVideoId = extractYouTubeId(videoData.url || videoData.originalUrl) || 'HbGIN3GwD8s';
   const originalUrl = videoData.url || videoData.originalUrl || `https://www.youtube.com/watch?v=${youtubeVideoId}`;
   const canonicalUrl = `https://www.youtube.com/watch?v=${youtubeVideoId}`;
   const thumbnailUrl = videoData.thumbnailUrl || `https://img.youtube.com/vi/${youtubeVideoId}/hqdefault.jpg`;
-  const title = videoData.title || `Video YouTube ${youtubeVideoId}`;
-  const channelName = videoData.channelName || 'Canal de YouTube';
-  const duration = videoData.duration || '15:00';
-  const durationSeconds = videoData.durationSeconds || 900;
+  const title = videoData.title || `Video Musical ${youtubeVideoId}`;
+  const channelName = videoData.channelName || 'Artista de YouTube';
+  const duration = videoData.duration || '4:00';
+  const durationSeconds = videoData.durationSeconds || 240;
   const description = videoData.description || '';
   const personalNotes = videoData.personalNotes || '';
   const watchStatus = videoData.watchStatus || 'pending';
   const isFavorite = Boolean(videoData.isFavorite);
-  const collectionId = videoData.collectionId || 'ia-agentes';
+  const collectionId = videoData.collectionId || 'salsa';
   
   const foundCol = inMemoryCollections.find(c => c.id === collectionId);
   const collectionName = foundCol ? foundCol.name : (videoData.collectionName || 'General');
-  const tags = Array.isArray(videoData.tags) ? videoData.tags : (typeof videoData.tags === 'string' ? videoData.tags.split(',').map(t => t.trim()).filter(Boolean) : ['YouTube']);
+  const tags = Array.isArray(videoData.tags) ? videoData.tags : (typeof videoData.tags === 'string' ? videoData.tags.split(',').map(t => t.trim()).filter(Boolean) : ['Música']);
 
   if (isConnectedToMySQL && pool) {
     try {
@@ -505,9 +482,6 @@ async function deleteVideo(id) {
   return true;
 }
 
-// -------------------------------------------------------------
-// Operaciones de Bóveda: Colecciones
-// -------------------------------------------------------------
 async function getCollections() {
   if (isConnectedToMySQL && pool) {
     try {
@@ -543,9 +517,6 @@ async function addCollection(data) {
   return newCol;
 }
 
-// -------------------------------------------------------------
-// Métricas y Estadísticas de la Bóveda
-// -------------------------------------------------------------
 async function getStats() {
   const videos = await getVideos();
   const collections = await getCollections();
@@ -556,7 +527,7 @@ async function getStats() {
   const watchedCount = videos.filter(v => v.watchStatus === 'watched').length;
   const favoriteCount = videos.filter(v => v.isFavorite).length;
 
-  const totalSeconds = videos.reduce((acc, v) => acc + (v.durationSeconds || 600), 0);
+  const totalSeconds = videos.reduce((acc, v) => acc + (v.durationSeconds || 240), 0);
   const totalHours = (totalSeconds / 3600).toFixed(1);
 
   return {
@@ -571,14 +542,12 @@ async function getStats() {
   };
 }
 
-// -------------------------------------------------------------
-// Backup: Export / Import / Reset
-// -------------------------------------------------------------
 async function exportVault() {
   const videos = await getVideos();
   const collections = await getCollections();
   return {
     app: 'YouTubeVolt',
+    theme: 'MusicVault (Salsa, Rock en Español, Charlie Zaa)',
     version: '1.0.0',
     exportedAt: new Date().toISOString(),
     stats: await getStats(),
@@ -589,7 +558,7 @@ async function exportVault() {
 
 async function importVault(data) {
   if (!data || !Array.isArray(data.videos)) {
-    throw new Error('Formato de exportación inválido: debe contener un array de videos.');
+    throw new Error('Formato de exportación inválido.');
   }
 
   let importedCount = 0;
@@ -600,16 +569,6 @@ async function importVault(data) {
       importedCount++;
     }
   }
-
-  if (Array.isArray(data.collections)) {
-    for (const c of data.collections) {
-      const existing = inMemoryCollections.find(ec => ec.id === c.id);
-      if (!existing) {
-        await addCollection(c);
-      }
-    }
-  }
-
   return { success: true, importedVideos: importedCount };
 }
 
@@ -656,24 +615,6 @@ async function resetVideos() {
   }
 }
 
-// -------------------------------------------------------------
-// Legacy Products Support (Compatibilidad)
-// -------------------------------------------------------------
-async function getProducts() {
-  return inMemoryProducts;
-}
-async function addProduct(p) {
-  inMemoryProducts.unshift({ id: Date.now(), ...p });
-  return inMemoryProducts[0];
-}
-async function deleteProduct(id) {
-  inMemoryProducts = inMemoryProducts.filter(p => p.id !== parseInt(id, 10));
-  return true;
-}
-async function resetProducts() {
-  inMemoryProducts = [...INITIAL_PRODUCTS];
-}
-
 function getDbStatus() {
   return {
     mode: isConnectedToMySQL ? 'mysql' : 'in-memory',
@@ -699,9 +640,5 @@ module.exports = {
   exportVault,
   importVault,
   resetVideos,
-  getProducts,
-  addProduct,
-  deleteProduct,
-  resetProducts,
   getDbStatus
 };

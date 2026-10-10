@@ -1,95 +1,119 @@
 ---
-// apps/ecommerce/src/pages/index.astro - YouTubeVolt Portal de Videos
-const title = "YouTubeVolt - Portal de Videos & Bóveda Personal";
+// apps/ecommerce/src/pages/index.astro - YouTubeVolt Portal de Videos Musicales
+const title = "YouTubeVolt - Bóveda Musical: Salsa, Rock en Español & Charlie Zaa";
 
 const INITIAL_VIDEOS = [
   {
     id: 1,
-    youtubeVideoId: "5sLYA38pX4s",
-    title: "¿Qué son los Agentes de IA y cómo transformarán el software?",
-    channelName: "DotCSV",
-    thumbnailUrl: "https://img.youtube.com/vi/5sLYA38pX4s/hqdefault.jpg",
-    duration: "22:15",
-    collectionId: "ia-agentes",
-    collectionName: "Inteligencia Artificial & Agentes",
-    tags: ["AI", "Agentes", "LLMs", "Autonomía"],
-    description: "Introducción conceptual profunda a los agentes autónomos de IA, bucles de razonamiento (ReAct) y herramientas conectadas a APIs reales.",
-    notes: "Los agentes autónomos no solo responden texto, toman decisiones y coordinan herramientas para resolver problemas complejos."
+    youtubeVideoId: "HbGIN3GwD8s",
+    title: "Charlie Zaa - Nuestro Juramento (Sentimientos)",
+    channelName: "Charlie Zaa",
+    thumbnailUrl: "https://img.youtube.com/vi/HbGIN3GwD8s/hqdefault.jpg",
+    duration: "4:15",
+    collectionId: "baladas-charlie-zaa",
+    collectionName: "Baladas & Boleros de Charlie Zaa",
+    tags: ["Charlie Zaa", "Bolero", "Baladas", "Romántico"],
+    description: "El clásico bolero inolvidable interpretado por Charlie Zaa de su álbum más galardonado Sentimientos.",
+    notes: "Interpretación de bolero magistral. Canción imprescindible para la bóveda romántica."
   },
   {
     id: 2,
-    youtubeVideoId: "31ieHmcTUOk",
-    title: "Curso de Docker desde cero para principiantes",
-    channelName: "Midudev",
-    thumbnailUrl: "https://img.youtube.com/vi/31ieHmcTUOk/hqdefault.jpg",
-    duration: "45:30",
-    collectionId: "cloud-devops",
-    collectionName: "Cloud, Docker & Dokploy",
-    tags: ["Docker", "Containers", "DevOps", "Dokploy"],
-    description: "Aprende contenedores, imágenes multi-stage y cómo empaquetar aplicaciones para producción y despliegue en Dokploy.",
-    notes: "Utilizar el multi-stage build para reducir el tamaño final de la imagen en Dokploy."
+    youtubeVideoId: "k-V38a2G_gQ",
+    title: "Soda Stereo - De Música Ligera (Video Oficial)",
+    channelName: "Soda Stereo",
+    thumbnailUrl: "https://img.youtube.com/vi/k-V38a2G_gQ/hqdefault.jpg",
+    duration: "3:35",
+    collectionId: "rock-espanol",
+    collectionName: "Rock en Español Clásico",
+    tags: ["Soda Stereo", "Gustavo Cerati", "Rock en Español", "Himno"],
+    description: "Himno absoluto del rock en español grabado en Canción Animal (1990) por Gustavo Cerati y Soda Stereo.",
+    notes: "El riff de guitarra más influyente de la historia del rock latinoamericano."
   },
   {
     id: 3,
-    youtubeVideoId: "d3k5fH4u_0Y",
-    title: "Arquitectura Limpia (Clean Architecture) explicada con ejemplos",
-    channelName: "MoureDev by Brais Moure",
-    thumbnailUrl: "https://img.youtube.com/vi/d3k5fH4u_0Y/hqdefault.jpg",
-    duration: "38:40",
-    collectionId: "arquitectura-clean",
-    collectionName: "Arquitectura Limpia & Clean Code",
-    tags: ["Clean Architecture", "Software Design", "SOLID"],
-    description: "Separación clara entre capas de Dominio, Casos de Uso, Datos y Presentación para crear software mantenible.",
-    notes: "Regla de dependencia: Las capas externas conocen a las internas, pero el Dominio es totalmente independiente."
+    youtubeVideoId: "s5e8k0p_07o",
+    title: "Grupo Niche - Cali Pachanguero (Oficial)",
+    channelName: "Grupo Niche",
+    thumbnailUrl: "https://img.youtube.com/vi/s5e8k0p_07o/hqdefault.jpg",
+    duration: "5:12",
+    collectionId: "salsa",
+    collectionName: "Salsa Brava & Clásica",
+    tags: ["Grupo Niche", "Salsa", "Cali", "Jairo Varela"],
+    description: "La composición legendaria del maestro Jairo Varela que recorrió el mundo y definió la salsa colombiana.",
+    notes: "Arreglos de metales y percusión insuperables. Clave para animar la clase."
   },
   {
     id: 4,
-    youtubeVideoId: "T_wKhn5xNfA",
-    title: "PWA (Progressive Web Apps) Tutorial Práctico con React y Vite",
-    channelName: "Fazt Code",
-    thumbnailUrl: "https://img.youtube.com/vi/T_wKhn5xNfA/hqdefault.jpg",
-    duration: "28:10",
-    collectionId: "desarrollo-web-mobile",
-    collectionName: "Desarrollo Web & Mobile (PWA/Kotlin)",
-    tags: ["PWA", "React", "ServiceWorker", "Offline"],
-    description: "Aprende a convertir cualquier aplicación React en una PWA instalable con Service Workers y caché offline.",
-    notes: "Configurar manifest.json con 'display: standalone' y caché de assets estáticos en el Service Worker."
+    youtubeVideoId: "hReAuaAuJOE",
+    title: "Los Enanitos Verdes - Lamento Boliviano (Oficial)",
+    channelName: "Los Enanitos Verdes",
+    thumbnailUrl: "https://img.youtube.com/vi/hReAuaAuJOE/hqdefault.jpg",
+    duration: "3:45",
+    collectionId: "rock-espanol",
+    collectionName: "Rock en Español Clásico",
+    tags: ["Enanitos Verdes", "Marciano Cantero", "Rock Latino", "Guitarra"],
+    description: "El tema más coreado y emblemático del rock en español con la voz inolvidable de Marciano Cantero.",
+    notes: "Solo de guitarra perfecto para cantar con los alumnos en el descanso."
   },
   {
     id: 5,
-    youtubeVideoId: "NWONeJKn6kc",
-    title: "Machine Learning & Big Data Analytics - Curso Completo",
-    channelName: "NextCollege Tech",
-    thumbnailUrl: "https://img.youtube.com/vi/NWONeJKn6kc/hqdefault.jpg",
-    duration: "1:15:00",
-    collectionId: "data-bi",
-    collectionName: "Data Engineering & Big Data",
-    tags: ["Machine Learning", "Big Data", "Python"],
-    description: "Fundamentos de analítica avanzada, procesamiento de datos masivos y modelos predictivos para toma de decisiones.",
-    notes: "Material de soporte para el módulo de ingeniería de datos y analítica en la nube."
+    youtubeVideoId: "k1t6F-N1D10",
+    title: "Charlie Zaa - Flor Sin Retoño (Video Oficial)",
+    channelName: "Charlie Zaa",
+    thumbnailUrl: "https://img.youtube.com/vi/k1t6F-N1D10/hqdefault.jpg",
+    duration: "3:48",
+    collectionId: "baladas-charlie-zaa",
+    collectionName: "Baladas & Boleros de Charlie Zaa",
+    tags: ["Charlie Zaa", "Bolero", "Flor Sin Retoño", "Acústico"],
+    description: "Hermoso bolero rítmico de desamor con requintos acústicos y trompeta.",
+    notes: "Arreglo de guitarras acústicas impecable, excelente para relajarse tras una sesión de código."
   },
   {
     id: 6,
-    youtubeVideoId: "t2Pz0Wz7Z2Y",
-    title: "Kotlin Multiplatform: Comparte lógica de negocio entre iOS y Android",
-    channelName: "AristiDevs",
-    thumbnailUrl: "https://img.youtube.com/vi/t2Pz0Wz7Z2Y/hqdefault.jpg",
-    duration: "32:45",
-    collectionId: "desarrollo-web-mobile",
-    collectionName: "Desarrollo Web & Mobile (PWA/Kotlin)",
-    tags: ["Kotlin", "KMP", "Compose", "Mobile"],
-    description: "Estructura de proyectos KMP, Koin para inyección de dependencias y persistencia de datos local compartida.",
-    notes: "Comparativa entre desarrollo móvil nativo KMP y arquitecturas PWA web multiplataforma."
+    youtubeVideoId: "Qy12wV1a83g",
+    title: "Héctor Lavoe - El Cantante (Video Oficial Fania)",
+    channelName: "Héctor Lavoe & Fania",
+    thumbnailUrl: "https://img.youtube.com/vi/Qy12wV1a83g/hqdefault.jpg",
+    duration: "10:20",
+    collectionId: "salsa",
+    collectionName: "Salsa Brava & Clásica",
+    tags: ["Hector Lavoe", "Fania Records", "Salsa Dura", "Willie Colon"],
+    description: "La obra cumbre de la salsa dura neoyorquina escrita por Rubén Blades y producida por Willie Colón.",
+    notes: "Himno de la salsa. 'Yo soy el cantante, que hoy han venido a escuchar...'"
+  },
+  {
+    id: 7,
+    youtubeVideoId: "kYJt2xZ1hD0",
+    title: "Hombres G - Devuélveme a mi chica (Video Oficial)",
+    channelName: "Hombres G",
+    thumbnailUrl: "https://img.youtube.com/vi/kYJt2xZ1hD0/hqdefault.jpg",
+    duration: "3:15",
+    collectionId: "rock-espanol",
+    collectionName: "Rock en Español Clásico",
+    tags: ["Hombres G", "Pop Rock", "80s", "Espana"],
+    description: "El clásico pop rock de los 80s conocido popularmente como 'Sufre Mamón'.",
+    notes: "Un clásico divertido y enérgico que todos en el auditorio conocen y cantan."
+  },
+  {
+    id: 8,
+    youtubeVideoId: "YXnjy5YlPwk",
+    title: "Marc Anthony - Vivir Mi Vida (Video Oficial)",
+    channelName: "Marc Anthony",
+    thumbnailUrl: "https://img.youtube.com/vi/YXnjy5YlPwk/hqdefault.jpg",
+    duration: "4:14",
+    collectionId: "salsa",
+    collectionName: "Salsa Brava & Clásica",
+    tags: ["Marc Anthony", "Salsa", "Vivir Mi Vida", "Energía"],
+    description: "Uno de los temas de salsa más reproducidos de la historia moderna, producido por Sergio George.",
+    notes: "Ritmo contagioso para mantener la energía alta en la clase."
   }
 ];
 
 const COLLECTIONS = [
-  { id: "all", name: "Todos los Videos" },
-  { id: "ia-agentes", name: "🤖 IA & Agentes" },
-  { id: "cloud-devops", name: "☁️ Cloud & Dokploy" },
-  { id: "desarrollo-web-mobile", name: "📱 Web & Mobile" },
-  { id: "arquitectura-clean", name: "🏗️ Arquitectura Limpia" },
-  { id: "data-bi", name: "📊 Data & BI" }
+  { id: "all", name: "🎵 Todos los Éxitos" },
+  { id: "salsa", name: "🎺 Salsa Brava & Clásica" },
+  { id: "rock-espanol", name: "🎸 Rock en Español" },
+  { id: "baladas-charlie-zaa", name: "🌹 Baladas de Charlie Zaa" }
 ];
 ---
 
@@ -223,7 +247,6 @@ const COLLECTIONS = [
       color: white;
     }
 
-    /* Container */
     .container {
       max-width: 1280px;
       margin: 0 auto;
@@ -318,12 +341,12 @@ const COLLECTIONS = [
       margin-bottom: 1.5rem;
     }
     .hero-notes {
-      background: rgba(56, 189, 248, 0.08);
-      border-left: 3px solid #38bdf8;
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 3px solid #f59e0b;
       padding: 0.75rem 1rem;
       border-radius: 0.5rem;
       font-size: 0.82rem;
-      color: #93c5fd;
+      color: #fde68a;
       margin-bottom: 1.5rem;
     }
 
@@ -525,7 +548,6 @@ const COLLECTIONS = [
       padding: 1.5rem;
     }
 
-    /* Footer */
     footer {
       background: #070a12;
       border-top: 1px solid #151d2f;
@@ -557,11 +579,11 @@ const COLLECTIONS = [
     <a href="/" class="brand">
       <div class="brand-logo">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
         </svg>
       </div>
       <div class="brand-name">
-        YouTube<span>Volt</span>
+        YouTube<span>Volt Music</span>
       </div>
     </a>
 
@@ -570,7 +592,7 @@ const COLLECTIONS = [
         type="text"
         id="liveSearchInput"
         class="search-input"
-        placeholder="Buscar videos por título, creador o palabras clave..."
+        placeholder="Buscar canciones por título, artista o género..."
       />
     </div>
 
@@ -585,11 +607,11 @@ const COLLECTIONS = [
   </header>
 
   <main class="container">
-    <!-- Hero Spotlight Video -->
+    <!-- Hero Spotlight Video (Charlie Zaa - Nuestro Juramento) -->
     <section class="hero-spotlight">
-      <div class="hero-video-wrapper" onclick="openPlayerModal('5sLYA38pX4s', '¿Qué son los Agentes de IA y cómo transformarán el software?', 'DotCSV', 'Los agentes autónomos no solo responden texto, toman decisiones y coordinan herramientas para resolver problemas complejos.')">
+      <div class="hero-video-wrapper" onclick="openPlayerModal('HbGIN3GwD8s', 'Charlie Zaa - Nuestro Juramento (Sentimientos)', 'Charlie Zaa', 'El bolero cumbre del álbum Sentimientos, interpretado con el sentimiento y requinto inconfundible de Charlie Zaa.')">
         <img
-          src="https://img.youtube.com/vi/5sLYA38pX4s/hqdefault.jpg"
+          src="https://img.youtube.com/vi/HbGIN3GwD8s/hqdefault.jpg"
           alt="Video Destacado"
           class="hero-thumb"
         />
@@ -602,24 +624,24 @@ const COLLECTIONS = [
         </div>
       </div>
       <div class="hero-info">
-        <div class="hero-badge">⚡ Video Destacado de la Bóveda</div>
-        <h1 class="hero-title">¿Qué son los Agentes de IA y cómo transformarán el software?</h1>
+        <div class="hero-badge">🌹 Joya de la Bóveda Musical</div>
+        <h1 class="hero-title">Charlie Zaa - Nuestro Juramento</h1>
         <p class="hero-desc">
-          Introducción conceptual profunda a los agentes autónomos de IA, bucles de razonamiento (ReAct) y herramientas conectadas a APIs reales por DotCSV.
+          El clásico bolero inolvidable de Julio Jaramillo interpretado magistralmente por Charlie Zaa. Un himno al amor eterno con guitarras y requintos de leyenda.
         </p>
         <div class="hero-notes">
-          💡 <strong>Nota de la Bóveda:</strong> "Los agentes no solo predicen texto, ejecutan código y acciones en el mundo real."
+          💡 <strong>Nota del Curador:</strong> "Interpretación cumbre de bolero acústico. Uno de los temas más aclamados y sentidos de la música hispana."
         </div>
         <div style="display: flex; gap: 0.75rem;">
           <button
-            onclick="openPlayerModal('5sLYA38pX4s', '¿Qué son los Agentes de IA y cómo transformarán el software?', 'DotCSV', 'Los agentes autónomos no solo responden texto, toman decisiones y coordinan herramientas para resolver problemas complejos.')"
+            onclick="openPlayerModal('HbGIN3GwD8s', 'Charlie Zaa - Nuestro Juramento (Sentimientos)', 'Charlie Zaa', 'El bolero cumbre del álbum Sentimientos, interpretado con el sentimiento y requinto inconfundible de Charlie Zaa.')"
             class="btn-nav btn-pwa"
             style="border: none; cursor: pointer; padding: 0.75rem 1.5rem;"
           >
-            ▶️ Reproducir Video
+            ▶️ Escuchar Ahora
           </button>
           <a href="/app" class="btn-nav btn-admin" style="padding: 0.75rem 1.25rem;">
-            📱 Ver en App Mobile
+            📱 Abrir en Bóveda PWA
           </a>
         </div>
       </div>
@@ -683,11 +705,11 @@ const COLLECTIONS = [
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
           <div style="color: var(--accent-coral); font-weight: 700;" id="modalChannel">Canal</div>
           <a id="modalExternalLink" href="#" target="_blank" style="color: #38bdf8; text-decoration: none; font-size: 0.85rem; font-weight: 600;">
-            ↗️ Abrir en YouTube Oficial
+            ↗️ Ver en YouTube Oficial
           </a>
         </div>
-        <div id="modalNotesBox" style="background: rgba(56, 189, 248, 0.08); border-left: 3px solid #38bdf8; padding: 0.75rem 1rem; border-radius: 0.5rem; font-size: 0.84rem; color: #93c5fd;">
-          💡 <strong>Anotación en la Bóveda:</strong> <span id="modalNotesText">Notas</span>
+        <div id="modalNotesBox" style="background: rgba(245, 158, 11, 0.08); border-left: 3px solid #f59e0b; padding: 0.75rem 1rem; border-radius: 0.5rem; font-size: 0.84rem; color: #fde68a;">
+          💡 <strong>Nota del Curador:</strong> <span id="modalNotesText">Notas</span>
         </div>
       </div>
     </div>
@@ -695,19 +717,18 @@ const COLLECTIONS = [
 
   <footer>
     <div class="footer-links">
-      <a href="/" class="footer-link">🌐 Portal de Videos</a>
-      <a href="/app" class="footer-link">📱 Bóveda PWA Mobile</a>
+      <a href="/" class="footer-link">🎵 Portal Musical</a>
+      <a href="/app" class="footer-link">📱 Bóveda Mobile PWA</a>
       <a href="/admin" class="footer-link">⚙️ Panel Studio</a>
       <a href="/api/health" class="footer-link">🩺 Health Check</a>
       <a href="/api/videos" class="footer-link">🎬 API REST</a>
     </div>
     <p>
-      YouTubeVolt &bull; Arquitectura 3 Capas: Astro (Portal) + React (PWA) + React (Admin) + Node.js API + MySQL &bull; Dokploy CI/CD
+      YouTubeVolt &bull; Bóveda Musical: Salsa Brava, Rock en Español & Charlie Zaa &bull; Dokploy CI/CD Live MasterClass
     </p>
   </footer>
 
   <script is:inline>
-    // Live Client Side Sync with API
     async function syncVideosFromApi() {
       try {
         const res = await fetch('/api/videos');
@@ -729,13 +750,13 @@ const COLLECTIONS = [
           >
             <div class="card-thumb-wrap">
               <img src="${video.thumbnailUrl || 'https://img.youtube.com/vi/' + video.youtubeVideoId + '/hqdefault.jpg'}" alt="${video.title}" class="card-thumb" loading="lazy" />
-              <div class="card-duration">${video.duration || '15:00'}</div>
+              <div class="card-duration">${video.duration || '4:00'}</div>
             </div>
             <div class="card-content">
               <h3 class="card-title">${video.title}</h3>
               <div class="card-meta">
                 <div class="card-channel">
-                  <span class="channel-avatar">${(video.channelName || 'Y')[0]}</span>
+                  <span class="channel-avatar">${(video.channelName || 'M')[0]}</span>
                   ${video.channelName}
                 </div>
                 <span class="card-col">${video.collectionName || 'General'}</span>
@@ -747,11 +768,10 @@ const COLLECTIONS = [
           </div>
         `).join('');
       } catch (err) {
-        console.warn('API local sync fallback:', err);
+        console.warn('API sync fallback:', err);
       }
     }
 
-    // Modal logic
     function openPlayerModal(videoId, title, channel, notes) {
       const modal = document.getElementById('playerModal');
       const iframe = document.getElementById('modalIframe');
@@ -762,7 +782,7 @@ const COLLECTIONS = [
 
       iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
       titleElem.textContent = title;
-      channelElem.textContent = `Canal: ${channel}`;
+      channelElem.textContent = `Artista / Canal: ${channel}`;
       linkElem.href = `https://www.youtube.com/watch?v=${videoId}`;
       notesElem.textContent = notes || 'Sin notas adicionales en la bóveda.';
 
@@ -782,7 +802,6 @@ const COLLECTIONS = [
       }
     }
 
-    // Filter Chips
     document.querySelectorAll('.filter-chip').forEach(chip => {
       chip.addEventListener('click', () => {
         document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
@@ -792,7 +811,6 @@ const COLLECTIONS = [
       });
     });
 
-    // Search Input
     const searchInput = document.getElementById('liveSearchInput');
     if (searchInput) {
       searchInput.addEventListener('input', (e) => {

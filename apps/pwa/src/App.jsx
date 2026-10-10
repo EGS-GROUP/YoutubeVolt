@@ -57,7 +57,7 @@ export default function App() {
   const [newUrl, setNewUrl] = useState('');
   const [newTitle, setNewTitle] = useState('');
   const [newChannel, setNewChannel] = useState('');
-  const [newCollection, setNewCollection] = useState('ia-agentes');
+  const [newCollection, setNewCollection] = useState('salsa');
   const [newTags, setNewTags] = useState('');
   const [newNotes, setNewNotes] = useState('');
   const [isSaving, setIsSaving] = useState(false);

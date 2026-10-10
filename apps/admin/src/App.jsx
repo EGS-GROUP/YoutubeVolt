@@ -65,7 +65,7 @@ export default function App() {
   const [url, setUrl] = useState('');
   const [title, setTitle] = useState('');
   const [channelName, setChannelName] = useState('');
-  const [collectionId, setCollectionId] = useState('ia-agentes');
+  const [collectionId, setCollectionId] = useState('salsa');
   const [tags, setTags] = useState('');
   const [personalNotes, setPersonalNotes] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
