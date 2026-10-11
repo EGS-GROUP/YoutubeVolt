@@ -42,9 +42,13 @@ app.get('/.well-known/assetlinks.json', (req, res) => {
 
 // Direct APK download route
 app.get(['/YouTubeVolt.apk', '/app/YouTubeVolt.apk'], (req, res) => {
-  const publicApk = path.join(__dirname, '../public/YouTubeVolt.apk');
-  const rootApk = path.join(__dirname, '../../YouTubeVolt.apk');
-  const target = fs.existsSync(publicApk) ? publicApk : (fs.existsSync(rootApk) ? rootApk : null);
+  const candidates = [
+    path.join(__dirname, '../public/YouTubeVolt.apk'),
+    path.join(__dirname, '../public/ecommerce/YouTubeVolt.apk'),
+    path.join(__dirname, '../../apps/ecommerce/public/YouTubeVolt.apk'),
+    path.join(__dirname, '../../YouTubeVolt.apk')
+  ];
+  const target = candidates.find(p => fs.existsSync(p));
   if (target) {
     res.setHeader('Content-Type', 'application/vnd.android.package-archive');
     res.setHeader('Content-Disposition', 'attachment; filename="YouTubeVolt.apk"');

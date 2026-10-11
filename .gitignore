@@ -14,3 +14,4 @@ android/.gradle/
 android/build/
 android/app/build/
 *.apk
+!apps/ecommerce/public/YouTubeVolt.apk
