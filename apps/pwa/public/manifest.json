@@ -1,12 +1,12 @@
 {
-  "name": "YouTubeVolt - Bóveda de Videos",
-  "short_name": "YouTubeVolt",
-  "description": "Tu bóveda personal e inteligente de videos de YouTube con persistencia offline y organización avanzada",
+  "name": "NextCollege Mobile PWA",
+  "short_name": "NextCollege",
+  "description": "Aplicación móvil PWA de NextCollege sincronizada en tiempo real con Dokploy CI/CD",
   "start_url": "/app/",
   "scope": "/app/",
   "display": "standalone",
-  "background_color": "#0b0f17",
-  "theme_color": "#ff0033",
+  "background_color": "#090d16",
+  "theme_color": "#2563eb",
   "orientation": "portrait",
   "icons": [
     {
