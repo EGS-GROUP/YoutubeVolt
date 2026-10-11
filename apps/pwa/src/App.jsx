@@ -364,6 +364,27 @@ export default function App() {
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <a
+              href="/YouTubeVolt.apk"
+              download
+              title="Descargar APK para Android"
+              style={{
+                fontSize: '0.72rem',
+                padding: '4px 10px',
+                borderRadius: '9999px',
+                fontWeight: '700',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '4px',
+                background: 'rgba(255, 0, 51, 0.15)',
+                color: '#ff4d6d',
+                border: '1px solid rgba(255, 0, 51, 0.3)',
+                textDecoration: 'none'
+              }}
+            >
+              <Download size={12} />
+              APK
+            </a>
             <span style={{
               fontSize: '0.72rem',
               padding: '4px 10px',

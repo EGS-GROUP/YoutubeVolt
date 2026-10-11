@@ -17,6 +17,42 @@ app.use((req, res, next) => {
   next();
 });
 
+// Android Digital Asset Links (TWA full-screen verification)
+app.get('/.well-known/assetlinks.json', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Cache-Control', 'public, max-age=3600');
+  const assetlinksPath = path.join(__dirname, '../public/.well-known/assetlinks.json');
+  if (fs.existsSync(assetlinksPath)) {
+    return res.sendFile(assetlinksPath);
+  }
+  return res.json([
+    {
+      relation: ["delegate_permission/common.handle_all_urls"],
+      target: {
+        namespace: "android_app",
+        package_name: "com.nextcollege.youtubevolt",
+        sha256_cert_fingerprints: [
+          "E9:77:4F:27:63:0F:50:5F:1B:39:63:6B:B1:58:E1:4E:AD:10:5B:8D:48:92:EB:26:90:16:36:95:11:07:51:06",
+          "95:D0:03:13:5D:DD:53:34:30:E4:87:4C:D8:C5:FC:B6:6D:B4:E5:FA:38:1F:8B:27:CF:D8:10:FC:3B:5E:B6:AA"
+        ]
+      }
+    }
+  ]);
+});
+
+// Direct APK download route
+app.get(['/YouTubeVolt.apk', '/app/YouTubeVolt.apk'], (req, res) => {
+  const publicApk = path.join(__dirname, '../public/YouTubeVolt.apk');
+  const rootApk = path.join(__dirname, '../../YouTubeVolt.apk');
+  const target = fs.existsSync(publicApk) ? publicApk : (fs.existsSync(rootApk) ? rootApk : null);
+  if (target) {
+    res.setHeader('Content-Type', 'application/vnd.android.package-archive');
+    res.setHeader('Content-Disposition', 'attachment; filename="YouTubeVolt.apk"');
+    return res.sendFile(target);
+  }
+  res.status(404).type('text/plain').send('APK no disponible en este momento');
+});
+
 // API Endpoints
 app.use('/api', apiRoutes);
 

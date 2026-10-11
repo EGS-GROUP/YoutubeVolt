@@ -143,12 +143,22 @@ android {
 
         resValue "bool", "enableSiteSettingsShortcut", twaManifest.enableSiteSettingsShortcut
         resValue "string", "orientation", twaManifest.orientation
-
-        
+    }
+    signingConfigs {
+        youtubevolt {
+            storeFile file('youtubevolt.keystore')
+            storePassword 'youtubevolt'
+            keyAlias 'youtubevolt'
+            keyPassword 'youtubevolt'
+        }
     }
     buildTypes {
         release {
-            minifyEnabled true
+            signingConfig signingConfigs.youtubevolt
+            minifyEnabled false
+        }
+        debug {
+            signingConfig signingConfigs.youtubevolt
         }
     }
     compileOptions {
