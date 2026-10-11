@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>NextCollege Burger Rapid • App Móvil PWA</title>
+  <title>YouTubeVolt - Bóveda de Videos</title>
   
   <!-- PWA Meta Tags -->
   <link rel="manifest" href="/app/manifest.json" />
-  <meta name="theme-color" content="#2563eb" />
+  <meta name="theme-color" content="#0b0f17" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="NextCollege" />
+  <meta name="apple-mobile-web-app-title" content="YouTubeVolt" />
   <link rel="icon" type="image/png" href="/app/icon-192.png" />
   <link rel="apple-touch-icon" href="/app/icon-192.png" />
   
@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body style="background-color: #0b0f17; margin: 0; padding: 0; color: #f8fafc; font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;">
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
   
@@ -26,8 +26,21 @@
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('/app/sw.js')
-          .then((reg) => console.log('✅ [PWA] Service Worker registrado con éxito:', reg.scope))
+          .then((reg) => {
+            console.log('✅ [PWA] Service Worker registrado:', reg.scope);
+            // Comprobar activamente si hay una nueva versión desplegada
+            reg.update();
+          })
           .catch((err) => console.error('❌ [PWA] Error registrando Service Worker:', err));
+
+        // Cuando el nuevo Service Worker toma el control, actualizar para sincronizar assets
+        let refreshing = false;
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          if (!refreshing) {
+            refreshing = true;
+            window.location.reload();
+          }
+        });
       });
     }
   </script>

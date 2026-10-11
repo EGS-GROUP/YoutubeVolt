@@ -21,18 +21,18 @@ plugins {
 }
 
 def twaManifest = [
-    applicationId: 'com.nextcollege.burgerrapid',
+    applicationId: 'com.nextcollege.youtubevolt',
     hostName: 'youtubevolt.nextcollege.co', // The domain being opened in the TWA.
     launchUrl: '/app/', // The start path for the TWA. Must be relative to the domain.
-    name: 'NextCollege Burger Rapid', // The application name.
-    launcherName: 'BurgerRapid', // The name shown on the Android Launcher.
-    themeColor: '#2563EB', // The color used for the status bar.
-    themeColorDark: '#000000', // The color used for the dark status bar.
-    navigationColor: '#090D16', // The color used for the navigation bar.
+    name: 'YouTubeVolt - Bóveda de Videos', // The application name.
+    launcherName: 'YouTubeVolt', // The name shown on the Android Launcher.
+    themeColor: '#FF0033', // The color used for the status bar.
+    themeColorDark: '#0B0F17', // The color used for the dark status bar.
+    navigationColor: '#0B0F17', // The color used for the navigation bar.
     navigationColorDark: '#000000', // The color used for the dark navbar.
     navigationDividerColor: '#000000', // The navbar divider color.
     navigationDividerColorDark: '#000000', // The dark navbar divider color.
-    backgroundColor: '#090D16', // The color used for the splash screen background.
+    backgroundColor: '#0B0F17', // The color used for the splash screen background.
     enableNotifications: true, // Set to true to enable notification delegation.
     // Every shortcut must include the following fields:
     // - name: String that will show up in the shortcut.
@@ -52,9 +52,9 @@ def twaManifest = [
 
 android {
     compileSdkVersion 36
-    namespace "com.nextcollege.burgerrapid"
+    namespace "com.nextcollege.youtubevolt"
     defaultConfig {
-        applicationId "com.nextcollege.burgerrapid"
+        applicationId "com.nextcollege.youtubevolt"
         minSdkVersion 24
         targetSdkVersion 36
         versionCode 1

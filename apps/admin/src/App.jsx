@@ -1,1158 +1,1158 @@
 import React, { useState, useEffect } from 'react';
+import {
+  Zap,
+  Play,
+  Plus,
+  Search,
+  Bookmark,
+  Heart,
+  CheckCircle,
+  Clock,
+  ExternalLink,
+  Trash2,
+  Share2,
+  Folder,
+  Layers,
+  Database,
+  Download,
+  Upload,
+  RotateCcw,
+  X,
+  FileText,
+  Smartphone,
+  Globe,
+  Activity,
+  Filter,
+  Check,
+  Edit3
+} from 'lucide-react';
 
-const FALLBACK_BURGERS = [
-  {
-    id: 1,
-    name: 'Rey de las hamburguesas a la parrilla',
-    category: 'A la Parrilla',
-    badge: 'Doble Carne XXL * 380g',
-    price: 14.99,
-    stock: 45,
-    active: true,
-    image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&auto=format&fit=crop&q=80',
-    description: 'Carne 100% Angus flameada a la leña de roble, queso cheddar añejo fundido, cebolla al bourbon y panceta crocante.'
-  },
-  {
-    id: 2,
-    name: 'Hamburgueza Real',
-    category: 'A la Parrilla',
-    badge: 'Clásica Imperial * 240g',
-    price: 11.50,
-    stock: 60,
-    active: true,
-    image: 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=400&auto=format&fit=crop&q=80',
-    description: 'Doble medallón smash con costra caramelizada, queso americano fundido, pepinillos agridulces y aderezo imperial.'
-  },
-  {
-    id: 3,
-    name: 'Hamburgueza Royal Crispy',
-    category: 'Pollo Crispy',
-    badge: 'Crispy Gold Pechuga * 260g',
-    price: 12.99,
-    stock: 38,
-    active: true,
-    image: 'https://images.unsplash.com/photo-1625813506062-0aeb1d7a094b?w=400&auto=format&fit=crop&q=80',
-    description: 'Pechuga marinada 24h con triple rebozado crujiente, ensalada coleslaw de manzana verde y salsa honey mustard.'
-  },
-  {
-    id: 4,
-    name: 'Hamburgueza Double Whopper',
-    category: 'Gigantes XXL',
-    badge: 'Fuego Parrillero * 420g',
-    price: 15.50,
-    stock: 28,
-    active: true,
-    image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&auto=format&fit=crop&q=80',
-    description: 'Doble medallón gigante a la parrilla sobre carbón vivo, lechuga romana, tomate maduro, aros de cebolla y mayo ahumada.'
-  },
-  {
-    id: 5,
-    name: 'Smash Burger Trufada Supreme',
-    category: 'Smash Burgers',
-    badge: 'Doble Smash Angus * 220g',
-    price: 13.75,
-    stock: 35,
-    active: true,
-    image: 'https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=400&auto=format&fit=crop&q=80',
-    description: 'Técnica smash en plancha de cromo con costra crujiente, queso suizo fundido y mayonesa de trufa negra.'
-  },
-  {
-    id: 6,
-    name: 'Bacon Monster Cheddar Melt',
-    category: 'Gigantes XXL',
-    badge: 'Triple Bacon Ahumado * 350g',
-    price: 14.50,
-    stock: 42,
-    active: true,
-    image: 'https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=400&auto=format&fit=crop&q=80',
-    description: 'Cascada de queso cheddar líquido fundido y 6 tiras crujientes de bacon ahumado con miel de maple.'
-  },
-  {
-    id: 7,
-    name: 'Volcán Criollo Chimichurri',
-    category: 'A la Parrilla',
-    badge: 'Corte de Asado * 300g',
-    price: 13.90,
-    stock: 30,
-    active: true,
-    image: 'https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?w=400&auto=format&fit=crop&q=80',
-    description: 'Medallón grueso sazonado al punto con provolone fundido al fuego, pimientos morrones y chimichurri criollo.'
-  },
-  {
-    id: 8,
-    name: 'Chili Pepper Jack Picante',
-    category: 'Especiales del Chef',
-    badge: 'Spicy Jalapeño Crunch * 280g',
-    price: 12.50,
-    stock: 25,
-    active: true,
-    image: 'https://images.unsplash.com/photo-1582196016295-f8c8bd4b3e99?w=400&auto=format&fit=crop&q=80',
-    description: 'Pepper jack picante, jalapeños dorados en hierro, guacamole cremoso y suave alioli de chipotle.'
-  },
-  {
-    id: 9,
-    name: 'Black Angus BBQ Ribs Glazed',
-    category: 'Especiales del Chef',
-    badge: 'Costilla Desmechada * 340g',
-    price: 16.20,
-    stock: 20,
-    active: true,
-    image: 'https://images.unsplash.com/photo-1549611016-3a70d82b5040?w=400&auto=format&fit=crop&q=80',
-    description: 'Medallón Black Angus coronado con costilla desmechada ahumada 8h y salsa BBQ dulce de bourbon.'
-  },
-  {
-    id: 10,
-    name: 'Mushroom Swiss Gourmet',
-    category: 'Gourmet',
-    badge: 'Hongos Salteados & Emmental * 250g',
-    price: 13.20,
-    stock: 32,
-    active: true,
-    image: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400&auto=format&fit=crop&q=80',
-    description: 'Carne selecta con mezcla de portobellos salteados en mantequilla con romero y queso suizo Emmental derretido.'
-  }
-];
-
-const CONSUMER_SEGMENTS = [
-  {
-    id: 'vip',
-    name: 'VIP Diamond (> 10 burgers/mes)',
-    badge: 'DIAMOND 👑',
-    count: 84,
-    percent: 13,
-    revenueShare: '42% del total',
-    avgTicket: '$38.50',
-    color: '#38bdf8'
-  },
-  {
-    id: 'recurrent',
-    name: 'Gourmet Recurrentes (4-9 burgers/mes)',
-    badge: 'GOLD ⭐',
-    count: 192,
-    percent: 29,
-    revenueShare: '36% del total',
-    avgTicket: '$24.20',
-    color: '#f59e0b'
-  },
-  {
-    id: 'casual',
-    name: 'Ocasionales / Nuevos (1-3 burgers/mes)',
-    badge: 'SILVER 🥈',
-    count: 340,
-    percent: 51,
-    revenueShare: '22% del total',
-    avgTicket: '$15.10',
-    color: '#10b981'
-  },
-  {
-    id: 'churn',
-    name: 'En Riesgo (> 30 días sin ordenar)',
-    badge: 'ATENCIÓN ⚠️',
-    count: 45,
-    percent: 7,
-    revenueShare: 'Reactivar',
-    avgTicket: '$18.00',
-    color: '#ef4444'
-  }
-];
-
-const TOP_CONSUMERS = [
-  { rank: 1, name: 'Pablo Valdivia', avatar: 'PV', tier: 'VIP Diamond', burgersMonth: 14, totalSpend: 218.40, favorite: 'Rey de las hamburguesas a la parrilla', points: 1850 },
-  { rank: 2, name: 'Valeria Mendoza', avatar: 'VM', tier: 'VIP Diamond', burgersMonth: 12, totalSpend: 174.90, favorite: 'Smash Burger Trufada Supreme', points: 1540 },
-  { rank: 3, name: 'Rodrigo Gómez', avatar: 'RG', tier: 'VIP Diamond', burgersMonth: 10, totalSpend: 155.00, favorite: 'Hamburgueza Double Whopper', points: 1390 },
-  { rank: 4, name: 'Sofía Carranza', avatar: 'SC', tier: 'Gourmet Recurrente', burgersMonth: 8, totalSpend: 103.92, favorite: 'Hamburgueza Royal Crispy', points: 980 },
-  { rank: 5, name: 'Carlos Benítez', avatar: 'CB', tier: 'Gourmet Recurrente', burgersMonth: 7, totalSpend: 98.50, favorite: 'Volcán Criollo Chimichurri', points: 890 }
-];
+function extractYouTubeId(url) {
+  if (!url) return null;
+  const str = String(url).trim();
+  const matchWatch = str.match(/(?:youtube\.com\/watch\?.*v=)([^&]+)/i);
+  if (matchWatch && matchWatch[1]) return matchWatch[1];
+  const matchShort = str.match(/youtu\.be\/([^?&#]+)/i);
+  if (matchShort && matchShort[1]) return matchShort[1];
+  const matchShorts = str.match(/youtube\.com\/shorts\/([^?&#]+)/i);
+  if (matchShorts && matchShorts[1]) return matchShorts[1];
+  const matchEmbed = str.match(/youtube\.com\/embed\/([^?&#]+)/i);
+  if (matchEmbed && matchEmbed[1]) return matchEmbed[1];
+  if (/^[a-zA-Z0-9_-]{11}$/.test(str)) return str;
+  return null;
+}
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('inventory'); // 'inventory' | 'consumers' | 'database'
-  const [burgers, setBurgers] = useState(FALLBACK_BURGERS);
-  const [dbHealth, setDbHealth] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [searchFilter, setSearchFilter] = useState('');
-  const [categoryFilter, setCategoryFilter] = useState('Todas');
+  const [videos, setVideos] = useState([]);
+  const [collections, setCollections] = useState([]);
+  const [stats, setStats] = useState(null);
+  const [serverHealth, setServerHealth] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  // Filtros
+  const [search, setSearch] = useState('');
+  const [filterCollection, setFilterCollection] = useState('all');
+  const [filterStatus, setFilterStatus] = useState('all');
+
+  // Modales
   const [showAddModal, setShowAddModal] = useState(false);
-  const [statusNotification, setStatusNotification] = useState(null);
+  const [playerVideo, setPlayerVideo] = useState(null);
+  const [editingNotesVideo, setEditingNotesVideo] = useState(null);
+  const [showCollectionModal, setShowCollectionModal] = useState(false);
+  const [toast, setToast] = useState(null);
 
-  // Form state for creating a new burger variant
-  const [newBurger, setNewBurger] = useState({
-    name: '',
-    category: 'A la Parrilla',
-    badge: 'Doble Carne * 300g',
-    price: 13.50,
-    stock: 30,
-    description: '',
-    image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&auto=format&fit=crop&q=80'
-  });
+  // Formulario nuevo video
+  const [url, setUrl] = useState('');
+  const [title, setTitle] = useState('');
+  const [channelName, setChannelName] = useState('');
+  const [collectionId, setCollectionId] = useState('salsa');
+  const [tags, setTags] = useState('');
+  const [personalNotes, setPersonalNotes] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const notify = (msg) => {
-    setStatusNotification(msg);
-    setTimeout(() => setStatusNotification(null), 3000);
+  // Formulario nueva colección
+  const [colName, setColName] = useState('');
+  const [colDesc, setColDesc] = useState('');
+  const [colColor, setColColor] = useState('#f43f5e');
+
+  const showNotification = (msg) => {
+    setToast(msg);
+    setTimeout(() => setToast(null), 3000);
   };
 
-  // Fetch products and DB health
-  const fetchData = async () => {
-    setIsLoading(true);
+  const loadData = async () => {
     try {
-      // 1. Health & DB Status
-      const healthRes = await fetch('/api/health');
-      if (healthRes.ok) {
-        const healthData = await healthRes.json();
-        setDbHealth(healthData);
-      }
-    } catch (err) {
-      console.warn('API health check error:', err);
-    }
+      setLoading(true);
+      const [vRes, cRes, sRes, hRes] = await Promise.all([
+        fetch('/api/videos'),
+        fetch('/api/collections'),
+        fetch('/api/stats'),
+        fetch('/api/health')
+      ]);
 
-    try {
-      // 2. Products
-      const prodRes = await fetch('/api/products');
-      if (prodRes.ok) {
-        const prodData = await prodRes.json();
-        if (prodData.data && prodData.data.length > 0) {
-          const mapped = prodData.data.map((p) => ({
-            ...p,
-            active: p.active !== undefined ? p.active : true,
-            badge: p.badge || 'Especial * 250g'
-          }));
-          setBurgers(mapped);
-        }
+      if (vRes.ok) {
+        const vData = await vRes.json();
+        setVideos(vData.data || []);
+      }
+      if (cRes.ok) {
+        const cData = await cRes.json();
+        setCollections(cData.data || []);
+      }
+      if (sRes.ok) {
+        const sData = await sRes.json();
+        setStats(sData.data || null);
+      }
+      if (hRes.ok) {
+        const hData = await hRes.json();
+        setServerHealth(hData);
       }
     } catch (err) {
-      console.warn('API products fetch error:', err);
+      console.error('Error cargando datos de la API:', err);
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchData();
+    loadData();
   }, []);
 
-  // Stock and Availability modifications
-  const toggleAvailability = (id) => {
-    setBurgers((prev) =>
-      prev.map((b) => (b.id === id ? { ...b, active: !b.active } : b))
-    );
-    notify('Estado de disponibilidad actualizado');
-  };
+  // Autodetectar video ID al pegar URL
+  useEffect(() => {
+    const ytid = extractYouTubeId(url);
+    if (ytid && !title) {
+      setTitle(`Video de YouTube [${ytid}]`);
+      if (!channelName) setChannelName('Canal de YouTube');
+    }
+  }, [url]);
 
-  const adjustStock = (id, delta) => {
-    setBurgers((prev) =>
-      prev.map((b) => {
-        if (b.id === id) {
-          const newStock = Math.max(0, (b.stock || 0) + delta);
-          return { ...b, stock: newStock };
-        }
-        return b;
-      })
-    );
-  };
-
-  // Add new burger variant
-  const handleCreateBurger = async (e) => {
+  const handleAddVideo = async (e) => {
     e.preventDefault();
-    if (!newBurger.name || !newBurger.price) return;
-
-    try {
-      const res = await fetch('/api/products', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newBurger)
-      });
-      if (res.ok) {
-        const result = await res.json();
-        notify(`🍔 ¡Variante "${newBurger.name}" guardada en la base de datos!`);
-        setShowAddModal(false);
-        fetchData();
-        return;
-      }
-    } catch (err) {
-      console.warn('Error creating burger in API, using local state:', err);
+    const ytid = extractYouTubeId(url);
+    if (!ytid) {
+      alert('Por favor ingresa una URL válida de YouTube');
+      return;
     }
 
-    // Local fallback addition
-    const localCreated = {
-      ...newBurger,
-      id: Date.now(),
-      active: true,
-      price: parseFloat(newBurger.price),
-      stock: parseInt(newBurger.stock, 10)
-    };
-    setBurgers([localCreated, ...burgers]);
-    setShowAddModal(false);
-    notify(`🍔 ¡Variante "${newBurger.name}" agregada exitosamente!`);
+    try {
+      setIsSubmitting(true);
+      const res = await fetch('/api/videos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          url,
+          title: title || `Video ${ytid}`,
+          channelName: channelName || 'Canal Guardado',
+          collectionId,
+          tags: tags ? tags.split(',').map(t => t.trim()).filter(Boolean) : ['YouTube'],
+          personalNotes,
+          watchStatus: 'pending'
+        })
+      });
+
+      if (res.ok) {
+        showNotification('✅ Video agregado a la bóveda con éxito.');
+        setShowAddModal(false);
+        setUrl('');
+        setTitle('');
+        setChannelName('');
+        setTags('');
+        setPersonalNotes('');
+        await loadData();
+      } else {
+        alert('Error al agregar el video.');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Error de conexión con la API.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  // Filtered burgers
-  const filteredBurgers = burgers.filter((b) => {
-    const matchCat = categoryFilter === 'Todas' || b.category === categoryFilter;
-    const matchSearch = searchFilter === '' ||
-      b.name.toLowerCase().includes(searchFilter.toLowerCase()) ||
-      (b.badge && b.badge.toLowerCase().includes(searchFilter.toLowerCase()));
-    return matchCat && matchSearch;
+  const handleUpdateStatus = async (videoId, newStatus) => {
+    try {
+      const res = await fetch(`/api/videos/${videoId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ watchStatus: newStatus })
+      });
+      if (res.ok) {
+        setVideos(prev => prev.map(v => v.id === videoId ? { ...v, watchStatus: newStatus } : v));
+        showNotification('Estado de visualización actualizado.');
+        loadData();
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleToggleFavorite = async (video) => {
+    try {
+      const newFav = !video.isFavorite;
+      const res = await fetch(`/api/videos/${video.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ isFavorite: newFav })
+      });
+      if (res.ok) {
+        setVideos(prev => prev.map(v => v.id === video.id ? { ...v, isFavorite: newFav } : v));
+        showNotification(newFav ? 'Marcado como favorito ⭐' : 'Removido de favoritos');
+        loadData();
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleDeleteVideo = async (id) => {
+    if (!confirm('¿Estás seguro de que deseas eliminar este video de la bóveda?')) return;
+    try {
+      const res = await fetch(`/api/videos/${id}`, { method: 'DELETE' });
+      if (res.ok) {
+        setVideos(prev => prev.filter(v => v.id !== id));
+        showNotification('Video eliminado de la bóveda.');
+        loadData();
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleSaveNotes = async () => {
+    if (!editingNotesVideo) return;
+    try {
+      const res = await fetch(`/api/videos/${editingNotesVideo.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ personalNotes: editingNotesVideo.personalNotes })
+      });
+      if (res.ok) {
+        setVideos(prev => prev.map(v => v.id === editingNotesVideo.id ? editingNotesVideo : v));
+        showNotification('Notas guardadas exitosamente.');
+        setEditingNotesVideo(null);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleAddCollection = async (e) => {
+    e.preventDefault();
+    if (!colName) return;
+    try {
+      const res = await fetch('/api/collections', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: colName,
+          description: colDesc,
+          color: colColor
+        })
+      });
+      if (res.ok) {
+        showNotification('Nueva colección creada.');
+        setShowCollectionModal(false);
+        setColName('');
+        setColDesc('');
+        loadData();
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleResetDemoData = async () => {
+    if (!confirm('¿Restablecer los videos demo del Masterclass? Se sobreescribirán los registros existentes.')) return;
+    try {
+      const res = await fetch('/api/reset', { method: 'POST' });
+      if (res.ok) {
+        showNotification('🔄 Datos de demostración restablecidos con éxito.');
+        await loadData();
+      }
+    } catch (err) {
+      alert('Error al restablecer datos.');
+    }
+  };
+
+  const handleImportFile = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    try {
+      const text = await file.text();
+      const json = JSON.parse(text);
+      const res = await fetch('/api/videos/import/json', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(json)
+      });
+      if (res.ok) {
+        showNotification('Copia de seguridad restaurada correctamente.');
+        await loadData();
+      } else {
+        alert('El archivo no tiene el formato requerido de YouTubeVolt.');
+      }
+    } catch (err) {
+      alert('Archivo JSON inválido.');
+    }
+  };
+
+  // Filtrado
+  const filtered = videos.filter(v => {
+    if (search.trim()) {
+      const q = search.toLowerCase();
+      const m =
+        v.title.toLowerCase().includes(q) ||
+        v.channelName.toLowerCase().includes(q) ||
+        (v.personalNotes && v.personalNotes.toLowerCase().includes(q)) ||
+        (v.tags && v.tags.some(t => t.toLowerCase().includes(q)));
+      if (!m) return false;
+    }
+    if (filterCollection !== 'all' && v.collectionId !== filterCollection) return false;
+    if (filterStatus !== 'all' && v.watchStatus !== filterStatus) return false;
+    return true;
   });
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0b0f19', color: '#f8fafc', display: 'flex', flexDirection: 'column' }}>
-      
+    <div style={{ minHeight: '100vh', background: '#0b0f19', color: '#f8fafc', padding: '24px 32px' }}>
+      {/* Toast */}
+      {toast && (
+        <div style={{
+          position: 'fixed',
+          top: '20px',
+          right: '30px',
+          background: 'rgba(244,63,94,0.95)',
+          color: 'white',
+          padding: '12px 24px',
+          borderRadius: '10px',
+          fontWeight: '700',
+          fontSize: '0.9rem',
+          boxShadow: '0 10px 30px rgba(0,0,0,0.6)',
+          zIndex: 9999
+        }}>
+          {toast}
+        </div>
+      )}
+
       {/* Top Navbar */}
       <header style={{
-        background: '#111827',
-        borderBottom: '1px solid #1f2937',
-        padding: '14px 24px',
         display: 'flex',
-        alignItems: 'center',
         justifyContent: 'space-between',
-        position: 'sticky',
-        top: 0,
-        zIndex: 40
+        alignItems: 'center',
+        background: '#111827',
+        border: '1px solid #1f2937',
+        borderRadius: '16px',
+        padding: '16px 24px',
+        marginBottom: '28px',
+        boxShadow: '0 10px 25px rgba(0,0,0,0.3)'
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <span style={{ fontSize: '1.75rem' }}>⚙️</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+          <div style={{
+            width: '42px',
+            height: '42px',
+            borderRadius: '10px',
+            background: 'linear-gradient(135deg, #ff0033 0%, #be123c 100%)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: '0 4px 14px rgba(255, 0, 51, 0.4)'
+          }}>
+            <Zap size={24} color="white" fill="white" />
+          </div>
           <div>
-            <div style={{ fontWeight: '900', fontSize: '1.2rem', letterSpacing: '-0.02em', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span>NextCollege Burger Rapid</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span style={{ fontSize: '1.35rem', fontWeight: '800', letterSpacing: '-0.02em', color: 'white' }}>YouTube</span>
+              <span style={{ fontSize: '1.35rem', fontWeight: '800', letterSpacing: '-0.02em', color: '#f43f5e' }}>Volt</span>
               <span style={{
-                background: 'rgba(37, 99, 235, 0.2)',
+                background: 'rgba(56, 189, 248, 0.15)',
                 color: '#38bdf8',
-                border: '1px solid rgba(56, 189, 248, 0.3)',
-                padding: '2px 8px',
+                fontSize: '0.72rem',
+                fontWeight: '700',
+                padding: '3px 8px',
                 borderRadius: '6px',
-                fontSize: '0.7rem',
-                fontWeight: '800'
+                border: '1px solid rgba(56, 189, 248, 0.3)'
               }}>
-                ADMIN DASHBOARD
+                STUDIO ADMIN
               </span>
             </div>
-            <div style={{ fontSize: '0.75rem', color: '#94a3b8' }}>
-              Panel de Control Central &bull; Gestión Comercial & Base de Datos
+            <div style={{ fontSize: '0.8rem', color: '#94a3b8' }}>
+              Panel de Administración y Curaduría de Bóveda
             </div>
           </div>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        {/* Database & Navigation Badges */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
           <div style={{
+            background: '#172033',
+            border: '1px solid #1f2937',
+            padding: '6px 14px',
+            borderRadius: '10px',
             display: 'flex',
             alignItems: 'center',
             gap: '8px',
-            background: '#172033',
-            border: '1px solid #1f2937',
-            padding: '6px 12px',
-            borderRadius: '10px',
             fontSize: '0.8rem'
           }}>
-            <span style={{
-              width: '8px',
-              height: '8px',
-              borderRadius: '50%',
-              background: dbHealth?.database?.connected ? '#10b981' : '#f59e0b'
-            }} />
-            <span style={{ fontWeight: '700', color: '#cbd5e1' }}>
-              {dbHealth?.database?.mode === 'mysql' ? 'MySQL: Conectado' : 'DB: In-Memory'}
-            </span>
+            <Database size={15} color={serverHealth?.database?.connected ? '#10b981' : '#f59e0b'} />
+            <span style={{ color: '#94a3b8' }}>Base de Datos:</span>
+            <strong style={{ color: serverHealth?.database?.connected ? '#10b981' : '#f59e0b' }}>
+              {serverHealth?.database?.mode === 'mysql' ? 'MySQL Activo' : 'Modo In-Memory'}
+            </strong>
           </div>
+
+          <a
+            href="/app"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              background: '#1e293b',
+              color: 'white',
+              textDecoration: 'none',
+              padding: '8px 14px',
+              borderRadius: '8px',
+              fontSize: '0.82rem',
+              fontWeight: '600',
+              border: '1px solid #334155'
+            }}
+          >
+            <Smartphone size={15} color="#38bdf8" />
+            PWA Mobile
+          </a>
 
           <a
             href="/"
             style={{
-              background: '#1f2937',
-              color: '#38bdf8',
-              border: '1px solid #374151',
-              padding: '8px 14px',
-              borderRadius: '8px',
-              fontSize: '0.82rem',
-              fontWeight: '700',
-              textDecoration: 'none'
-            }}
-          >
-            🌐 E-commerce
-          </a>
-          <a
-            href="/app"
-            style={{
-              background: '#2563eb',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              background: '#1e293b',
               color: 'white',
-              border: 'none',
+              textDecoration: 'none',
               padding: '8px 14px',
               borderRadius: '8px',
               fontSize: '0.82rem',
-              fontWeight: '700',
-              textDecoration: 'none'
+              fontWeight: '600',
+              border: '1px solid #334155'
             }}
           >
-            📱 App PWA
+            <Globe size={15} color="#f43f5e" />
+            Portal de Videos
           </a>
         </div>
       </header>
 
-      {/* Main Container */}
-      <main style={{ maxWidth: '1360px', width: '100%', margin: '0 auto', padding: '24px', flex: 1 }}>
-        
-        {/* KPI Row */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-          gap: '16px',
-          marginBottom: '24px'
-        }}>
-          {/* Card 1: Ventas Hoy */}
-          <div style={{ background: '#111827', border: '1px solid #1f2937', borderRadius: '16px', padding: '20px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-              <span style={{ fontSize: '0.8rem', color: '#94a3b8', fontWeight: '700', textTransform: 'uppercase' }}>
-                Ventas del Día
-              </span>
-              <span style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10b981', padding: '2px 8px', borderRadius: '6px', fontSize: '0.72rem', fontWeight: '800' }}>
-                +18.4%
-              </span>
-            </div>
-            <div style={{ fontSize: '2rem', fontWeight: '900', color: '#f8fafc', letterSpacing: '-0.02em' }}>
-              $4,892.50
-            </div>
-            <div style={{ fontSize: '0.78rem', color: '#64748b', marginTop: '4px' }}>
-              384 hamburguesas servidas a fuego vivo hoy
-            </div>
+      {/* KPI Metric Cards */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '28px' }}>
+        <div style={{ background: '#111827', border: '1px solid #1f2937', borderRadius: '14px', padding: '20px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: '#94a3b8', fontSize: '0.82rem', marginBottom: '8px' }}>
+            <span>Total en Bóveda</span>
+            <Layers size={18} color="#f43f5e" />
           </div>
-
-          {/* Card 2: Variantes Disponibles */}
-          <div style={{ background: '#111827', border: '1px solid #1f2937', borderRadius: '16px', padding: '20px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-              <span style={{ fontSize: '0.8rem', color: '#94a3b8', fontWeight: '700', textTransform: 'uppercase' }}>
-                Catálogo de Hamburguesas
-              </span>
-              <span style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38bdf8', padding: '2px 8px', borderRadius: '6px', fontSize: '0.72rem', fontWeight: '800' }}>
-                10 VARIANTES
-              </span>
-            </div>
-            <div style={{ fontSize: '2rem', fontWeight: '900', color: '#38bdf8', letterSpacing: '-0.02em' }}>
-              {burgers.filter(b => b.active).length} / {burgers.length} Activas
-            </div>
-            <div style={{ fontSize: '0.78rem', color: '#64748b', marginTop: '4px' }}>
-              100% con gramaje y nivel de especialidad
-            </div>
-          </div>
-
-          {/* Card 3: Clientes Segmentados */}
-          <div style={{ background: '#111827', border: '1px solid #1f2937', borderRadius: '16px', padding: '20px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-              <span style={{ fontSize: '0.8rem', color: '#94a3b8', fontWeight: '700', textTransform: 'uppercase' }}>
-                Comensales Registrados
-              </span>
-              <span style={{ background: 'rgba(245, 158, 11, 0.15)', color: '#fbbf24', padding: '2px 8px', borderRadius: '6px', fontSize: '0.72rem', fontWeight: '800' }}>
-                LEALTAD ORO
-              </span>
-            </div>
-            <div style={{ fontSize: '2rem', fontWeight: '900', color: '#fbbf24', letterSpacing: '-0.02em' }}>
-              661 Clientes
-            </div>
-            <div style={{ fontSize: '0.78rem', color: '#64748b', marginTop: '4px' }}>
-              84 clientes en segmento VIP Diamond (&gt;10 burgers)
-            </div>
-          </div>
-
-          {/* Card 4: Base de Datos */}
-          <div style={{ background: '#111827', border: '1px solid #1f2937', borderRadius: '16px', padding: '20px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-              <span style={{ fontSize: '0.8rem', color: '#94a3b8', fontWeight: '700', textTransform: 'uppercase' }}>
-                Estado Base de Datos
-              </span>
-              <span style={{
-                background: dbHealth?.database?.connected ? 'rgba(16, 185, 129, 0.15)' : 'rgba(245, 158, 11, 0.15)',
-                color: dbHealth?.database?.connected ? '#10b981' : '#f59e0b',
-                padding: '2px 8px',
-                borderRadius: '6px',
-                fontSize: '0.72rem',
-                fontWeight: '800'
-              }}>
-                {dbHealth?.database?.connected ? 'CONECTADA' : 'IN-MEMORY'}
-              </span>
-            </div>
-            <div style={{ fontSize: '1.4rem', fontWeight: '900', color: '#f8fafc' }}>
-              {dbHealth?.database?.mode === 'mysql' ? '🐬 MySQL Pool' : '⚡ En Memoria Demo'}
-            </div>
-            <div style={{ fontSize: '0.78rem', color: '#64748b', marginTop: '4px' }}>
-              Latencia: &lt; 9ms &bull; Dokploy CI/CD Live
-            </div>
-          </div>
+          <div style={{ fontSize: '2rem', fontWeight: '800', color: 'white' }}>{videos.length}</div>
+          <div style={{ fontSize: '0.74rem', color: '#64748b', marginTop: '4px' }}>Videos curados registrados</div>
         </div>
 
-        {/* Dashboard Navigation Tabs */}
-        <div style={{
-          display: 'flex',
-          gap: '8px',
-          borderBottom: '1px solid #1f2937',
-          paddingBottom: '12px',
-          marginBottom: '24px'
-        }}>
-          <button
-            onClick={() => setActiveTab('inventory')}
-            style={{
-              background: activeTab === 'inventory' ? '#2563eb' : '#111827',
-              color: activeTab === 'inventory' ? 'white' : '#94a3b8',
-              border: `1px solid ${activeTab === 'inventory' ? '#2563eb' : '#1f2937'}`,
-              padding: '10px 20px',
-              borderRadius: '10px',
-              fontWeight: '800',
-              fontSize: '0.88rem',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px'
-            }}
-          >
-            <span>🍔</span> Hamburguesas Disponibles ({burgers.length})
-          </button>
-
-          <button
-            onClick={() => setActiveTab('consumers')}
-            style={{
-              background: activeTab === 'consumers' ? '#2563eb' : '#111827',
-              color: activeTab === 'consumers' ? 'white' : '#94a3b8',
-              border: `1px solid ${activeTab === 'consumers' ? '#2563eb' : '#1f2937'}`,
-              padding: '10px 20px',
-              borderRadius: '10px',
-              fontWeight: '800',
-              fontSize: '0.88rem',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px'
-            }}
-          >
-            <span>👥</span> Métricas de Consumidores por Consumo
-          </button>
-
-          <button
-            onClick={() => setActiveTab('database')}
-            style={{
-              background: activeTab === 'database' ? '#2563eb' : '#111827',
-              color: activeTab === 'database' ? 'white' : '#94a3b8',
-              border: `1px solid ${activeTab === 'database' ? '#2563eb' : '#1f2937'}`,
-              padding: '10px 20px',
-              borderRadius: '10px',
-              fontWeight: '800',
-              fontSize: '0.88rem',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px'
-            }}
-          >
-            <span>🗄️</span> Estado de la Base de Datos
-          </button>
+        <div style={{ background: '#111827', border: '1px solid #1f2937', borderRadius: '14px', padding: '20px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: '#94a3b8', fontSize: '0.82rem', marginBottom: '8px' }}>
+            <span>Pendientes de Ver</span>
+            <Clock size={18} color="#f59e0b" />
+          </div>
+          <div style={{ fontSize: '2rem', fontWeight: '800', color: '#f59e0b' }}>
+            {videos.filter(v => v.watchStatus === 'pending').length}
+          </div>
+          <div style={{ fontSize: '0.74rem', color: '#64748b', marginTop: '4px' }}>Contenido por estudiar</div>
         </div>
 
-        {/* ==================================================== */}
-        {/* TAB 1: HAMBURGUESAS DISPONIBLES                      */}
-        {/* ==================================================== */}
-        {activeTab === 'inventory' && (
-          <div style={{ background: '#111827', border: '1px solid #1f2937', borderRadius: '16px', padding: '20px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap', gap: '14px' }}>
-              <div>
-                <h2 style={{ fontSize: '1.3rem', fontWeight: '800', color: '#f8fafc' }}>
-                  Inventario de Hamburguesas & Disponibilidad
-                </h2>
-                <p style={{ fontSize: '0.82rem', color: '#94a3b8' }}>
-                  Control de stock en cocina, precios, estado en carta y especialidades
-                </p>
-              </div>
+        <div style={{ background: '#111827', border: '1px solid #1f2937', borderRadius: '14px', padding: '20px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: '#94a3b8', fontSize: '0.82rem', marginBottom: '8px' }}>
+            <span>En Progreso</span>
+            <Activity size={18} color="#38bdf8" />
+          </div>
+          <div style={{ fontSize: '2rem', fontWeight: '800', color: '#38bdf8' }}>
+            {videos.filter(v => v.watchStatus === 'in_progress').length}
+          </div>
+          <div style={{ fontSize: '0.74rem', color: '#64748b', marginTop: '4px' }}>Sesiones de estudio activas</div>
+        </div>
 
-              <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                <input
-                  type="text"
-                  placeholder="Filtrar por nombre o peso..."
-                  value={searchFilter}
-                  onChange={(e) => setSearchFilter(e.target.value)}
-                  style={{
-                    background: '#172033',
-                    border: '1px solid #1f2937',
-                    borderRadius: '8px',
-                    padding: '8px 14px',
-                    color: 'white',
-                    fontSize: '0.82rem',
-                    outline: 'none',
-                    width: '220px'
-                  }}
-                />
+        <div style={{ background: '#111827', border: '1px solid #1f2937', borderRadius: '14px', padding: '20px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: '#94a3b8', fontSize: '0.82rem', marginBottom: '8px' }}>
+            <span>Vistos / Completados</span>
+            <CheckCircle size={18} color="#10b981" />
+          </div>
+          <div style={{ fontSize: '2rem', fontWeight: '800', color: '#10b981' }}>
+            {videos.filter(v => v.watchStatus === 'watched').length}
+          </div>
+          <div style={{ fontSize: '0.74rem', color: '#64748b', marginTop: '4px' }}>Material dominado</div>
+        </div>
 
-                <select
-                  value={categoryFilter}
-                  onChange={(e) => setCategoryFilter(e.target.value)}
-                  style={{
-                    background: '#172033',
-                    border: '1px solid #1f2937',
-                    borderRadius: '8px',
-                    padding: '8px 12px',
-                    color: 'white',
-                    fontSize: '0.82rem',
-                    outline: 'none'
-                  }}
-                >
-                  <option value="Todas">Todas las Categorías</option>
-                  <option value="A la Parrilla">A la Parrilla</option>
-                  <option value="Smash Burgers">Smash Burgers</option>
-                  <option value="Gigantes XXL">Gigantes XXL</option>
-                  <option value="Pollo Crispy">Pollo Crispy</option>
-                  <option value="Especiales del Chef">Especiales del Chef</option>
-                  <option value="Gourmet">Gourmet</option>
-                </select>
+        <div style={{ background: '#111827', border: '1px solid #1f2937', borderRadius: '14px', padding: '20px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: '#94a3b8', fontSize: '0.82rem', marginBottom: '8px' }}>
+            <span>Horas Estimadas</span>
+            <Play size={18} color="#a855f7" />
+          </div>
+          <div style={{ fontSize: '2rem', fontWeight: '800', color: 'white' }}>
+            {stats?.totalHours || '3.5'}h
+          </div>
+          <div style={{ fontSize: '0.74rem', color: '#64748b', marginTop: '4px' }}>Tiempo total de reproducción</div>
+        </div>
+      </div>
 
-                <button
-                  onClick={() => setShowAddModal(true)}
-                  style={{
-                    background: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)',
-                    color: 'white',
-                    border: 'none',
-                    padding: '8px 16px',
-                    borderRadius: '8px',
-                    fontWeight: '800',
-                    fontSize: '0.82rem',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '6px'
-                  }}
-                >
-                  <span>+</span> Nueva Variante
-                </button>
-              </div>
-            </div>
+      {/* Main Action Bar */}
+      <div style={{
+        background: '#111827',
+        border: '1px solid #1f2937',
+        borderRadius: '16px',
+        padding: '18px 24px',
+        marginBottom: '24px',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+        gap: '16px'
+      }}>
+        {/* Search & Filters */}
+        <div style={{ display: 'flex', gap: '12px', flex: 1, minWidth: '320px', flexWrap: 'wrap' }}>
+          <div style={{
+            position: 'relative',
+            display: 'flex',
+            alignItems: 'center',
+            background: '#1a2234',
+            borderRadius: '10px',
+            border: '1px solid #26334d',
+            padding: '0 12px',
+            minWidth: '240px',
+            flex: 1
+          }}>
+            <Search size={16} color="#64748b" />
+            <input
+              type="text"
+              placeholder="Buscar videos por título, canal, notas o tags..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                padding: '10px',
+                color: 'white',
+                fontSize: '0.85rem',
+                outline: 'none',
+                width: '100%'
+              }}
+            />
+          </div>
 
-            {/* Table */}
-            <div style={{ overflowX: 'auto' }}>
-              <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.85rem' }}>
-                <thead>
-                  <tr style={{ borderBottom: '1px solid #1f2937', color: '#94a3b8', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                    <th style={{ padding: '12px 14px' }}>Hamburguesa</th>
-                    <th style={{ padding: '12px 14px' }}>Nivel de Especialidad</th>
-                    <th style={{ padding: '12px 14px' }}>Categoría</th>
-                    <th style={{ padding: '12px 14px' }}>Precio</th>
-                    <th style={{ padding: '12px 14px', textAlign: 'center' }}>Stock Cocina</th>
-                    <th style={{ padding: '12px 14px', textAlign: 'center' }}>Estado</th>
-                    <th style={{ padding: '12px 14px', textAlign: 'right' }}>Acciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredBurgers.map((b) => (
-                    <tr
-                      key={b.id}
+          <select
+            value={filterCollection}
+            onChange={(e) => setFilterCollection(e.target.value)}
+            style={{
+              background: '#1a2234',
+              border: '1px solid #26334d',
+              color: 'white',
+              padding: '10px 14px',
+              borderRadius: '10px',
+              fontSize: '0.85rem',
+              outline: 'none'
+            }}
+          >
+            <option value="all">Todas las Colecciones</option>
+            {collections.map(c => (
+              <option key={c.id} value={c.id}>{c.name}</option>
+            ))}
+          </select>
+
+          <select
+            value={filterStatus}
+            onChange={(e) => setFilterStatus(e.target.value)}
+            style={{
+              background: '#1a2234',
+              border: '1px solid #26334d',
+              color: 'white',
+              padding: '10px 14px',
+              borderRadius: '10px',
+              fontSize: '0.85rem',
+              outline: 'none'
+            }}
+          >
+            <option value="all">Todos los Estados</option>
+            <option value="pending">⏳ Pendiente</option>
+            <option value="in_progress">🎧 En Progreso</option>
+            <option value="watched">✅ Visto</option>
+          </select>
+        </div>
+
+        {/* Action Buttons */}
+        <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+          <button
+            onClick={() => setShowAddModal(true)}
+            style={{
+              background: 'linear-gradient(135deg, #ff0033 0%, #be123c 100%)',
+              color: 'white',
+              border: 'none',
+              padding: '10px 18px',
+              borderRadius: '10px',
+              fontWeight: '700',
+              fontSize: '0.85rem',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              cursor: 'pointer',
+              boxShadow: '0 4px 14px rgba(255, 0, 51, 0.4)'
+            }}
+          >
+            <Plus size={16} /> Agregar Video
+          </button>
+
+          <button
+            onClick={() => setShowCollectionModal(true)}
+            style={{
+              background: '#1e293b',
+              color: 'white',
+              border: '1px solid #334155',
+              padding: '10px 14px',
+              borderRadius: '10px',
+              fontWeight: '600',
+              fontSize: '0.85rem',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              cursor: 'pointer'
+            }}
+          >
+            <Folder size={15} color="#f43f5e" /> Colecciones
+          </button>
+
+          <a
+            href="/api/videos/export/json"
+            download="youtubevolt-backup.json"
+            style={{
+              background: '#1e293b',
+              color: 'white',
+              border: '1px solid #334155',
+              padding: '10px 14px',
+              borderRadius: '10px',
+              fontWeight: '600',
+              fontSize: '0.85rem',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              textDecoration: 'none'
+            }}
+          >
+            <Download size={15} color="#38bdf8" /> Exportar
+          </a>
+
+          <label style={{
+            background: '#1e293b',
+            color: 'white',
+            border: '1px solid #334155',
+            padding: '10px 14px',
+            borderRadius: '10px',
+            fontWeight: '600',
+            fontSize: '0.85rem',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            cursor: 'pointer'
+          }}>
+            <Upload size={15} color="#10b981" /> Importar
+            <input type="file" accept=".json" onChange={handleImportFile} style={{ display: 'none' }} />
+          </label>
+
+          <button
+            onClick={handleResetDemoData}
+            title="Restablece la biblioteca con los videos de demostración oficiales"
+            style={{
+              background: '#1e293b',
+              color: '#f87171',
+              border: '1px solid #334155',
+              padding: '10px 14px',
+              borderRadius: '10px',
+              fontWeight: '600',
+              fontSize: '0.85rem',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              cursor: 'pointer'
+            }}
+          >
+            <RotateCcw size={15} /> Demo Reset
+          </button>
+        </div>
+      </div>
+
+      {/* Videos Data Table */}
+      <div style={{
+        background: '#111827',
+        border: '1px solid #1f2937',
+        borderRadius: '16px',
+        overflow: 'hidden',
+        boxShadow: '0 10px 30px rgba(0,0,0,0.3)'
+      }}>
+        <div style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.88rem' }}>
+            <thead>
+              <tr style={{ background: '#161f30', borderBottom: '1px solid #1f2937', color: '#94a3b8' }}>
+                <th style={{ padding: '14px 18px', fontWeight: '700' }}>Video / Miniatura</th>
+                <th style={{ padding: '14px 18px', fontWeight: '700' }}>Canal & Colección</th>
+                <th style={{ padding: '14px 18px', fontWeight: '700' }}>Tags</th>
+                <th style={{ padding: '14px 18px', fontWeight: '700' }}>Estado de Estudio</th>
+                <th style={{ padding: '14px 18px', fontWeight: '700' }}>Favorito</th>
+                <th style={{ padding: '14px 18px', fontWeight: '700' }}>Notas</th>
+                <th style={{ padding: '14px 18px', fontWeight: '700', textAlign: 'right' }}>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filtered.map(video => (
+                <tr key={video.id} style={{ borderBottom: '1px solid #1a2333', transition: 'background 0.2s' }}>
+                  {/* Thumbnail & Title */}
+                  <td style={{ padding: '14px 18px', maxWidth: '340px' }}>
+                    <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+                      <div
+                        onClick={() => setPlayerVideo(video)}
+                        style={{
+                          position: 'relative',
+                          width: '90px',
+                          height: '50px',
+                          borderRadius: '8px',
+                          overflow: 'hidden',
+                          flexShrink: 0,
+                          cursor: 'pointer',
+                          background: '#0a0e17'
+                        }}
+                      >
+                        <img
+                          src={video.thumbnailUrl || `https://img.youtube.com/vi/${video.youtubeVideoId}/hqdefault.jpg`}
+                          alt=""
+                          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        />
+                        <div style={{
+                          position: 'absolute',
+                          inset: 0,
+                          background: 'rgba(0,0,0,0.3)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center'
+                        }}>
+                          <Play size={14} color="white" fill="white" />
+                        </div>
+                        <div style={{
+                          position: 'absolute',
+                          bottom: '2px',
+                          right: '2px',
+                          background: 'rgba(0,0,0,0.8)',
+                          fontSize: '0.62rem',
+                          padding: '1px 3px',
+                          borderRadius: '2px',
+                          fontWeight: '700'
+                        }}>
+                          {video.duration || '15:00'}
+                        </div>
+                      </div>
+                      <div>
+                        <div
+                          onClick={() => setPlayerVideo(video)}
+                          style={{ fontWeight: '700', color: 'white', lineHeight: '1.3', cursor: 'pointer', marginBottom: '2px' }}
+                        >
+                          {video.title}
+                        </div>
+                        <div style={{ fontSize: '0.72rem', color: '#64748b' }}>
+                          ID: {video.youtubeVideoId}
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+
+                  {/* Channel & Collection */}
+                  <td style={{ padding: '14px 18px' }}>
+                    <div style={{ fontWeight: '600', color: '#cbd5e1' }}>{video.channelName}</div>
+                    <div style={{ fontSize: '0.74rem', color: '#f43f5e', fontWeight: '500' }}>
+                      {video.collectionName}
+                    </div>
+                  </td>
+
+                  {/* Tags */}
+                  <td style={{ padding: '14px 18px' }}>
+                    <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap', maxWidth: '180px' }}>
+                      {video.tags && video.tags.map((t, idx) => (
+                        <span key={idx} style={{
+                          background: '#1a2438',
+                          color: '#94a3b8',
+                          fontSize: '0.68rem',
+                          padding: '2px 6px',
+                          borderRadius: '4px'
+                        }}>
+                          #{t}
+                        </span>
+                      ))}
+                    </div>
+                  </td>
+
+                  {/* Status Dropdown */}
+                  <td style={{ padding: '14px 18px' }}>
+                    <select
+                      value={video.watchStatus}
+                      onChange={(e) => handleUpdateStatus(video.id, e.target.value)}
                       style={{
-                        borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
-                        opacity: b.active ? 1 : 0.6,
-                        transition: 'opacity 0.2s'
+                        background: video.watchStatus === 'watched' ? 'rgba(16, 185, 129, 0.15)' :
+                          video.watchStatus === 'in_progress' ? 'rgba(56, 189, 248, 0.15)' : 'rgba(245, 158, 11, 0.15)',
+                        color: video.watchStatus === 'watched' ? '#10b981' :
+                          video.watchStatus === 'in_progress' ? '#38bdf8' : '#f59e0b',
+                        border: `1px solid ${video.watchStatus === 'watched' ? 'rgba(16, 185, 129, 0.3)' :
+                          video.watchStatus === 'in_progress' ? 'rgba(56, 189, 248, 0.3)' : 'rgba(245, 158, 11, 0.3)'}`,
+                        borderRadius: '8px',
+                        padding: '6px 10px',
+                        fontSize: '0.78rem',
+                        fontWeight: '700',
+                        outline: 'none',
+                        cursor: 'pointer'
                       }}
                     >
-                      <td style={{ padding: '14px', display: 'flex', alignItems: 'center', gap: '12px' }}>
-                        <img
-                          src={b.image}
-                          alt={b.name}
-                          style={{ width: '48px', height: '48px', borderRadius: '10px', objectFit: 'cover', border: '1px solid #1f2937' }}
-                        />
-                        <div>
-                          <div style={{ fontWeight: '800', color: '#f8fafc', fontSize: '0.9rem' }}>{b.name}</div>
-                          <div style={{ fontSize: '0.72rem', color: '#64748b', maxWidth: '240px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                            {b.description}
-                          </div>
-                        </div>
-                      </td>
+                      <option value="pending" style={{ background: '#111827', color: 'white' }}>⏳ Pendiente</option>
+                      <option value="in_progress" style={{ background: '#111827', color: 'white' }}>🎧 En Progreso</option>
+                      <option value="watched" style={{ background: '#111827', color: 'white' }}>✅ Visto</option>
+                    </select>
+                  </td>
 
-                      <td style={{ padding: '14px' }}>
-                        <span style={{
-                          background: 'rgba(245, 158, 11, 0.15)',
-                          border: '1px solid rgba(245, 158, 11, 0.35)',
-                          color: '#fbbf24',
-                          padding: '3px 8px',
+                  {/* Favorite Toggle */}
+                  <td style={{ padding: '14px 18px' }}>
+                    <button
+                      onClick={() => handleToggleFavorite(video)}
+                      style={{
+                        background: 'transparent',
+                        border: 'none',
+                        cursor: 'pointer',
+                        padding: '6px'
+                      }}
+                    >
+                      <Heart
+                        size={20}
+                        color={video.isFavorite ? '#f43f5e' : '#64748b'}
+                        fill={video.isFavorite ? '#f43f5e' : 'transparent'}
+                      />
+                    </button>
+                  </td>
+
+                  {/* Notes Button */}
+                  <td style={{ padding: '14px 18px' }}>
+                    <button
+                      onClick={() => setEditingNotesVideo({ ...video })}
+                      style={{
+                        background: video.personalNotes ? 'rgba(56, 189, 248, 0.15)' : '#1e293b',
+                        border: '1px solid #334155',
+                        color: video.personalNotes ? '#38bdf8' : '#94a3b8',
+                        padding: '5px 10px',
+                        borderRadius: '6px',
+                        fontSize: '0.74rem',
+                        fontWeight: '600',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '4px'
+                      }}
+                    >
+                      <Edit3 size={12} />
+                      {video.personalNotes ? 'Ver Notas' : '+ Agregar'}
+                    </button>
+                  </td>
+
+                  {/* Actions */}
+                  <td style={{ padding: '14px 18px', textAlign: 'right' }}>
+                    <div style={{ display: 'flex', gap: '6px', justifyContent: 'flex-end' }}>
+                      <button
+                        onClick={() => setPlayerVideo(video)}
+                        title="Ver Video"
+                        style={{
+                          background: '#1e293b',
+                          border: '1px solid #334155',
+                          color: '#f43f5e',
+                          padding: '6px 10px',
                           borderRadius: '6px',
-                          fontSize: '0.75rem',
-                          fontWeight: '800'
-                        }}>
-                          ⚖️ {b.badge}
-                        </span>
-                      </td>
+                          cursor: 'pointer'
+                        }}
+                      >
+                        <Play size={14} fill="#f43f5e" />
+                      </button>
 
-                      <td style={{ padding: '14px', color: '#cbd5e1' }}>
-                        {b.category}
-                      </td>
+                      <a
+                        href={`https://www.youtube.com/watch?v=${video.youtubeVideoId}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        title="Abrir en YouTube oficial"
+                        style={{
+                          background: '#1e293b',
+                          border: '1px solid #334155',
+                          color: '#38bdf8',
+                          padding: '6px 10px',
+                          borderRadius: '6px',
+                          display: 'flex',
+                          alignItems: 'center'
+                        }}
+                      >
+                        <ExternalLink size={14} />
+                      </a>
 
-                      <td style={{ padding: '14px', fontWeight: '900', color: '#38bdf8', fontSize: '1rem' }}>
-                        ${parseFloat(b.price).toFixed(2)}
-                      </td>
-
-                      <td style={{ padding: '14px', textAlign: 'center' }}>
-                        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#172033', padding: '2px 6px', borderRadius: '8px' }}>
-                          <button
-                            onClick={() => adjustStock(b.id, -1)}
-                            style={{ background: '#334155', color: 'white', border: 'none', width: '22px', height: '22px', borderRadius: '4px', cursor: 'pointer', fontWeight: '900' }}
-                          >
-                            -
-                          </button>
-                          <span style={{ fontWeight: '800', minWidth: '28px', textAlign: 'center' }}>
-                            {b.stock}
-                          </span>
-                          <button
-                            onClick={() => adjustStock(b.id, 1)}
-                            style={{ background: '#2563eb', color: 'white', border: 'none', width: '22px', height: '22px', borderRadius: '4px', cursor: 'pointer', fontWeight: '900' }}
-                          >
-                            +
-                          </button>
-                        </div>
-                      </td>
-
-                      <td style={{ padding: '14px', textAlign: 'center' }}>
-                        <span style={{
-                          background: b.active ? 'rgba(16, 185, 129, 0.15)' : 'rgba(239, 68, 68, 0.15)',
-                          color: b.active ? '#10b981' : '#ef4444',
-                          border: `1px solid ${b.active ? 'rgba(16, 185, 129, 0.3)' : 'rgba(239, 68, 68, 0.3)'}`,
-                          padding: '3px 10px',
-                          borderRadius: '999px',
-                          fontSize: '0.72rem',
-                          fontWeight: '800'
-                        }}>
-                          {b.active ? 'En Menú' : 'Pausado'}
-                        </span>
-                      </td>
-
-                      <td style={{ padding: '14px', textAlign: 'right' }}>
-                        <button
-                          onClick={() => toggleAvailability(b.id)}
-                          style={{
-                            background: b.active ? '#1f2937' : '#10b981',
-                            color: b.active ? '#cbd5e1' : 'white',
-                            border: '1px solid #374151',
-                            padding: '6px 12px',
-                            borderRadius: '6px',
-                            fontSize: '0.75rem',
-                            fontWeight: '700',
-                            cursor: 'pointer'
-                          }}
-                        >
-                          {b.active ? 'Pausar' : 'Activar'}
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        )}
-
-        {/* ==================================================== */}
-        {/* TAB 2: MÉTRICAS DE CONSUMIDORES POR CONSUMO         */}
-        {/* ==================================================== */}
-        {activeTab === 'consumers' && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-            
-            {/* Segmentation Cards */}
-            <div>
-              <h2 style={{ fontSize: '1.3rem', fontWeight: '800', color: '#f8fafc', marginBottom: '6px' }}>
-                Segmentación de Consumidores por Nivel de Consumo
-              </h2>
-              <p style={{ fontSize: '0.82rem', color: '#94a3b8', marginBottom: '18px' }}>
-                Análisis de frecuencia de pedidos, ticket medio y participación en la facturación total
-              </p>
-
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-                gap: '16px'
-              }}>
-                {CONSUMER_SEGMENTS.map((seg) => (
-                  <div
-                    key={seg.id}
-                    style={{
-                      background: '#111827',
-                      border: '1px solid #1f2937',
-                      borderTop: `4px solid ${seg.color}`,
-                      borderRadius: '16px',
-                      padding: '20px'
-                    }}
-                  >
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
-                      <span style={{ fontSize: '0.72rem', color: seg.color, fontWeight: '800' }}>
-                        {seg.badge}
-                      </span>
-                      <span style={{ fontSize: '0.8rem', color: '#94a3b8' }}>
-                        {seg.percent}% de la base
-                      </span>
+                      <button
+                        onClick={() => handleDeleteVideo(video.id)}
+                        title="Eliminar de Bóveda"
+                        style={{
+                          background: 'rgba(239, 68, 68, 0.1)',
+                          border: '1px solid rgba(239, 68, 68, 0.3)',
+                          color: '#ef4444',
+                          padding: '6px 10px',
+                          borderRadius: '6px',
+                          cursor: 'pointer'
+                        }}
+                      >
+                        <Trash2 size={14} />
+                      </button>
                     </div>
+                  </td>
+                </tr>
+              ))}
 
-                    <h3 style={{ fontSize: '1.05rem', fontWeight: '800', color: '#f8fafc', marginBottom: '8px' }}>
-                      {seg.name}
-                    </h3>
+              {filtered.length === 0 && (
+                <tr>
+                  <td colSpan={7} style={{ textAlign: 'center', padding: '40px', color: '#94a3b8' }}>
+                    No se encontraron videos coincidentes con los filtros seleccionados.
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginTop: '14px', paddingTop: '10px', borderTop: '1px solid #1f2937' }}>
-                      <div>
-                        <div style={{ fontSize: '0.7rem', color: '#64748b', textTransform: 'uppercase' }}>Consumidores</div>
-                        <div style={{ fontSize: '1.3rem', fontWeight: '900', color: '#f8fafc' }}>{seg.count} clientes</div>
-                      </div>
-                      <div style={{ textAlign: 'right' }}>
-                        <div style={{ fontSize: '0.7rem', color: '#64748b', textTransform: 'uppercase' }}>Ticket Medio</div>
-                        <div style={{ fontSize: '1.1rem', fontWeight: '900', color: '#38bdf8' }}>{seg.avgTicket}</div>
-                      </div>
-                    </div>
-
-                    <div style={{ marginTop: '10px', fontSize: '0.75rem', color: '#94a3b8', background: '#090d16', padding: '6px 10px', borderRadius: '6px' }}>
-                      Aporte a Facturación: <strong style={{ color: '#f8fafc' }}>{seg.revenueShare}</strong>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Visual Volume Bar */}
-            <div style={{ background: '#111827', border: '1px solid #1f2937', borderRadius: '16px', padding: '20px' }}>
-              <h3 style={{ fontSize: '1rem', fontWeight: '800', color: '#f8fafc', marginBottom: '10px' }}>
-                Distribución Proporcional de Ingresos por Segmento de Consumo
-              </h3>
-              <div style={{ height: '14px', width: '100%', background: '#1e293b', borderRadius: '999px', display: 'flex', overflow: 'hidden', marginBottom: '10px' }}>
-                <div style={{ width: '42%', background: '#38bdf8' }} title="VIP Diamond: 42%" />
-                <div style={{ width: '36%', background: '#f59e0b' }} title="Gourmet Recurrentes: 36%" />
-                <div style={{ width: '22%', background: '#10b981' }} title="Ocasionales: 22%" />
-              </div>
-              <div style={{ display: 'flex', gap: '20px', fontSize: '0.75rem', flexWrap: 'wrap' }}>
-                <span style={{ color: '#38bdf8' }}>● VIP Diamond: 42%</span>
-                <span style={{ color: '#f59e0b' }}>● Gourmet Recurrentes: 36%</span>
-                <span style={{ color: '#10b981' }}>● Ocasionales: 22%</span>
-              </div>
-            </div>
-
-            {/* Top Consumer Leaderboard */}
-            <div style={{ background: '#111827', border: '1px solid #1f2937', borderRadius: '16px', padding: '20px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                <div>
-                  <h3 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#f8fafc' }}>
-                    Top Comensales de Mayor Consumo del Mes
-                  </h3>
-                  <p style={{ fontSize: '0.78rem', color: '#94a3b8' }}>
-                    Clientes con mayor frecuencia de recompra y mayor gasto acumulado
-                  </p>
-                </div>
-                <span style={{ background: '#172033', padding: '6px 12px', borderRadius: '8px', fontSize: '0.78rem', color: '#fbbf24', fontWeight: '800' }}>
-                  👑 Club de Hamburguesas
-                </span>
-              </div>
-
-              <div style={{ overflowX: 'auto' }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.85rem' }}>
-                  <thead>
-                    <tr style={{ borderBottom: '1px solid #1f2937', color: '#94a3b8', fontSize: '0.75rem', textTransform: 'uppercase' }}>
-                      <th style={{ padding: '10px 12px' }}>Pos</th>
-                      <th style={{ padding: '10px 12px' }}>Cliente</th>
-                      <th style={{ padding: '10px 12px' }}>Nivel</th>
-                      <th style={{ padding: '10px 12px', textAlign: 'center' }}>Hamburguesas / Mes</th>
-                      <th style={{ padding: '10px 12px' }}>Variante Favorita</th>
-                      <th style={{ padding: '10px 12px', textAlign: 'right' }}>Gasto Acumulado</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {TOP_CONSUMERS.map((c) => (
-                      <tr key={c.rank} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                        <td style={{ padding: '12px', fontWeight: '900', color: c.rank === 1 ? '#fbbf24' : '#94a3b8' }}>
-                          #{c.rank}
-                        </td>
-                        <td style={{ padding: '12px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                          <div style={{
-                            width: '34px',
-                            height: '34px',
-                            borderRadius: '50%',
-                            background: '#2563eb',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            color: 'white',
-                            fontWeight: '800',
-                            fontSize: '0.75rem'
-                          }}>
-                            {c.avatar}
-                          </div>
-                          <div>
-                            <div style={{ fontWeight: '800', color: '#f8fafc' }}>{c.name}</div>
-                            <div style={{ fontSize: '0.7rem', color: '#fbbf24' }}>{c.points} BurgerPoints</div>
-                          </div>
-                        </td>
-                        <td style={{ padding: '12px' }}>
-                          <span style={{
-                            background: c.tier.includes('VIP') ? 'rgba(56, 189, 248, 0.15)' : 'rgba(245, 158, 11, 0.15)',
-                            color: c.tier.includes('VIP') ? '#38bdf8' : '#fbbf24',
-                            padding: '3px 8px',
-                            borderRadius: '6px',
-                            fontSize: '0.72rem',
-                            fontWeight: '800'
-                          }}>
-                            {c.tier}
-                          </span>
-                        </td>
-                        <td style={{ padding: '12px', textAlign: 'center', fontWeight: '800', color: '#f8fafc', fontSize: '0.95rem' }}>
-                          🔥 {c.burgersMonth}
-                        </td>
-                        <td style={{ padding: '12px', color: '#cbd5e1', fontSize: '0.82rem' }}>
-                          {c.favorite}
-                        </td>
-                        <td style={{ padding: '12px', textAlign: 'right', fontWeight: '900', color: '#10b981', fontSize: '0.95rem' }}>
-                          ${c.totalSpend.toFixed(2)}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* ==================================================== */}
-        {/* TAB 3: ESTADO DE LA BASE DE DATOS                   */}
-        {/* ==================================================== */}
-        {activeTab === 'database' && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            <div style={{ background: '#111827', border: '1px solid #1f2937', borderRadius: '16px', padding: '24px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap', gap: '12px' }}>
-                <div>
-                  <h2 style={{ fontSize: '1.3rem', fontWeight: '800', color: '#f8fafc' }}>
-                    Diagnóstico en Vivo de la Base de Datos
-                  </h2>
-                  <p style={{ fontSize: '0.82rem', color: '#94a3b8' }}>
-                    Monitoreo de conexión a MySQL, latencia de consultas y pool de conexiones
-                  </p>
-                </div>
-
-                <div style={{ display: 'flex', gap: '10px' }}>
-                  <button
-                    onClick={fetchData}
-                    style={{
-                      background: '#1f2937',
-                      color: '#38bdf8',
-                      border: '1px solid #374151',
-                      padding: '8px 16px',
-                      borderRadius: '8px',
-                      fontWeight: '700',
-                      fontSize: '0.82rem',
-                      cursor: 'pointer'
-                    }}
-                  >
-                    🔄 Refrescar Estado
-                  </button>
-                  <button
-                    onClick={async () => {
-                      if (confirm('¿Restablecer las 10 hamburguesas maestras a los valores por defecto?')) {
-                        await fetch('/api/reset', { method: 'POST' });
-                        fetchData();
-                        notify('🌱 Datos de demostración restablecidos');
-                      }
-                    }}
-                    style={{
-                      background: 'rgba(234, 88, 12, 0.15)',
-                      color: '#fb923c',
-                      border: '1px solid rgba(234, 88, 12, 0.3)',
-                      padding: '8px 16px',
-                      borderRadius: '8px',
-                      fontWeight: '700',
-                      fontSize: '0.82rem',
-                      cursor: 'pointer'
-                    }}
-                  >
-                    🌱 Restablecer Catálogo Demo
-                  </button>
-                </div>
-              </div>
-
-              {/* Status Grid */}
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-                gap: '16px',
-                marginBottom: '24px'
-              }}>
-                <div style={{ background: '#172033', border: '1px solid #1f2937', borderRadius: '12px', padding: '16px' }}>
-                  <div style={{ fontSize: '0.72rem', color: '#94a3b8', textTransform: 'uppercase', fontWeight: '700' }}>
-                    Modo de Operación
-                  </div>
-                  <div style={{ fontSize: '1.3rem', fontWeight: '900', color: dbHealth?.database?.connected ? '#10b981' : '#f59e0b', marginTop: '4px' }}>
-                    {dbHealth?.database?.mode === 'mysql' ? '🐬 Conectado a MySQL' : '⚡ Modo In-Memory Activo'}
-                  </div>
-                  <div style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '6px' }}>
-                    Respaldo automático con conmutación por fallo transparente
-                  </div>
-                </div>
-
-                <div style={{ background: '#172033', border: '1px solid #1f2937', borderRadius: '12px', padding: '16px' }}>
-                  <div style={{ fontSize: '0.72rem', color: '#94a3b8', textTransform: 'uppercase', fontWeight: '700' }}>
-                    Host / Instancia
-                  </div>
-                  <div style={{ fontSize: '1.15rem', fontWeight: '800', color: '#f8fafc', marginTop: '4px', fontFamily: 'monospace' }}>
-                    {dbHealth?.database?.host || 'Auto-descubrimiento activo'}
-                  </div>
-                  <div style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '6px' }}>
-                    Base de datos: <strong style={{ color: '#cbd5e1' }}>{dbHealth?.database?.database || 'demo'}</strong>
-                  </div>
-                </div>
-
-                <div style={{ background: '#172033', border: '1px solid #1f2937', borderRadius: '12px', padding: '16px' }}>
-                  <div style={{ fontSize: '0.72rem', color: '#94a3b8', textTransform: 'uppercase', fontWeight: '700' }}>
-                    Tiempo de Actividad (Uptime)
-                  </div>
-                  <div style={{ fontSize: '1.25rem', fontWeight: '800', color: '#38bdf8', marginTop: '4px' }}>
-                    {dbHealth?.uptime ? `${Math.floor(dbHealth.uptime)} seg` : 'Activo'}
-                  </div>
-                  <div style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '6px' }}>
-                    Plataforma: Dokploy CI/CD Live
-                  </div>
-                </div>
-              </div>
-
-              {/* Raw JSON Debug Box */}
-              <div style={{ background: '#090d16', border: '1px solid #1e293b', borderRadius: '12px', padding: '16px' }}>
-                <div style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: '700', textTransform: 'uppercase', marginBottom: '8px' }}>
-                  Respuesta en Tiempo Real (/api/health)
-                </div>
-                <pre style={{ color: '#38bdf8', fontSize: '0.8rem', overflowX: 'auto', fontFamily: 'monospace', margin: 0 }}>
-                  {JSON.stringify(dbHealth || { status: 'Consultando...' }, null, 2)}
-                </pre>
-              </div>
-            </div>
-          </div>
-        )}
-      </main>
-
-      {/* Modal: Crear Nueva Variante de Hamburguesa */}
+      {/* MODAL: AGREGAR VIDEO */}
       {showAddModal && (
         <div style={{
           position: 'fixed',
           inset: 0,
-          background: 'rgba(3, 7, 18, 0.85)',
-          backdropFilter: 'blur(6px)',
-          zIndex: 100,
+          background: 'rgba(0,0,0,0.85)',
+          backdropFilter: 'blur(8px)',
+          zIndex: 1000,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          padding: '16px'
+          padding: '20px'
         }}>
           <div style={{
             background: '#111827',
             border: '1px solid #1f2937',
             borderRadius: '20px',
-            maxWidth: '520px',
+            maxWidth: '560px',
             width: '100%',
-            padding: '24px',
-            boxShadow: '0 25px 60px rgba(0,0,0,0.8)'
+            padding: '28px',
+            boxShadow: '0 25px 60px rgba(0,0,0,0.7)'
           }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-              <h3 style={{ fontSize: '1.2rem', fontWeight: '900', color: '#f8fafc' }}>
-                🍔 Crear Nueva Hamburguesa
-              </h3>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <Zap size={22} color="#f43f5e" />
+                <h3 style={{ fontSize: '1.3rem', fontWeight: '800', color: 'white' }}>
+                  Registrar Video en la Bóveda
+                </h3>
+              </div>
               <button
                 onClick={() => setShowAddModal(false)}
-                style={{ background: 'transparent', border: 'none', color: '#94a3b8', fontSize: '1.5rem', cursor: 'pointer' }}
+                style={{ background: 'transparent', border: 'none', color: '#94a3b8', cursor: 'pointer' }}
               >
-                &times;
+                <X size={20} />
               </button>
             </div>
 
-            <form onSubmit={handleCreateBurger} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+            <form onSubmit={handleAddVideo} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               <div>
-                <label style={{ display: 'block', fontSize: '0.75rem', color: '#94a3b8', fontWeight: '700', marginBottom: '4px' }}>
-                  Nombre de la Hamburguesa *
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: '700', color: '#cbd5e1', marginBottom: '6px' }}>
+                  URL de YouTube *
                 </label>
                 <input
                   type="text"
+                  placeholder="https://www.youtube.com/watch?v=... o https://youtu.be/..."
+                  value={url}
+                  onChange={(e) => setUrl(e.target.value)}
                   required
-                  placeholder="Ej: Hamburguesa Vikinga Ahumada"
-                  value={newBurger.name}
-                  onChange={(e) => setNewBurger({ ...newBurger, name: e.target.value })}
-                  style={{ width: '100%', background: '#172033', border: '1px solid #1f2937', borderRadius: '8px', padding: '9px 12px', color: 'white', fontSize: '0.85rem', outline: 'none' }}
+                  style={{
+                    width: '100%',
+                    padding: '12px',
+                    borderRadius: '10px',
+                    background: '#1a2234',
+                    border: '1px solid #26334d',
+                    color: 'white',
+                    fontSize: '0.88rem'
+                  }}
+                />
+              </div>
+
+              {/* Instant Preview */}
+              {extractYouTubeId(url) && (
+                <div style={{
+                  display: 'flex',
+                  gap: '12px',
+                  background: 'rgba(244,63,94,0.08)',
+                  padding: '12px',
+                  borderRadius: '10px',
+                  border: '1px solid rgba(244,63,94,0.25)',
+                  alignItems: 'center'
+                }}>
+                  <img
+                    src={`https://img.youtube.com/vi/${extractYouTubeId(url)}/hqdefault.jpg`}
+                    alt="Preview"
+                    style={{ width: '100px', height: '56px', objectFit: 'cover', borderRadius: '6px' }}
+                  />
+                  <div>
+                    <div style={{ color: '#f43f5e', fontWeight: '700', fontSize: '0.82rem' }}>
+                      ✓ Video reconocido: ID [{extractYouTubeId(url)}]
+                    </div>
+                    <div style={{ color: '#94a3b8', fontSize: '0.74rem', marginTop: '2px' }}>
+                      Miniatura oficial generada automáticamente.
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              <div>
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: '700', color: '#cbd5e1', marginBottom: '6px' }}>
+                  Título del Video
+                </label>
+                <input
+                  type="text"
+                  placeholder="Ej: Masterclass de Agentes de IA y Arquitectura"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  style={{
+                    width: '100%',
+                    padding: '12px',
+                    borderRadius: '10px',
+                    background: '#1a2234',
+                    border: '1px solid #26334d',
+                    color: 'white',
+                    fontSize: '0.88rem'
+                  }}
                 />
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.75rem', color: '#94a3b8', fontWeight: '700', marginBottom: '4px' }}>
-                    Nivel de Especialidad *
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: '700', color: '#cbd5e1', marginBottom: '6px' }}>
+                    Canal / Autor
                   </label>
                   <input
                     type="text"
-                    required
-                    placeholder="Ej: Doble Carne XXL * 380g"
-                    value={newBurger.badge}
-                    onChange={(e) => setNewBurger({ ...newBurger, badge: e.target.value })}
-                    style={{ width: '100%', background: '#172033', border: '1px solid #1f2937', borderRadius: '8px', padding: '9px 12px', color: 'white', fontSize: '0.85rem', outline: 'none' }}
+                    placeholder="Ej: Midudev, DotCSV"
+                    value={channelName}
+                    onChange={(e) => setChannelName(e.target.value)}
+                    style={{
+                      width: '100%',
+                      padding: '12px',
+                      borderRadius: '10px',
+                      background: '#1a2234',
+                      border: '1px solid #26334d',
+                      color: 'white',
+                      fontSize: '0.88rem'
+                    }}
                   />
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.75rem', color: '#94a3b8', fontWeight: '700', marginBottom: '4px' }}>
-                    Categoría
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: '700', color: '#cbd5e1', marginBottom: '6px' }}>
+                    Colección
                   </label>
                   <select
-                    value={newBurger.category}
-                    onChange={(e) => setNewBurger({ ...newBurger, category: e.target.value })}
-                    style={{ width: '100%', background: '#172033', border: '1px solid #1f2937', borderRadius: '8px', padding: '9px 12px', color: 'white', fontSize: '0.85rem', outline: 'none' }}
+                    value={collectionId}
+                    onChange={(e) => setCollectionId(e.target.value)}
+                    style={{
+                      width: '100%',
+                      padding: '12px',
+                      borderRadius: '10px',
+                      background: '#1a2234',
+                      border: '1px solid #26334d',
+                      color: 'white',
+                      fontSize: '0.88rem'
+                    }}
                   >
-                    <option value="A la Parrilla">A la Parrilla</option>
-                    <option value="Smash Burgers">Smash Burgers</option>
-                    <option value="Gigantes XXL">Gigantes XXL</option>
-                    <option value="Pollo Crispy">Pollo Crispy</option>
-                    <option value="Especiales del Chef">Especiales del Chef</option>
-                    <option value="Gourmet">Gourmet</option>
+                    {collections.map(col => (
+                      <option key={col.id} value={col.id}>{col.name}</option>
+                    ))}
                   </select>
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.75rem', color: '#94a3b8', fontWeight: '700', marginBottom: '4px' }}>
-                    Precio ($) *
-                  </label>
-                  <input
-                    type="number"
-                    step="0.01"
-                    required
-                    placeholder="14.50"
-                    value={newBurger.price}
-                    onChange={(e) => setNewBurger({ ...newBurger, price: e.target.value })}
-                    style={{ width: '100%', background: '#172033', border: '1px solid #1f2937', borderRadius: '8px', padding: '9px 12px', color: 'white', fontSize: '0.85rem', outline: 'none' }}
-                  />
-                </div>
-
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.75rem', color: '#94a3b8', fontWeight: '700', marginBottom: '4px' }}>
-                    Stock Inicial Cocina
-                  </label>
-                  <input
-                    type="number"
-                    value={newBurger.stock}
-                    onChange={(e) => setNewBurger({ ...newBurger, stock: e.target.value })}
-                    style={{ width: '100%', background: '#172033', border: '1px solid #1f2937', borderRadius: '8px', padding: '9px 12px', color: 'white', fontSize: '0.85rem', outline: 'none' }}
-                  />
-                </div>
-              </div>
-
               <div>
-                <label style={{ display: 'block', fontSize: '0.75rem', color: '#94a3b8', fontWeight: '700', marginBottom: '4px' }}>
-                  Descripción Gastronómica
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: '700', color: '#cbd5e1', marginBottom: '6px' }}>
+                  Etiquetas (Tags)
                 </label>
-                <textarea
-                  rows="3"
-                  placeholder="Detalles de la carne, cocción, salsas e ingredientes..."
-                  value={newBurger.description}
-                  onChange={(e) => setNewBurger({ ...newBurger, description: e.target.value })}
-                  style={{ width: '100%', background: '#172033', border: '1px solid #1f2937', borderRadius: '8px', padding: '9px 12px', color: 'white', fontSize: '0.85rem', outline: 'none', resize: 'vertical' }}
+                <input
+                  type="text"
+                  placeholder="AI, Agentes, Python, Dokploy"
+                  value={tags}
+                  onChange={(e) => setTags(e.target.value)}
+                  style={{
+                    width: '100%',
+                    padding: '12px',
+                    borderRadius: '10px',
+                    background: '#1a2234',
+                    border: '1px solid #26334d',
+                    color: 'white',
+                    fontSize: '0.88rem'
+                  }}
                 />
               </div>
 
-              <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px', marginTop: '10px' }}>
+              <div>
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: '700', color: '#cbd5e1', marginBottom: '6px' }}>
+                  Notas Personales
+                </label>
+                <textarea
+                  placeholder="Anotaciones clave que motivaron guardar este video..."
+                  value={personalNotes}
+                  onChange={(e) => setPersonalNotes(e.target.value)}
+                  rows={3}
+                  style={{
+                    width: '100%',
+                    padding: '12px',
+                    borderRadius: '10px',
+                    background: '#1a2234',
+                    border: '1px solid #26334d',
+                    color: 'white',
+                    fontSize: '0.88rem',
+                    resize: 'none'
+                  }}
+                />
+              </div>
+
+              <div style={{ display: 'flex', gap: '12px', marginTop: '10px' }}>
                 <button
                   type="button"
                   onClick={() => setShowAddModal(false)}
-                  style={{ background: '#1f2937', color: '#cbd5e1', border: 'none', padding: '10px 16px', borderRadius: '8px', fontWeight: '700', cursor: 'pointer' }}
+                  style={{
+                    flex: 1,
+                    background: '#1e293b',
+                    color: 'white',
+                    border: '1px solid #334155',
+                    padding: '12px',
+                    borderRadius: '10px',
+                    fontWeight: '600',
+                    cursor: 'pointer'
+                  }}
                 >
                   Cancelar
                 </button>
                 <button
                   type="submit"
-                  style={{ background: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '8px', fontWeight: '800', cursor: 'pointer' }}
+                  disabled={isSubmitting}
+                  style={{
+                    flex: 1,
+                    background: 'linear-gradient(135deg, #ff0033 0%, #be123c 100%)',
+                    color: 'white',
+                    border: 'none',
+                    padding: '12px',
+                    borderRadius: '10px',
+                    fontWeight: '700',
+                    cursor: 'pointer',
+                    boxShadow: '0 4px 14px rgba(255, 0, 51, 0.4)'
+                  }}
                 >
-                  Guardar Hamburguesa
+                  {isSubmitting ? 'Guardando...' : 'Guardar Video'}
                 </button>
               </div>
             </form>
@@ -1160,26 +1160,250 @@ export default function App() {
         </div>
       )}
 
-      {/* Floating Status Notification */}
-      {statusNotification && (
+      {/* MODAL: REPRODUCTOR EMBEBIDO */}
+      {playerVideo && (
         <div style={{
           position: 'fixed',
-          bottom: '24px',
-          right: '24px',
-          background: 'rgba(9, 13, 22, 0.95)',
-          border: '1px solid #38bdf8',
-          color: '#f8fafc',
-          padding: '10px 20px',
-          borderRadius: '12px',
-          fontSize: '0.85rem',
-          fontWeight: '700',
-          boxShadow: '0 10px 30px rgba(0,0,0,0.7)',
-          zIndex: 100
+          inset: 0,
+          background: 'rgba(0,0,0,0.9)',
+          backdropFilter: 'blur(8px)',
+          zIndex: 1000,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '24px'
         }}>
-          {statusNotification}
+          <div style={{
+            background: '#111827',
+            border: '1px solid #1f2937',
+            borderRadius: '16px',
+            maxWidth: '850px',
+            width: '100%',
+            overflow: 'hidden',
+            boxShadow: '0 25px 60px rgba(0,0,0,0.8)'
+          }}>
+            <div style={{
+              padding: '14px 20px',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              borderBottom: '1px solid #1f2937'
+            }}>
+              <div style={{ fontWeight: '700', fontSize: '1rem', color: 'white' }}>
+                {playerVideo.title}
+              </div>
+              <button
+                onClick={() => setPlayerVideo(null)}
+                style={{ background: 'transparent', border: 'none', color: '#94a3b8', cursor: 'pointer' }}
+              >
+                <X size={20} />
+              </button>
+            </div>
+            <div style={{ position: 'relative', width: '100%', paddingTop: '56.25%', background: '#000' }}>
+              <iframe
+                src={`https://www.youtube.com/embed/${playerVideo.youtubeVideoId}?autoplay=1&rel=0`}
+                title={playerVideo.title}
+                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+            <div style={{ padding: '16px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div style={{ fontSize: '0.85rem', color: '#94a3b8' }}>
+                Canal: <strong style={{ color: '#f43f5e' }}>{playerVideo.channelName}</strong> &bull; Colección: {playerVideo.collectionName}
+              </div>
+              <a
+                href={`https://www.youtube.com/watch?v=${playerVideo.youtubeVideoId}`}
+                target="_blank"
+                rel="noreferrer"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  color: '#38bdf8',
+                  textDecoration: 'none',
+                  fontSize: '0.85rem',
+                  fontWeight: '600'
+                }}
+              >
+                <ExternalLink size={14} /> Abrir en YouTube
+              </a>
+            </div>
+          </div>
         </div>
       )}
 
+      {/* MODAL: EDITAR NOTAS */}
+      {editingNotesVideo && (
+        <div style={{
+          position: 'fixed',
+          inset: 0,
+          background: 'rgba(0,0,0,0.85)',
+          zIndex: 1000,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '20px'
+        }}>
+          <div style={{
+            background: '#111827',
+            border: '1px solid #1f2937',
+            borderRadius: '16px',
+            maxWidth: '520px',
+            width: '100%',
+            padding: '24px'
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
+              <h3 style={{ fontSize: '1.1rem', fontWeight: '700', color: 'white' }}>
+                📝 Notas de Estudio: {editingNotesVideo.title}
+              </h3>
+              <button
+                onClick={() => setEditingNotesVideo(null)}
+                style={{ background: 'transparent', border: 'none', color: '#94a3b8', cursor: 'pointer' }}
+              >
+                <X size={18} />
+              </button>
+            </div>
+            <textarea
+              value={editingNotesVideo.personalNotes || ''}
+              onChange={(e) => setEditingNotesVideo({ ...editingNotesVideo, personalNotes: e.target.value })}
+              rows={6}
+              placeholder="Escribe tus notas, timestamps o resúmenes clave de este video..."
+              style={{
+                width: '100%',
+                padding: '12px',
+                borderRadius: '10px',
+                background: '#1a2234',
+                border: '1px solid #26334d',
+                color: 'white',
+                fontSize: '0.88rem',
+                resize: 'none',
+                marginBottom: '16px'
+              }}
+            />
+            <div style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end' }}>
+              <button
+                onClick={() => setEditingNotesVideo(null)}
+                style={{ background: '#1e293b', border: '1px solid #334155', color: 'white', padding: '10px 16px', borderRadius: '8px', cursor: 'pointer' }}
+              >
+                Cancelar
+              </button>
+              <button
+                onClick={handleSaveNotes}
+                style={{ background: '#2563eb', border: 'none', color: 'white', padding: '10px 18px', borderRadius: '8px', fontWeight: '700', cursor: 'pointer' }}
+              >
+                Guardar Notas
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* MODAL: GESTIONAR COLECCIONES */}
+      {showCollectionModal && (
+        <div style={{
+          position: 'fixed',
+          inset: 0,
+          background: 'rgba(0,0,0,0.85)',
+          zIndex: 1000,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '20px'
+        }}>
+          <div style={{
+            background: '#111827',
+            border: '1px solid #1f2937',
+            borderRadius: '16px',
+            maxWidth: '520px',
+            width: '100%',
+            padding: '24px'
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '18px' }}>
+              <h3 style={{ fontSize: '1.2rem', fontWeight: '800', color: 'white', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Folder size={20} color="#f43f5e" /> Colecciones Temáticas
+              </h3>
+              <button
+                onClick={() => setShowCollectionModal(false)}
+                style={{ background: 'transparent', border: 'none', color: '#94a3b8', cursor: 'pointer' }}
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            {/* List of collections */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxHeight: '200px', overflowY: 'auto', marginBottom: '20px' }}>
+              {collections.map(col => {
+                const count = videos.filter(v => v.collectionId === col.id).length;
+                return (
+                  <div key={col.id} style={{
+                    background: '#1a2234',
+                    padding: '10px 14px',
+                    borderRadius: '8px',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center'
+                  }}>
+                    <span style={{ fontWeight: '600', color: 'white', fontSize: '0.85rem' }}>{col.name}</span>
+                    <span style={{ background: '#26334d', color: '#f43f5e', fontSize: '0.75rem', fontWeight: '700', padding: '2px 8px', borderRadius: '999px' }}>
+                      {count} videos
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+
+            <form onSubmit={handleAddCollection} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <h4 style={{ fontSize: '0.9rem', color: '#cbd5e1', fontWeight: '700' }}>Crear Nueva Colección</h4>
+              <input
+                type="text"
+                placeholder="Nombre de la colección (ej: Algoritmos & Grafos)"
+                value={colName}
+                onChange={(e) => setColName(e.target.value)}
+                required
+                style={{
+                  width: '100%',
+                  padding: '10px 12px',
+                  borderRadius: '8px',
+                  background: '#1a2234',
+                  border: '1px solid #26334d',
+                  color: 'white',
+                  fontSize: '0.85rem'
+                }}
+              />
+              <input
+                type="text"
+                placeholder="Breve descripción"
+                value={colDesc}
+                onChange={(e) => setColDesc(e.target.value)}
+                style={{
+                  width: '100%',
+                  padding: '10px 12px',
+                  borderRadius: '8px',
+                  background: '#1a2234',
+                  border: '1px solid #26334d',
+                  color: 'white',
+                  fontSize: '0.85rem'
+                }}
+              />
+              <button
+                type="submit"
+                style={{
+                  background: '#f43f5e',
+                  border: 'none',
+                  color: 'white',
+                  padding: '12px',
+                  borderRadius: '8px',
+                  fontWeight: '700',
+                  cursor: 'pointer'
+                }}
+              >
+                + Crear Colección
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

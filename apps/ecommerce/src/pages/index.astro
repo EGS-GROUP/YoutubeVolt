@@ -1,151 +1,121 @@
 ---
-// apps/ecommerce/src/pages/index.astro
-const title = "NextCollege Burger Rapid • Hamburguesas de Autor a la Parrilla";
+// apps/ecommerce/src/pages/index.astro - YouTubeVolt Portal de Videos Musicales
+const title = "YouTubeVolt - Bóveda Musical: Salsa, Cumbia & Rock Latino";
 
-const burgers = [
+const INITIAL_VIDEOS = [
   {
     id: 1,
-    name: "Rey de las hamburguesas a la parrilla",
-    category: "A la Parrilla",
-    specialty: "Doble Carne XXL * 380g",
-    price: 14.99,
-    rating: 4.98,
-    cookTime: "12 min",
-    calories: "920 kcal",
-    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&auto=format&fit=crop&q=80",
-    description: "Nuestra creación cumbre: Carne 100% Angus flameada a la leña de roble viva, doble queso cheddar añejo fundido, cebolla caramelizada al bourbon añejo y panceta crocante en pan brioche artesanal dorado con mantequilla de campo.",
-    ingredients: ["Carne Angus 380g flameada", "Cheddar añejo fundido", "Panceta crocante al maple", "Cebolla caramelizada al bourbon", "Brioche dorado artesanal", "Mayo trufada casera"],
-    featured: true
+    youtubeVideoId: "SiVq_x_lfxE",
+    title: "Brunella Torpoco - Mix Héctor Lavoe (Live Session)",
+    channelName: "Brunella Torpoco Oficial",
+    thumbnailUrl: "https://img.youtube.com/vi/SiVq_x_lfxE/hqdefault.jpg",
+    duration: "6:49",
+    collectionId: "salsa",
+    collectionName: "Salsa Brava & Fania",
+    tags: ["Brunella Torpoco", "Mix Hector Lavoe", "Salsa", "Live Session"],
+    description: "Potente sesión en vivo rindiendo tributo a Héctor Lavoe con toda la fuerza y sentimiento de Brunella Torpoco.",
+    notes: "Salsa perucha en vivo con arreglos excepcionales de metales y percusión."
   },
   {
     id: 2,
-    name: "Hamburgueza Real",
-    category: "A la Parrilla",
-    specialty: "Clásica Imperial * 240g",
-    price: 11.50,
-    rating: 4.92,
-    cookTime: "10 min",
-    calories: "780 kcal",
-    image: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=800&auto=format&fit=crop&q=80",
-    description: "La auténtica monarca de la sencillez perfecta. Doble medallón smash con costra caramelizada al fuego, queso americano super cremoso, pepinillos encurtidos al eneldo y nuestro mítico aderezo imperial secreto.",
-    ingredients: ["Doble medallón 240g", "Queso americano fundido", "Pepinillos agridulces eneldo", "Salsa Imperial Secreta", "Lechuga francesa fresca", "Pan con semillas de sésamo"],
-    featured: true
+    youtubeVideoId: "a4Z5HRiN3rc",
+    title: "Corazón Serrano - Te Vas Y No Volverás (Estadio San Marcos)",
+    channelName: "Corazón Serrano",
+    thumbnailUrl: "https://img.youtube.com/vi/a4Z5HRiN3rc/hqdefault.jpg",
+    duration: "3:04",
+    collectionId: "pop-latino",
+    collectionName: "Cumbia & Fiesta Latina",
+    tags: ["Corazon Serrano", "Te Vas Y No Volveras", "Cumbia", "Estadio San Marcos"],
+    description: "Interpretación en vivo en el Estadio San Marcos durante el 32 Aniversario de Corazón Serrano - Camino a un Sueño.",
+    notes: "Éxito rotundo de cumbia sanjuanera ante más de 40 mil personas."
   },
   {
     id: 3,
-    name: "Hamburgueza Royal Crispy",
-    category: "Pollo Crispy",
-    specialty: "Crispy Gold Pechuga * 260g",
-    price: 12.99,
-    rating: 4.95,
-    cookTime: "14 min",
-    calories: "810 kcal",
-    image: "https://images.unsplash.com/photo-1625813506062-0aeb1d7a094b?w=800&auto=format&fit=crop&q=80",
-    description: "Pechuga de pollo de granja marinada durante 24 horas en suero de leche aromatizado con 11 hierbas, rebozada en triple costra extra crujiente, ensalada coleslaw de manzana verde y emulsión sedosa de honey mustard.",
-    ingredients: ["Pechuga marinada 260g", "Triple rebozado crocante", "Coleslaw de manzana verde", "Honey mustard artesanal", "Pepinillos encurtidos", "Pan brioche suave"],
-    featured: true
+    youtubeVideoId: "7KxkMLAZlzw",
+    title: "Grupo Niche - Cali Pachanguero (Video Oficial)",
+    channelName: "Codiscos / Grupo Niche",
+    thumbnailUrl: "https://img.youtube.com/vi/7KxkMLAZlzw/hqdefault.jpg",
+    duration: "4:50",
+    collectionId: "salsa",
+    collectionName: "Salsa Brava & Fania",
+    tags: ["Grupo Niche", "Cali Pachanguero", "Salsa", "Jairo Varela"],
+    description: "El himno absoluto de la salsa colombiana compuesto por el gran maestro Jairo Varela e interpretado por Grupo Niche.",
+    notes: "Arreglos de metales y percusión insuperables. Clave para animar la clase."
   },
   {
     id: 4,
-    name: "Hamburgueza Double Whopper",
-    category: "Gigantes XXL",
-    specialty: "Fuego Parrillero * 420g",
-    price: 15.50,
-    rating: 4.96,
-    cookTime: "15 min",
-    calories: "1050 kcal",
-    image: "https://images.unsplash.com/photo-1550547660-d9450f859349?w=800&auto=format&fit=crop&q=80",
-    description: "Poderío puro para comensales de apetito voraz. Doble medallón gigante asado sobre brasas de carbón de quebracho, lechuga romana recién cortada, rodajas gruesas de tomate maduro, aros de cebolla morada y aderezo parrillero.",
-    ingredients: ["Doble medallón 420g carbón vivo", "Tomates maduros seleccionados", "Cebolla morada crujiente", "Pepinillos en rodajas", "Mayo tártara ahumada", "Pan XXL de sésamo tostado"],
-    featured: true
+    youtubeVideoId: "hReAuaAuJOE",
+    title: "Los Enanitos Verdes - Lamento Boliviano (Video Oficial)",
+    channelName: "EnanitosVerdesVEVO",
+    thumbnailUrl: "https://img.youtube.com/vi/hReAuaAuJOE/hqdefault.jpg",
+    duration: "3:44",
+    collectionId: "rock-espanol",
+    collectionName: "Rock en Español Clásico",
+    tags: ["Los Enanitos Verdes", "Lamento Boliviano", "Latin Rock", "Marciano Cantero"],
+    description: "Uno de los clásicos más grandes e históricos del rock en español, lanzado en 1994 con la voz inolvidable de Marciano Cantero.",
+    notes: "El coro y solo de guitarra más coreado de la música en español."
   },
   {
     id: 5,
-    name: "Smash Burger Trufada Supreme",
-    category: "Smash Burgers",
-    specialty: "Doble Smash Angus * 220g",
-    price: 13.75,
-    rating: 4.94,
-    cookTime: "9 min",
-    calories: "830 kcal",
-    image: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=800&auto=format&fit=crop&q=80",
-    description: "Costra crujiente perfecta lograda mediante golpe térmico en plancha de cromo a 280°C. Coronada con queso suizo derretido, salteado de hongos silvestres al oporto y una delicada mayonesa infusionada con trufa negra.",
-    ingredients: ["Doble carne Smash 220g", "Queso suizo Emmental", "Salteado de hongos al oporto", "Alioli de trufa negra", "Rúcula selvática fresca", "Pan brioche glaseado"],
-    featured: false
+    youtubeVideoId: "YIbMejfd9KE",
+    title: "Charlie Zaa ft. Leslie Grace - Nuestro Juramento (En Vivo)",
+    channelName: "CharlieZaaVEVO",
+    thumbnailUrl: "https://img.youtube.com/vi/YIbMejfd9KE/hqdefault.jpg",
+    duration: "4:06",
+    collectionId: "baladas-charlie-zaa",
+    collectionName: "Baladas & Boleros de Charlie Zaa",
+    tags: ["Charlie Zaa", "Leslie Grace", "Nuestro Juramento", "Bolero", "Celebracion"],
+    description: "Versión acústica en vivo de Nuestro Juramento de Charlie Zaa en colaboración con Leslie Grace del álbum Celebración.",
+    notes: "Bolero moderno inolvidable con guitarras románticas y gran armonía vocal."
   },
   {
     id: 6,
-    name: "Bacon Monster Cheddar Melt",
-    category: "Gigantes XXL",
-    specialty: "Triple Bacon Ahumado * 350g",
-    price: 14.50,
-    rating: 4.97,
-    cookTime: "12 min",
-    calories: "990 kcal",
-    image: "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=800&auto=format&fit=crop&q=80",
-    description: "Una experiencia indulgente e irresistible: cascada de queso cheddar inglés fundido sobre un medallón Angus jugoso, escoltado por seis láminas gruesas de panceta ahumada a la madera de manzano.",
-    ingredients: ["Carne Angus 350g", "Baño de cheddar fundido", "6 tiras de bacon crocante", "Cebolla crujiente frita", "Salsa BBQ casera ahumada", "Pan rústico tostado"],
-    featured: false
+    youtubeVideoId: "BNo0vkEYWRc",
+    title: "Héctor Lavoe - El Cantante (Video Oficial Fania)",
+    channelName: "Fania Records",
+    thumbnailUrl: "https://img.youtube.com/vi/BNo0vkEYWRc/hqdefault.jpg",
+    duration: "10:52",
+    collectionId: "salsa",
+    collectionName: "Salsa Brava & Fania",
+    tags: ["Hector Lavoe", "El Cantante", "Fania Records", "Salsa Dura"],
+    description: "La obra maestra de la salsa dura por Héctor Lavoe con Fania Records, compuesta por Rubén Blades y producida por Willie Colón.",
+    notes: "Himno legendario: 'Yo soy el cantante, que hoy han venido a escuchar...'"
   },
   {
     id: 7,
-    name: "Volcán Criollo Chimichurri",
-    category: "A la Parrilla",
-    specialty: "Corte de Asado * 300g",
-    price: 13.90,
-    rating: 4.89,
-    cookTime: "13 min",
-    calories: "860 kcal",
-    image: "https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?w=800&auto=format&fit=crop&q=80",
-    description: "Inspirada en el asado de campo sudamericano: medallón de costilla y entraña a punto medio, queso provolone asado con orégano fresco, morrones asados al fuego y chimichurri criollo de la abuela.",
-    ingredients: ["Blend de asado 300g", "Provolone fundido a la plancha", "Pimientos morrones asados", "Chimichurri criollo de campo", "Hojitas de rúcula", "Pan campesino artesanal"],
-    featured: false
+    youtubeVideoId: "IBlqPAkwKfY",
+    title: "Mix Cumbias Pegaditas (Grupo 5, Rossy War, Chane Meza)",
+    channelName: "Luis Rodriguez DJ",
+    thumbnailUrl: "https://img.youtube.com/vi/IBlqPAkwKfY/hqdefault.jpg",
+    duration: "17:03",
+    collectionId: "pop-latino",
+    collectionName: "Cumbia & Fiesta Latina",
+    tags: ["Grupo 5", "Rossy War", "Cumbia Peruana", "Mix", "Bailable"],
+    description: "Enganchado festivo de cumbias peruanas y colombianas con los mejores temas de Grupo 5, Rossy War y Chane Meza.",
+    notes: "Mix bailable de 17 minutos cargado de alegría y ritmo para festejar."
   },
   {
     id: 8,
-    name: "Chili Pepper Jack Picante",
-    category: "Especiales del Chef",
-    specialty: "Spicy Jalapeño Crunch * 280g",
-    price: 12.50,
-    rating: 4.91,
-    cookTime: "11 min",
-    calories: "840 kcal",
-    image: "https://images.unsplash.com/photo-1582196016295-f8c8bd4b3e99?w=800&auto=format&fit=crop&q=80",
-    description: "Nivel de fuego gourmet. Queso pepper jack especiado, jalapeños tostados en sartén de hierro fundido, guacamole cremoso preparado al instante y suave emulsión de chipotle ahumado.",
-    ingredients: ["Carne Angus 280g especiada", "Queso Pepper Jack derretido", "Jalapeños frescos dorados", "Guacamole casero con lima", "Salsa chipotle brava", "Pan brioche picante"],
-    featured: false
-  },
-  {
-    id: 9,
-    name: "Black Angus BBQ Ribs Glazed",
-    category: "Especiales del Chef",
-    specialty: "Costilla Desmechada * 340g",
-    price: 16.20,
-    rating: 4.99,
-    cookTime: "15 min",
-    calories: "1120 kcal",
-    image: "https://images.unsplash.com/photo-1549611016-3a70d82b5040?w=800&auto=format&fit=crop&q=80",
-    description: "Una sinfonía de carnes premium: medallón Black Angus coronado con tierna carne de costilla desmechada tras 8 horas de ahumado lento, glaseada con reducción de bourbon de Kentucky.",
-    ingredients: ["Black Angus 200g + Ribs 140g", "Costilla glaseada BBQ Bourbon", "Queso Gouda suave fundido", "Aros de cebolla crocantes", "Pepinillos agridulces", "Pan brioche tostado"],
-    featured: false
-  },
-  {
-    id: 10,
-    name: "Mushroom Swiss Gourmet",
-    category: "Gourmet",
-    specialty: "Hongos Salteados & Emmental * 250g",
-    price: 13.20,
-    rating: 4.93,
-    cookTime: "11 min",
-    calories: "790 kcal",
-    image: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&auto=format&fit=crop&q=80",
-    description: "Para los paladares más sofisticados. Medallón selecto de res con mezcla de champiñones y portobellos salteados en mantequilla clarificada con romero y queso suizo Emmental fundido.",
-    ingredients: ["Carne selecta res 250g", "Portobellos al romero", "Queso Emmental madurado", "Alioli suave de ajo asado", "Espinacas baby", "Pan brioche esponjoso"],
-    featured: false
+    youtubeVideoId: "YXnjy5YlDwk",
+    title: "Marc Anthony - Vivir Mi Vida (Video Oficial)",
+    channelName: "marcanthonyVEVO",
+    thumbnailUrl: "https://img.youtube.com/vi/YXnjy5YlDwk/hqdefault.jpg",
+    duration: "5:26",
+    collectionId: "salsa",
+    collectionName: "Salsa Brava & Fania",
+    tags: ["Marc Anthony", "Vivir Mi Vida", "Salsa", "Sergio George"],
+    description: "Video oficial de Vivir Mi Vida por Marc Anthony, uno de los himnos de salsa moderna más populares del mundo producido por Sergio George.",
+    notes: "Cierre lleno de energía y optimismo para la sesión y el auditorio."
   }
 ];
 
-const categories = ["Todas", "A la Parrilla", "Smash Burgers", "Gigantes XXL", "Pollo Crispy", "Especiales del Chef", "Gourmet"];
+const COLLECTIONS = [
+  { id: "all", name: "🎵 Todos los Éxitos" },
+  { id: "salsa", name: "🎺 Salsa Brava & Fania" },
+  { id: "pop-latino", name: "🌴 Cumbia & Fiesta Latina" },
+  { id: "rock-espanol", name: "🎸 Rock en Español" },
+  { id: "baladas-charlie-zaa", name: "🌹 Boleros de Charlie Zaa" }
+];
 ---
 
 <!DOCTYPE html>
@@ -154,1148 +124,717 @@ const categories = ["Todas", "A la Parrilla", "Smash Burgers", "Gigantes XXL", "
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
-  <meta name="description" content="NextCollege Burger Rapid: La primera cadena de hamburguesas gourmet de cocción rápida a fuego vivo. Pide en vivo con entrega en 25 minutos." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #090d16;
-      --card: #131b2e;
-      --card-hover: #18233c;
+      --surface: #111827;
+      --card: #151d2f;
       --border: #1e293b;
-      --border-accent: rgba(37, 99, 235, 0.4);
       --text: #f8fafc;
       --text-muted: #94a3b8;
-      --primary: #2563eb;
-      --primary-hover: #1d4ed8;
-      --accent: #38bdf8;
-      --amber: #f59e0b;
-      --flame: #ea580c;
-      --success: #10b981;
+      --primary: #ff0033;
+      --primary-hover: #e11d48;
+      --accent-coral: #f43f5e;
+      --glow: rgba(255, 0, 51, 0.35);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
       background-color: var(--bg);
       color: var(--text);
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
       overflow-x: hidden;
-      line-height: 1.5;
     }
 
-    /* Ambient Glow background */
-    .ambient-glow {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100vw;
-      height: 600px;
-      background: radial-gradient(circle at 50% 15%, rgba(37, 99, 235, 0.15) 0%, rgba(234, 88, 12, 0.08) 40%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* Container */
-    .container {
-      max-width: 1240px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Navbar */
-    nav {
-      border-bottom: 1px solid var(--border);
-      background: rgba(9, 13, 22, 0.85);
-      backdrop-filter: blur(12px);
+    /* Top Navbar */
+    .navbar {
       position: sticky;
       top: 0;
       z-index: 50;
-    }
-
-    .nav-inner {
+      background: rgba(11, 15, 23, 0.9);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0.85rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      height: 72px;
+      gap: 1.5rem;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.6rem;
       text-decoration: none;
-      color: var(--text);
-    }
-
-    .brand-icon {
-      font-size: 1.75rem;
-      background: linear-gradient(135deg, rgba(234, 88, 12, 0.2), rgba(37, 99, 235, 0.2));
-      border: 1px solid rgba(234, 88, 12, 0.3);
-      padding: 0.35rem 0.5rem;
-      border-radius: 12px;
-      display: inline-flex;
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .brand-title {
-      font-weight: 800;
-      font-size: 1.15rem;
-      letter-spacing: -0.02em;
-    }
-
-    .brand-subtitle {
-      font-size: 0.7rem;
-      color: var(--accent);
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.6rem 1.15rem;
-      border-radius: 9999px;
-      font-size: 0.875rem;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      cursor: pointer;
-      border: 1px solid transparent;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary) 0%, #1e40af 100%);
       color: white;
-      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
     }
-
-    .btn-primary:hover {
-      background: linear-gradient(135deg, #3b82f6 0%, var(--primary) 100%);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
-    }
-
-    .btn-outline {
-      background: rgba(255, 255, 255, 0.04);
-      border-color: var(--border);
-      color: var(--text);
-    }
-
-    .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    /* Hero */
-    .hero {
-      padding: 4.5rem 0 3.5rem;
-      text-align: center;
-    }
-
-    .pill-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(234, 88, 12, 0.12);
-      border: 1px solid rgba(234, 88, 12, 0.3);
-      color: #fb923c;
-      padding: 0.4rem 1.1rem;
-      border-radius: 9999px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.5rem, 5vw, 4.2rem);
-      font-weight: 900;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      margin-bottom: 1.25rem;
-      background: linear-gradient(135deg, #ffffff 30%, #cbd5e1 70%, #f59e0b 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-lead {
-      color: var(--text-muted);
-      font-size: 1.2rem;
-      max-width: 720px;
-      margin: 0 auto 2.25rem;
-      line-height: 1.6;
-    }
-
-    .hero-stats {
-      display: flex;
-      justify-content: center;
-      gap: 1.75rem;
-      flex-wrap: wrap;
-      margin-bottom: 2.75rem;
-    }
-
-    .stat-chip {
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 0.65rem 1.25rem;
-      border-radius: 12px;
-      font-size: 0.875rem;
-      font-weight: 600;
+    .brand-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, #ff0033 0%, #b91c1c 100%);
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      color: var(--text);
-    }
-
-    .hero-actions {
-      display: flex;
       justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
+      box-shadow: 0 4px 14px var(--glow);
     }
-
-    /* Filter & Search Bar */
-    .catalog-header {
-      margin: 3.5rem 0 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-
-    .catalog-top-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .section-title {
-      font-size: 2rem;
+    .brand-name {
+      font-size: 1.3rem;
       font-weight: 800;
       letter-spacing: -0.02em;
     }
+    .brand-name span { color: var(--accent-coral); }
 
-    .section-subtitle {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-
-    .search-wrapper {
+    .search-box {
+      flex: 1;
+      max-width: 500px;
       position: relative;
-      width: 100%;
-      max-width: 380px;
     }
-
     .search-input {
       width: 100%;
-      background: var(--card);
-      border: 1px solid var(--border);
+      background: #151d2f;
+      border: 1px solid #243048;
       border-radius: 9999px;
-      padding: 0.75rem 1.25rem 0.75rem 2.75rem;
-      color: var(--text);
-      font-size: 0.9rem;
-      font-family: inherit;
+      padding: 0.65rem 1.25rem;
+      color: white;
+      font-size: 0.88rem;
       outline: none;
       transition: all 0.2s;
     }
-
     .search-input:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+      border-color: var(--accent-coral);
+      box-shadow: 0 0 15px rgba(244, 63, 94, 0.25);
     }
 
-    .search-icon {
-      position: absolute;
-      left: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-muted);
-      pointer-events: none;
-    }
-
-    .category-pills {
+    .nav-actions {
       display: flex;
-      gap: 0.6rem;
-      overflow-x: auto;
-      padding-bottom: 0.5rem;
-      scrollbar-width: none;
+      align-items: center;
+      gap: 0.75rem;
     }
-    .category-pills::-webkit-scrollbar { display: none; }
-
-    .cat-btn {
-      background: var(--card);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      padding: 0.5rem 1rem;
-      border-radius: 9999px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      white-space: nowrap;
-      cursor: pointer;
+    .btn-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.84rem;
+      font-weight: 700;
+      text-decoration: none;
       transition: all 0.2s;
     }
-
-    .cat-btn.active, .cat-btn:hover {
-      background: var(--primary);
-      border-color: var(--primary);
+    .btn-pwa {
+      background: linear-gradient(135deg, #ff0033 0%, #be123c 100%);
+      color: white;
+      box-shadow: 0 4px 14px rgba(255, 0, 51, 0.35);
+    }
+    .btn-pwa:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 0, 51, 0.5);
+    }
+    .btn-admin {
+      background: #1e293b;
+      color: #38bdf8;
+      border: 1px solid #334155;
+    }
+    .btn-admin:hover {
+      background: #25334d;
       color: white;
     }
 
-    /* Burger Grid */
-    .burger-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.75rem;
-      margin-bottom: 4rem;
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      width: 100%;
     }
 
-    @media (min-width: 1024px) {
-      .burger-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    @media (min-width: 1280px) {
-      .burger-grid {
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      }
-    }
-
-    /* Burger Card */
-    .burger-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: all 0.25s ease;
+    /* Hero Featured Spotlight */
+    .hero-spotlight {
       position: relative;
+      background: linear-gradient(135deg, #151d2f 0%, #0d131f 100%);
+      border: 1px solid #243048;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
     }
-
-    .burger-card:hover {
-      transform: translateY(-6px);
-      border-color: var(--border-accent);
-      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), 0 0 25px rgba(37, 99, 235, 0.15);
+    @media (max-width: 860px) {
+      .hero-spotlight { grid-template-columns: 1fr; }
     }
-
-    .card-media {
+    .hero-video-wrapper {
       position: relative;
       width: 100%;
-      height: 220px;
-      overflow: hidden;
-      background: #0f172a;
+      padding-top: 56.25%;
+      background: #000;
+      cursor: pointer;
     }
-
-    .card-image {
+    .hero-thumb {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.4s ease;
+      transition: transform 0.3s;
     }
-
-    .burger-card:hover .card-image {
-      transform: scale(1.06);
+    .hero-video-wrapper:hover .hero-thumb {
+      transform: scale(1.02);
     }
-
-    .badge-category {
+    .hero-play-btn {
       position: absolute;
-      top: 14px;
-      left: 14px;
-      background: rgba(9, 13, 22, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(8px);
-      color: #38bdf8;
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 0.3rem 0.75rem;
-      border-radius: 9999px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .card-rating {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      background: rgba(9, 13, 22, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(8px);
-      color: #f59e0b;
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 0.3rem 0.65rem;
-      border-radius: 9999px;
+      inset: 0;
       display: flex;
       align-items: center;
-      gap: 0.25rem;
+      justify-content: center;
+      background: rgba(0,0,0,0.4);
     }
-
-    /* Specialty Level Badge (Crucial requirement) */
-    .specialty-badge {
+    .play-circle {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: #ff0033;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 30px rgba(255, 0, 51, 0.7);
+      transition: all 0.2s;
+    }
+    .play-circle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 45px rgba(255, 0, 51, 0.9);
+    }
+    .hero-info {
+      padding: 2.5rem;
+    }
+    .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
-      background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(234, 88, 12, 0.2) 100%);
-      border: 1px solid rgba(245, 158, 11, 0.4);
-      color: #fbbf24;
-      font-size: 0.8rem;
-      font-weight: 800;
-      padding: 0.35rem 0.85rem;
-      border-radius: 8px;
-      letter-spacing: 0.02em;
-      margin-bottom: 0.75rem;
-      align-self: flex-start;
+      gap: 0.4rem;
+      background: rgba(244, 63, 94, 0.15);
+      border: 1px solid rgba(244, 63, 94, 0.3);
+      color: #f43f5e;
+      padding: 0.35rem 0.8rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
     }
-
-    .card-body {
-      padding: 1.4rem;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-
-    .card-title {
-      font-size: 1.25rem;
+    .hero-title {
+      font-size: 1.8rem;
       font-weight: 800;
       line-height: 1.25;
-      margin-bottom: 0.5rem;
-      color: var(--text);
+      margin-bottom: 0.75rem;
+      color: white;
+    }
+    .hero-desc {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    .hero-notes {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 3px solid #f59e0b;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.82rem;
+      color: #fde68a;
+      margin-bottom: 1.5rem;
     }
 
-    .card-desc {
+    /* Filter Pills */
+    .filter-bar {
+      display: flex;
+      gap: 0.65rem;
+      overflow-x: auto;
+      padding-bottom: 1rem;
+      margin-bottom: 1.75rem;
+      scrollbar-width: none;
+    }
+    .filter-bar::-webkit-scrollbar { display: none; }
+    .filter-chip {
+      background: #151d2f;
       color: var(--text-muted);
-      font-size: 0.875rem;
-      line-height: 1.5;
-      margin-bottom: 1.25rem;
+      border: 1px solid #243048;
+      padding: 0.5rem 1.15rem;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .filter-chip.active, .filter-chip:hover {
+      background: #ff0033;
+      color: white;
+      border-color: #ff0033;
+      box-shadow: 0 4px 14px rgba(255, 0, 51, 0.35);
+    }
+
+    /* Video Grid */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.75rem;
+      margin-bottom: 4rem;
+    }
+    .video-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .video-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(244, 63, 94, 0.5);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.5);
+    }
+    .card-thumb-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      background: #000;
+    }
+    .card-thumb {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .video-card:hover .card-thumb {
+      transform: scale(1.03);
+    }
+    .card-duration {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(0,0,0,0.85);
+      color: white;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .card-content {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.35;
+      color: white;
+      margin-bottom: 0.6rem;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
-
     .card-meta {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      font-size: 0.75rem;
-      color: #64748b;
-      margin-bottom: 1.25rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .card-footer {
-      display: flex;
       justify-content: space-between;
-      align-items: center;
-      margin-top: auto;
-      gap: 0.75rem;
-    }
-
-    .card-price {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .price-label {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-
-    .price-value {
-      font-size: 1.4rem;
-      font-weight: 900;
-      color: #38bdf8;
-      line-height: 1;
-    }
-
-    .card-buttons {
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    /* "Ver" Button (Crucial requirement) */
-    .btn-view {
-      background: rgba(37, 99, 235, 0.12);
-      border: 1px solid rgba(37, 99, 235, 0.4);
-      color: #60a5fa;
-      padding: 0.55rem 1rem;
-      border-radius: 10px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      transition: all 0.2s;
-    }
-
-    .btn-view:hover {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: white;
-      transform: translateY(-1px);
-    }
-
-    .btn-order-quick {
-      background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
-      color: white;
-      border: none;
-      padding: 0.55rem 0.95rem;
-      border-radius: 10px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      transition: all 0.2s;
-    }
-
-    .btn-order-quick:hover {
-      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(234, 88, 12, 0.4);
-    }
-
-    /* Interactive Details Modal */
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(3, 7, 18, 0.85);
-      backdrop-filter: blur(8px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 100;
-      padding: 1.5rem;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.25s ease;
-    }
-
-    .modal-backdrop.open {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .modal-content {
-      background: #111827;
-      border: 1px solid #1f2937;
-      border-radius: 24px;
-      max-width: 680px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8);
-      position: relative;
-      transform: scale(0.95) translateY(10px);
-      transition: transform 0.25s ease;
-    }
-
-    .modal-backdrop.open .modal-content {
-      transform: scale(1) translateY(0);
-    }
-
-    .modal-close-btn {
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      background: rgba(0, 0, 0, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: white;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 1.25rem;
-      z-index: 10;
-      transition: background 0.2s;
-    }
-
-    .modal-close-btn:hover {
-      background: #ef4444;
-      border-color: #ef4444;
-    }
-
-    .modal-image-wrapper {
-      position: relative;
-      height: 280px;
-      width: 100%;
-      overflow: hidden;
-      border-top-left-radius: 24px;
-      border-top-right-radius: 24px;
-    }
-
-    .modal-image-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .modal-body {
-      padding: 2rem;
-    }
-
-    .modal-tags {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
       margin-bottom: 0.75rem;
-      flex-wrap: wrap;
+      font-size: 0.8rem;
     }
-
-    .modal-title {
-      font-size: 1.85rem;
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.75rem;
-    }
-
-    .modal-desc {
-      color: var(--text-muted);
-      line-height: 1.6;
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .ingredients-box {
-      background: #172033;
-      border: 1px solid #1f2937;
-      border-radius: 16px;
-      padding: 1.25rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .ingredients-title {
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-weight: 800;
-      color: #38bdf8;
-      margin-bottom: 0.75rem;
+    .card-channel {
+      color: #cbd5e1;
+      font-weight: 600;
       display: flex;
       align-items: center;
       gap: 0.4rem;
     }
-
-    .ingredients-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .ing-chip {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 0.35rem 0.75rem;
-      border-radius: 8px;
-      font-size: 0.8rem;
-      color: #e2e8f0;
-    }
-
-    .nutrition-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin-bottom: 1.75rem;
-      text-align: center;
-    }
-
-    .nutrition-card {
-      background: #172033;
-      border: 1px solid #1f2937;
-      border-radius: 12px;
-      padding: 0.85rem;
-    }
-
-    .nutrition-val {
-      font-size: 1.2rem;
+    .channel-avatar {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--accent-coral);
+      color: white;
+      font-size: 0.65rem;
       font-weight: 800;
-      color: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-col {
+      color: var(--accent-coral);
+      font-size: 0.74rem;
+    }
+    .card-tags {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      margin-top: auto;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .tag-chip {
+      background: #1e293b;
+      color: #94a3b8;
+      font-size: 0.68rem;
+      padding: 2px 8px;
+      border-radius: 4px;
     }
 
-    .nutrition-label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
+    /* Modal Player */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
     }
-
-    .modal-actions {
+    .modal-backdrop.open {
+      display: flex;
+    }
+    .modal-content {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 1.25rem;
+      max-width: 900px;
+      width: 100%;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+      position: relative;
+    }
+    .modal-header {
+      padding: 1rem 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-top: 1px solid #1f2937;
-      padding-top: 1.25rem;
+      border-bottom: 1px solid #1f2937;
+    }
+    .modal-close {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .modal-video-frame {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      background: #000;
+    }
+    .modal-video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .modal-body {
+      padding: 1.5rem;
     }
 
-    /* Highlights Section */
-    .features-section {
-      padding: 4rem 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: rgba(19, 27, 46, 0.5);
-      margin-bottom: 4rem;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .feature-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.75rem;
-      text-align: left;
-    }
-
-    .feature-icon {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      display: inline-block;
-    }
-
-    .feature-title {
-      font-size: 1.15rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-    }
-
-    .feature-text {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    /* Footer */
     footer {
-      padding: 3rem 0;
+      background: #070a12;
+      border-top: 1px solid #151d2f;
+      padding: 3rem 1.5rem;
+      margin-top: auto;
       text-align: center;
-      border-top: 1px solid var(--border);
       color: var(--text-muted);
-      font-size: 0.875rem;
+      font-size: 0.88rem;
     }
-
     .footer-links {
       display: flex;
       justify-content: center;
       gap: 1.5rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       flex-wrap: wrap;
     }
-
-    .footer-links a {
-      color: #38bdf8;
+    .footer-link {
+      color: #cbd5e1;
       text-decoration: none;
       font-weight: 600;
+      transition: color 0.2s;
     }
-
-    .footer-links a:hover {
-      text-decoration: underline;
-    }
+    .footer-link:hover { color: var(--accent-coral); }
   </style>
 </head>
 <body>
-  <div class="ambient-glow"></div>
+  <!-- Top Navbar -->
+  <header class="navbar">
+    <a href="/" class="brand">
+      <div class="brand-logo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+          <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+        </svg>
+      </div>
+      <div class="brand-name">
+        YouTube<span>Volt Music</span>
+      </div>
+    </a>
 
-  <!-- Navbar -->
-  <nav>
-    <div class="container nav-inner">
-      <a href="/" class="brand">
-        <span class="brand-icon">🍔</span>
-        <div class="brand-text">
-          <span class="brand-title">NextCollege Burger Rapid</span>
-          <span class="brand-subtitle">Brasas Vivas &bull; Gourmet Express</span>
-        </div>
+    <div class="search-box">
+      <input
+        type="text"
+        id="liveSearchInput"
+        class="search-input"
+        placeholder="Buscar canciones por título, artista o género..."
+      />
+    </div>
+
+    <div class="nav-actions">
+      <a href="/app" class="btn-nav btn-pwa">
+        📱 Bóveda Mobile PWA
       </a>
-
-      <div class="nav-links">
-        <a href="#catalogo" class="btn btn-outline" style="display: none; @media(min-width: 640px) { display: inline-flex; }">
-          🔥 Catálogo 10 Variantes
-        </a>
-        <a href="/app" class="btn btn-primary">
-          📱 Pedir en PWA Mobile
-        </a>
-        <a href="/admin" class="btn btn-outline">
-          ⚙️ Panel Admin
-        </a>
-      </div>
+      <a href="/admin" class="btn-nav btn-admin">
+        ⚙️ Studio Admin
+      </a>
     </div>
-  </nav>
+  </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <div class="pill-badge">
-        🔥 10 Variantes Artesanales &bull; Fuego Vivo &bull; Despacho en 25 Min
-      </div>
-      <h1>El Templo de las Hamburguesas de Autor</h1>
-      <p class="hero-lead">
-        Medallones 100% Angus madurados a la brasa, queso cheddar inglés derretido al soplete y pan brioche horneado al amanecer. Prueba las especialidades del Rey.
-      </p>
-
-      <div class="hero-stats">
-        <div class="stat-chip">
-          <span>👑</span> 4 Variantes Maestras Insignia
-        </div>
-        <div class="stat-chip">
-          <span>⚡</span> Entrega Rapid en 25 min
-        </div>
-        <div class="stat-chip">
-          <span>⭐</span> 4.95 / 5.0 (+34,000 Reseñas)
-        </div>
-        <div class="stat-chip">
-          <span>🥖</span> Pan Brioche de Masa Madre
+  <main class="container">
+    <!-- Hero Spotlight Video (Charlie Zaa - Nuestro Juramento) -->
+    <section class="hero-spotlight">
+      <div class="hero-video-wrapper" onclick="openPlayerModal('C4aSVN3HOOY', 'Cariñito - Mauricio Mesones', 'Mauricio Mesones', 'Cumbia peruana con una increíble interpretación de Mauricio Mesones.')">
+        <img
+          src="https://img.youtube.com/vi/C4aSVN3HOOY/hqdefault.jpg"
+          alt="Video Destacado"
+          class="hero-thumb"
+        />
+        <div class="hero-play-btn">
+          <div class="play-circle">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+              <polygon points="5 3 19 12 5 21 5 3"/>
+            </svg>
+          </div>
         </div>
       </div>
-
-      <div class="hero-actions">
-        <a href="#catalogo" class="btn btn-primary" style="padding: 0.85rem 2rem; font-size: 1rem;">
-          🍔 Ver las 10 Hamburguesas
-        </a>
-        <a href="/app" class="btn btn-outline" style="padding: 0.85rem 1.75rem; font-size: 1rem; border-color: rgba(234, 88, 12, 0.4); color: #fb923c;">
-          🛵 Simular Compra en App PWA
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Features Strip -->
-  <section class="features-section">
-    <div class="container">
-      <div class="features-grid">
-        <div class="feature-card">
-          <span class="feature-icon">🥩</span>
-          <h3 class="feature-title">Cortes Angus Seleccionados</h3>
-          <p class="feature-text">Blend único de picaña, costilla y entraña molido a diario sin conservantes ni aditivos.</p>
+      <div class="hero-info">
+        <div class="hero-badge">🌟 Joya de la Bóveda Musical</div>
+        <h1 class="hero-title">Mauricio Mesones - Cariñito</h1>
+        <p class="hero-desc">
+          Cumbia peruana con una increíble interpretación de Mauricio Mesones. Un clásico inolvidable con guitarras tropicales y toda la fiesta del folklore peruano.
+        </p>
+        <div class="hero-notes">
+          💡 <strong>Nota del Curador:</strong> "Interpretación vibrante y festiva que eleva el clásico de la cumbia con sonido moderno y energía contagiosa."
         </div>
-        <div class="feature-card">
-          <span class="feature-icon">🔥</span>
-          <h3 class="feature-title">Parrilla a Quebracho Blanco</h3>
-          <p class="feature-text">Cocción a 320°C que sella los jugos interiores y deja esa inconfundible costra caramelizada.</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-icon">📱</span>
-          <h3 class="feature-title">App PWA con Seguimiento</h3>
-          <p class="feature-text">Ordena con 3 toques desde tu móvil sin instalar nada de las tiendas. Funciona offline.</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-icon">🏆</span>
-          <h3 class="feature-title">Especialidades con Gramaje Real</h3>
-          <p class="feature-text">Medallones XXL de hasta 420g pesados en crudo. Calidad y generosidad garantizada.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Main Catalog Section -->
-  <section class="container" id="catalogo">
-    <div class="catalog-header">
-      <div class="catalog-top-row">
-        <div>
-          <h2 class="section-title">Catálogo de 10 Variantes Destacadas</h2>
-          <p class="section-subtitle">Explora nuestras 10 recetas maestras con nivel de especialidad y gramaje certificado</p>
-        </div>
-
-        <!-- Live Search -->
-        <div class="search-wrapper">
-          <span class="search-icon">🔍</span>
-          <input 
-            type="text" 
-            id="searchInput" 
-            class="search-input" 
-            placeholder="Buscar por nombre, carne o ingrediente..." 
-          />
-        </div>
-      </div>
-
-      <!-- Categories Filter Tabs -->
-      <div class="category-pills" id="categoryTabs">
-        {categories.map((cat, idx) => (
-          <button 
-            type="button" 
-            class={`cat-btn ${idx === 0 ? 'active' : ''}`}
-            data-category={cat}
+        <div style="display: flex; gap: 0.75rem;">
+          <button
+            onclick="openPlayerModal('C4aSVN3HOOY', 'Cariñito - Mauricio Mesones', 'Mauricio Mesones', 'Cumbia peruana con una increíble interpretación de Mauricio Mesones.')"
+            class="btn-nav btn-pwa"
+            style="border: none; cursor: pointer; padding: 0.75rem 1.5rem;"
           >
-            {cat}
+            ▶️ Escuchar Ahora
           </button>
-        ))}
+          <a href="/app" class="btn-nav btn-admin" style="padding: 0.75rem 1.25rem;">
+            📱 Abrir en Bóveda PWA
+          </a>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Burger Cards Grid -->
-    <div class="burger-grid" id="burgerGrid">
-      {burgers.map((burger) => (
-        <article 
-          class="burger-card" 
-          data-category={burger.category}
-          data-name={burger.name.toLowerCase()}
-          data-specialty={burger.specialty.toLowerCase()}
-          data-description={burger.description.toLowerCase()}
-        >
-          <div class="card-media">
-            <img src={burger.image} alt={burger.name} class="card-image" loading="lazy" />
-            <span class="badge-category">{burger.category}</span>
-            <div class="card-rating">
-              <span>★</span> {burger.rating}
-            </div>
-          </div>
-
-          <div class="card-body">
-            <!-- Specialty Level Badge (Requirement 1) -->
-            <div class="specialty-badge">
-              <span>⚖️</span> {burger.specialty}
-            </div>
-
-            <h3 class="card-title">{burger.name}</h3>
-            <p class="card-desc">{burger.description}</p>
-
-            <div class="card-meta">
-              <span>⏱️ {burger.cookTime}</span>
-              <span>&bull;</span>
-              <span>🔥 {burger.calories}</span>
-              <span>&bull;</span>
-              <span>🍔 Pan Brioche</span>
-            </div>
-
-            <div class="card-footer">
-              <div class="card-price">
-                <span class="price-label">Precio</span>
-                <span class="price-value">${burger.price.toFixed(2)}</span>
-              </div>
-
-              <div class="card-buttons">
-                <!-- "Ver" Button (Requirement 1) -->
-                <button 
-                  type="button" 
-                  class="btn-view" 
-                  data-burger={JSON.stringify(burger)}
-                  aria-label={`Ver detalles de ${burger.name}`}
-                >
-                  <span>👁️</span> Ver
-                </button>
-                <a href="/app" class="btn-order-quick" title="Pedir en App PWA">
-                  <span>🛒</span> Pedir
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
+    <!-- Filter Chips -->
+    <div class="filter-bar">
+      {COLLECTIONS.map(c => (
+        <button class={`filter-chip ${c.id === 'all' ? 'active' : ''}`} data-col={c.id}>
+          {c.name}
+        </button>
       ))}
     </div>
-  </section>
 
-  <!-- Interactive Details Modal (Rendered on Demand via Vanilla JS) -->
-  <div class="modal-backdrop" id="detailModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <!-- Video Grid -->
+    <section class="video-grid" id="videosGrid">
+      {INITIAL_VIDEOS.map(video => (
+        <div
+          class="video-card"
+          data-collection={video.collectionId}
+          data-title={video.title.toLowerCase()}
+          data-channel={video.channelName.toLowerCase()}
+          data-tags={video.tags.join(' ').toLowerCase()}
+          onclick={`openPlayerModal('${video.youtubeVideoId}', '${video.title.replace(/'/g, "\\'")}', '${video.channelName}', '${video.notes.replace(/'/g, "\\'")}')`}
+        >
+          <div class="card-thumb-wrap">
+            <img src={video.thumbnailUrl} alt={video.title} class="card-thumb" loading="lazy" />
+            <div class="card-duration">{video.duration}</div>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">{video.title}</h3>
+            <div class="card-meta">
+              <div class="card-channel">
+                <span class="channel-avatar">{video.channelName[0]}</span>
+                {video.channelName}
+              </div>
+              <span class="card-col">{video.collectionName}</span>
+            </div>
+            <div class="card-tags">
+              {video.tags.map(t => (
+                <span class="tag-chip">#{t}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </section>
+  </main>
+
+  <!-- Modal Player -->
+  <div class="modal-backdrop" id="playerModal" onclick="closeModalOnBackdrop(event)">
     <div class="modal-content">
-      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Cerrar modal">&times;</button>
-      <div class="modal-image-wrapper">
-        <img id="modalImg" src="" alt="Detalle de Hamburguesa" />
+      <div class="modal-header">
+        <h3 id="modalVideoTitle" style="color: white; font-size: 1.1rem; font-weight: 700;">Título del Video</h3>
+        <button class="modal-close" onclick="closePlayerModal()">&times;</button>
+      </div>
+      <div class="modal-video-frame">
+        <iframe id="modalIframe" src="" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="modal-body">
-        <div class="modal-tags">
-          <span class="badge-category" id="modalCategory" style="position:static;">Categoría</span>
-          <div class="specialty-badge" id="modalSpecialty" style="margin-bottom:0;">Especialidad</div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+          <div style="color: var(--accent-coral); font-weight: 700;" id="modalChannel">Canal</div>
+          <a id="modalExternalLink" href="#" target="_blank" style="color: #38bdf8; text-decoration: none; font-size: 0.85rem; font-weight: 600;">
+            ↗️ Ver en YouTube Oficial
+          </a>
         </div>
-
-        <h2 class="modal-title" id="modalTitle">Título Hamburguesa</h2>
-        <p class="modal-desc" id="modalDescription">Descripción gastronómica detallada de la hamburguesa seleccionada.</p>
-
-        <!-- Ingredients Section -->
-        <div class="ingredients-box">
-          <div class="ingredients-title">
-            <span>🌿</span> Ingredientes Seleccionados &bull; Preparación en Vivo
-          </div>
-          <div class="ingredients-chips" id="modalIngredients">
-            <!-- Chips inserted dynamically -->
-          </div>
-        </div>
-
-        <!-- Nutritional / Cook Specs -->
-        <div class="nutrition-row">
-          <div class="nutrition-card">
-            <div class="nutrition-val" id="modalCookTime">12 min</div>
-            <div class="nutrition-label">Parrilla a Fuego Vivo</div>
-          </div>
-          <div class="nutrition-card">
-            <div class="nutrition-val" id="modalCalories">920 kcal</div>
-            <div class="nutrition-label">Valor Energético</div>
-          </div>
-          <div class="nutrition-card">
-            <div class="nutrition-val" id="modalRating">★ 4.98</div>
-            <div class="nutrition-label">Satisfacción Gourmet</div>
-          </div>
-        </div>
-
-        <!-- Modal Footer Actions -->
-        <div class="modal-actions">
-          <div>
-            <span class="price-label">Precio Final</span>
-            <div class="price-value" id="modalPrice" style="font-size: 2rem;">$0.00</div>
-          </div>
-
-          <div style="display: flex; gap: 0.75rem;">
-            <button class="btn btn-outline" id="modalDismissBtn" style="padding: 0.75rem 1.25rem;">
-              Cerrar
-            </button>
-            <a href="/app" class="btn btn-primary" style="padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%); border: none;">
-              📱 Pedir en PWA Mobile
-            </a>
-          </div>
+        <div id="modalNotesBox" style="background: rgba(245, 158, 11, 0.08); border-left: 3px solid #f59e0b; padding: 0.75rem 1rem; border-radius: 0.5rem; font-size: 0.84rem; color: #fde68a;">
+          💡 <strong>Nota del Curador:</strong> <span id="modalNotesText">Notas</span>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Footer -->
   <footer>
-    <div class="container">
-      <div class="footer-links">
-        <a href="/">🌐 E-commerce Portal</a>
-        <span>&bull;</span>
-        <a href="/app">📱 PWA Mobile (Simulador)</a>
-        <span>&bull;</span>
-        <a href="/admin">⚙️ Panel Administrativo</a>
-        <span>&bull;</span>
-        <a href="/api/health">🩺 Health Check API</a>
-        <span>&bull;</span>
-        <a href="/api/products">📦 API Productos JSON</a>
-      </div>
-      <p style="margin-bottom: 0.5rem;">
-        &copy; 2026 <strong>NextCollege Burger Rapid</strong> &bull; Primera Versión Comercial
-      </p>
-      <p style="font-size: 0.75rem; color: #475569;">
-        Tecnología: Astro + React + Node.js Express + MySQL &bull; Despliegue Continuo con Dokploy
-      </p>
+    <div class="footer-links">
+      <a href="/" class="footer-link">🎵 Portal Musical</a>
+      <a href="/app" class="footer-link">📱 Bóveda Mobile PWA</a>
+      <a href="/admin" class="footer-link">⚙️ Panel Studio</a>
+      <a href="/api/health" class="footer-link">🩺 Health Check</a>
+      <a href="/api/videos" class="footer-link">🎬 API REST</a>
     </div>
+    <p>
+      YouTubeVolt &bull; Bóveda Musical: Salsa Brava, Cumbia & Rock Latino &bull; Dokploy CI/CD Live MasterClass
+    </p>
   </footer>
 
-  <!-- Client-side Interactive Logic -->
   <script is:inline>
-    // 1. Modal Logic
-    const modal = document.getElementById('detailModal');
-    const modalCloseBtn = document.getElementById('modalCloseBtn');
-    const modalDismissBtn = document.getElementById('modalDismissBtn');
-    const modalImg = document.getElementById('modalImg');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalCategory = document.getElementById('modalCategory');
-    const modalSpecialty = document.getElementById('modalSpecialty');
-    const modalDescription = document.getElementById('modalDescription');
-    const modalIngredients = document.getElementById('modalIngredients');
-    const modalCookTime = document.getElementById('modalCookTime');
-    const modalCalories = document.getElementById('modalCalories');
-    const modalRating = document.getElementById('modalRating');
-    const modalPrice = document.getElementById('modalPrice');
+    async function syncVideosFromApi() {
+      try {
+        const res = await fetch('/api/videos');
+        if (!res.ok) return;
+        const json = await res.json();
+        if (!json.data || json.data.length === 0) return;
 
-    function openModal(burger) {
-      modalImg.src = burger.image;
-      modalTitle.textContent = burger.name;
-      modalCategory.textContent = burger.category;
-      modalSpecialty.textContent = '⚖️ ' + burger.specialty;
-      modalDescription.textContent = burger.description;
-      modalCookTime.textContent = burger.cookTime;
-      modalCalories.textContent = burger.calories;
-      modalRating.textContent = '★ ' + burger.rating;
-      modalPrice.textContent = '$' + burger.price.toFixed(2);
+        const grid = document.getElementById('videosGrid');
+        if (!grid) return;
 
-      // Ingredients chips
-      modalIngredients.innerHTML = '';
-      if (burger.ingredients && burger.ingredients.length > 0) {
-        burger.ingredients.forEach(function(ing) {
-          const chip = document.createElement('span');
-          chip.className = 'ing-chip';
-          chip.textContent = ing;
-          modalIngredients.appendChild(chip);
-        });
+        grid.innerHTML = json.data.map(video => `
+          <div
+            class="video-card"
+            data-collection="${video.collectionId}"
+            data-title="${(video.title || '').toLowerCase()}"
+            data-channel="${(video.channelName || '').toLowerCase()}"
+            data-tags="${(video.tags || []).join(' ').toLowerCase()}"
+            onclick="openPlayerModal('${video.youtubeVideoId}', '${(video.title || '').replace(/'/g, "\\'")}', '${video.channelName}', '${(video.personalNotes || '').replace(/'/g, "\\'")}')"
+          >
+            <div class="card-thumb-wrap">
+              <img src="${video.thumbnailUrl || 'https://img.youtube.com/vi/' + video.youtubeVideoId + '/hqdefault.jpg'}" alt="${video.title}" class="card-thumb" loading="lazy" />
+              <div class="card-duration">${video.duration || '4:00'}</div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">${video.title}</h3>
+              <div class="card-meta">
+                <div class="card-channel">
+                  <span class="channel-avatar">${(video.channelName || 'M')[0]}</span>
+                  ${video.channelName}
+                </div>
+                <span class="card-col">${video.collectionName || 'General'}</span>
+              </div>
+              <div class="card-tags">
+                ${(video.tags || []).map(t => `<span class="tag-chip">#${t}</span>`).join('')}
+              </div>
+            </div>
+          </div>
+        `).join('');
+      } catch (err) {
+        console.warn('API sync fallback:', err);
       }
+    }
+
+    function openPlayerModal(videoId, title, channel, notes) {
+      const modal = document.getElementById('playerModal');
+      const iframe = document.getElementById('modalIframe');
+      const titleElem = document.getElementById('modalVideoTitle');
+      const channelElem = document.getElementById('modalChannel');
+      const linkElem = document.getElementById('modalExternalLink');
+      const notesElem = document.getElementById('modalNotesText');
+
+      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+      titleElem.textContent = title;
+      channelElem.textContent = `Artista / Canal: ${channel}`;
+      linkElem.href = `https://www.youtube.com/watch?v=${videoId}`;
+      notesElem.textContent = notes || 'Sin notas adicionales en la bóveda.';
 
       modal.classList.add('open');
-      modal.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
     }
 
-    function closeModal() {
+    function closePlayerModal() {
+      const modal = document.getElementById('playerModal');
+      const iframe = document.getElementById('modalIframe');
+      iframe.src = '';
       modal.classList.remove('open');
-      modal.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
     }
 
-    // Attach click to all "Ver" buttons
-    document.querySelectorAll('.btn-view').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        const data = JSON.parse(btn.getAttribute('data-burger'));
-        openModal(data);
+    function closeModalOnBackdrop(e) {
+      if (e.target.id === 'playerModal') {
+        closePlayerModal();
+      }
+    }
+
+    document.querySelectorAll('.filter-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        const col = chip.getAttribute('data-col');
+        applyFilters(col, document.getElementById('liveSearchInput').value);
       });
     });
 
-    modalCloseBtn.addEventListener('click', closeModal);
-    modalDismissBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', function(e) {
-      if (e.target === modal) {
-        closeModal();
-      }
-    });
+    const searchInput = document.getElementById('liveSearchInput');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const activeChip = document.querySelector('.filter-chip.active');
+        const col = activeChip ? activeChip.getAttribute('data-col') : 'all';
+        applyFilters(col, e.target.value);
+      });
+    }
 
-    window.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && modal.classList.contains('open')) {
-        closeModal();
-      }
-    });
+    function applyFilters(collection, query) {
+      const q = (query || '').toLowerCase().trim();
+      const cards = document.querySelectorAll('.video-card');
 
-    // 2. Search & Category Filters
-    const searchInput = document.getElementById('searchInput');
-    const catButtons = document.querySelectorAll('.cat-btn');
-    const cards = document.querySelectorAll('.burger-card');
+      cards.forEach(card => {
+        const cardCol = card.getAttribute('data-collection');
+        const title = card.getAttribute('data-title') || '';
+        const channel = card.getAttribute('data-channel') || '';
+        const tags = card.getAttribute('data-tags') || '';
 
-    let currentCategory = 'Todas';
-    let searchQuery = '';
+        const matchCol = (collection === 'all' || cardCol === collection);
+        const matchQuery = !q || title.includes(q) || channel.includes(q) || tags.includes(q);
 
-    function filterCards() {
-      cards.forEach(function(card) {
-        const cat = card.getAttribute('data-category');
-        const name = card.getAttribute('data-name');
-        const specialty = card.getAttribute('data-specialty');
-        const desc = card.getAttribute('data-description');
-
-        const matchesCat = (currentCategory === 'Todas' || cat === currentCategory);
-        const textToSearch = name + ' ' + specialty + ' ' + desc;
-        const matchesSearch = searchQuery === '' || textToSearch.includes(searchQuery);
-
-        if (matchesCat && matchesSearch) {
+        if (matchCol && matchQuery) {
           card.style.display = 'flex';
         } else {
           card.style.display = 'none';
@@ -1303,21 +842,9 @@ const categories = ["Todas", "A la Parrilla", "Smash Burgers", "Gigantes XXL", "
       });
     }
 
-    catButtons.forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        catButtons.forEach(function(b) { b.classList.remove('active'); });
-        btn.classList.add('active');
-        currentCategory = btn.getAttribute('data-category');
-        filterCards();
-      });
+    window.addEventListener('DOMContentLoaded', () => {
+      syncVideosFromApi();
     });
-
-    if (searchInput) {
-      searchInput.addEventListener('input', function(e) {
-        searchQuery = e.target.value.toLowerCase().trim();
-        filterCards();
-      });
-    }
   </script>
 </body>
 </html>
