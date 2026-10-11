@@ -13,7 +13,7 @@
     "start": "node server/src/app.js",
     "apk:doctor": "bubblewrap doctor",
     "apk:init": "bubblewrap init --manifest=https://youtubevolt.nextcollege.co/app/manifest.json",
-    "apk:build": "bubblewrap build"
+    "apk:build": "cd android && gradlew.bat assembleDebug"
   },
   "keywords": [
     "template-repository",
