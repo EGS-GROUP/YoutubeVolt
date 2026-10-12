@@ -8,3 +8,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .astro/
+
+# Android build outputs
+android/.gradle/
+android/build/
+android/app/build/
+*.apk
+!apps/ecommerce/public/YouTubeVolt.apk

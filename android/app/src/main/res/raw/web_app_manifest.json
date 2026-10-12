@@ -1,0 +1,45 @@
+{
+  "id": "/app/",
+  "name": "YouTubeVolt - Bóveda de Videos",
+  "short_name": "YouTubeVolt",
+  "description": "Tu bóveda personal e inteligente de videos de YouTube con persistencia offline y organización avanzada",
+  "start_url": "/app/",
+  "scope": "/app/",
+  "display": "standalone",
+  "background_color": "#0b0f17",
+  "theme_color": "#ff0033",
+  "orientation": "portrait",
+  "categories": ["entertainment", "music", "video"],
+  "icons": [
+    {
+      "src": "/app/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/app/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/app/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/app/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/app/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
