@@ -1,129 +1,61 @@
-# ⚡ YouTubeVolt - Bóveda de Videos Multiplataforma
+# 🚀 NextCollege MasterClass Scaffold & Template Repository
 
-**YouTubeVolt** es una plataforma completa de 3 capas para crear, organizar y consultar una biblioteca y bóveda audiovisual privada de YouTube, diseñada con una estética **Ultra-Premium Dark** (estilo YouTube Dark y LifeFeed AI) y lista para despliegues automatizados en **Dokploy CI/CD**.
-
----
-
-## 🏛️ Arquitectura de las 3 Capas Unificadas
-
-La plataforma corre sobre un único puerto (`PORT: 3000`) coordinado por Express, sirviendo las tres capas y una API REST unificada:
-
-```
-                                  ┌────────────────────────┐
-                                  │   YouTubeVolt Engine   │
-                                  │   Node.js (Puerto 3000) │
-                                  └───────────┬────────────┘
-                                              │
-         ┌────────────────────────────────────┼────────────────────────────────────┐
-         │                                    │                                    │
-         ▼                                    ▼                                    ▼
-┌──────────────────┐                 ┌──────────────────┐                 ┌──────────────────┐
-│   PORTAL WEB     │                 │   BÓVEDA PWA     │                 │  STUDIO ADMIN    │
-│   (Astro)        │                 │   (React + PWA)  │                 │  (React + Vite)  │
-│   Ruta: /        │                 │   Ruta: /app     │                 │  Ruta: /admin    │
-└──────────────────┘                 └──────────────────┘                 └──────────────────┘
-```
-
-1. **📱 Capa 1: Bóveda Mobile PWA (`/app`)**
-   - **Tecnología**: React 18 + Vite + Service Worker (PWA Instalable).
-   - **Diseño**: Basado en las maquetas móviles de YouTube Dark y LifeFeed AI.
-   - **Funcionalidades**:
-     - Barra de navegación inferior móvil (Inicio, Explorar, Guardar `+`, Pendientes, Bóveda).
-     - Buscador inteligente y filtro de "Videos Pendientes de Ver" (Atención requerida).
-     - Tarjetas con miniaturas de alta definición, duración, avatar del canal, tags y estado de estudio (⏳ Pendiente, 🎧 En Progreso, ✅ Visto).
-     - **Reproductor Interactivo Embebido**: Visualización directa con iframe oficial de YouTube.
-     - **Bloc de Notas Personales**: Editor de apuntes de aprendizaje persistente por video.
-     - Botón flotante `+` con autocompletado y previsualización instantánea de enlaces de YouTube.
-     - Soporte Offline mediante LocalStorage y Service Worker.
-
-2. **⚙️ Capa 2: Panel de Administración Studio (`/admin`)**
-   - **Tecnología**: React 18 + Vite.
-   - **Diseño**: Dashboard glassmorphic con métricas en tiempo real.
-   - **Funcionalidades**:
-     - KPIs de la bóveda: Total de videos, pendientes, completados, favoritos y horas estimadas.
-     - Indicador dinámico de base de datos (🐬 MySQL Conectado o ⚡ Modo In-Memory ultra veloz).
-     - Tabla de gestión de videos con filtrado en tiempo real, cambio de estado en un clic y favoritos.
-     - Modal de agregar videos con reconocimiento automático del ID de YouTube.
-     - Gestor de colecciones temáticas (IA & Agentes, Cloud & Dokploy, Mobile, Clean Architecture, etc.).
-     - Copias de seguridad: Exportación (JSON) e Importación (JSON) en 1 clic.
-     - Botón **"Restablecer Demo"** ideal para demostraciones en vivo.
-
-3. **🌐 Capa 3: Portal de Videos Personalizado (`/`)**
-   - **Tecnología**: Astro 4 (Static site generation ultrarrápido con sincronización reactiva a la API).
-   - **Diseño**: Portal estilo YouTube cinematográfico oscuro (#090d16) con acento rojo coral (#ff0033).
-   - **Funcionalidades**:
-     - **Hero Spotlight**: Banner cinematográfico del video destacado con botón de reproducción.
-     - **Píldoras de Categorías**: Filtros rápidos por colecciones temáticas y favoritos.
-     - **Grid de Videos Curados**: Miniaturas 16:9, duración, creador y notas de la bóveda.
-     - **Modal Player**: Reproducción inmediata al hacer clic en cualquier tarjeta.
-     - Acceso directo a la versión móvil PWA (`/app`) y al panel administrativo (`/admin`).
-
-4. **🔌 Backend API REST (`/api`)**
-   - `/api/health`: Chequeo de salud del servicio y de la base de datos.
-   - `/api/videos`: Listado (con búsqueda y filtros), alta, actualización y eliminación de videos.
-   - `/api/collections`: Colecciones temáticas.
-   - `/api/stats`: Métricas globales de la biblioteca.
-   - `/api/videos/export/json`: Descarga de copia de seguridad.
-   - `/api/videos/import/json`: Restauración de biblioteca.
-   - `/api/reset`: Restablecimiento de datos de prueba para masterclasses.
+Repositorio plantilla profesional diseñado específicamente para demostraciones en vivo de **Desarrollo Acelerado con Inteligencia Artificial** y **Continuous Delivery (CI/CD)** con **GitHub**, **Docker Multi-Stage** y **Dokploy**.
 
 ---
 
-## 🚀 Inicio Rápido (Local)
+## 🎯 El Concepto de la MasterClass (De Cero a Cien con IA)
 
-### 1. Instalar dependencias
-```bash
-npm run install:all
-```
+Este Scaffold es un **lienzo limpio de alta ingeniería**. Inicialmente, tanto el **Portal E-commerce**, la **PWA Mobile** como el **Panel Admin** muestran únicamente:
 
-### 2. Compilar todas las capas y sincronizar
-```bash
-npm run build:all
-```
+> ### *"Bienvenidos a NextCollege"*
 
-### 3. Iniciar el servidor
-```bash
-npm start
-```
+Bajo el capó, toda la arquitectura de tuberías, compilación multi-stage, service worker y conexión a MySQL ya está 100% cableada y activa en Dokploy.
 
-Abre en tu navegador:
-- 🌐 **Portal de Videos**: [http://localhost:3000/](http://localhost:3000/)
-- 📱 **Bóveda Mobile PWA**: [http://localhost:3000/app](http://localhost:3000/app)
-- ⚙️ **Panel Studio**: [http://localhost:3000/admin](http://localhost:3000/admin)
-- 🩺 **API Health**: [http://localhost:3000/api/health](http://localhost:3000/api/health)
+### 🪄 La Dinámica del Webinar:
+1. **Punto de Partida:** Muestras el proyecto desplegado en vivo en Dokploy con el mensaje base *"Bienvenidos a NextCollege"*.
+2. **El Primer Prompt con IA:** Frente a tus alumnos, le pides a la IA (Antigravity / Gemini) que construya la primera versión del e-commerce, el catálogo de la PWA y el dashboard de administración.
+3. **El Live Push de CI/CD:** Haces `git commit` y `git push origin main`.
+4. **La Transformación:** Dokploy captura el webhook, compila las 3 capas en ~25 segundos, y la audiencia ve cómo *"Bienvenidos a NextCollege"* se transforma en vivo en una plataforma completa sin tiempo de caída (*Zero Downtime*).
+5. **Prompts Subsiguientes:** Continúas refinando la UI, agregando funcionalidades y demostrando la velocidad del flujo de trabajo moderno.
 
 ---
 
-## 🐳 Despliegue en Dokploy (CI/CD)
+## 🏛️ Arquitectura Técnica Unificada
 
-El repositorio incluye un `Dockerfile` optimizado en 4 etapas (*Multi-Stage Build*):
-1. **builder-ecommerce**: Compila Astro.
-2. **builder-pwa**: Compila la PWA móvil con Vite.
-3. **builder-admin**: Compila el Panel Admin con Vite.
-4. **runner**: Runtime ligero Node.js Alpine que unifica los 3 artefactos en `server/public`.
+Las 4 capas corren en un **único contenedor Docker** exponiendo un **único puerto (3000)**:
 
-### Variables de Entorno Opcionales (para conectar MySQL):
-- `DB_HOST`: Host del contenedor o servicio MySQL (ej: `mysql` o IP de red Dokploy).
-- `DB_PORT`: Puerto (por defecto `3306`).
-- `DB_USER`: Usuario de base de datos.
-- `DB_PASSWORD`: Contraseña.
-- `DB_NAME`: Nombre de la base de datos (ej: `demo` o `youtubevolt`).
-
-> 💡 **Nota para la Masterclass:** Si no configuras variables de base de datos, el servidor opera de forma automática y transparente en **Modo In-Memory** con persistencia en caché, permitiendo que la demostración funcione inmediatamente sin requerir configuración previa de bases de datos.
+| Capa / Servicio | Ruta | Tecnología | Estado Inicial |
+| :--- | :--- | :--- | :--- |
+| **Portal E-commerce** | `/` | **Astro 4 (SSG)** | Pantalla limpia *"Bienvenidos a NextCollege"* con SEO y Core Web Vitals listos. |
+| **PWA Mobile** | `/app` | **React 18 + Vite** | Pantalla móvil *"Bienvenidos a NextCollege"* con PWA Manifest y Service Worker listos. |
+| **Panel Admin** | `/admin` | **React 18 + Vite** | Pantalla limpia *"Bienvenidos a NextCollege"* con monitor de conexión a MySQL. |
+| **Backend REST API** | `/api/...` | **Node.js + Express + MySQL** | Capa de datos con reintento automático y fallback resiliente. |
 
 ---
 
-## 🎓 Guía Didáctica para la MasterClass (Principiantes)
+## ⚙️ Cómo convertir este repositorio en "Template Repository" en GitHub
 
-Para tu auditorio de principiantes, puedes estructurar la explicación en 3 momentos clave:
+1. Entra a tu repositorio en GitHub: [https://github.com/PabloValdiviaM/webinar-02-ia-pnp](https://github.com/PabloValdiviaM/webinar-02-ia-pnp) (o el repositorio asignado a tu webinar).
+2. Haz clic en la pestaña **Settings** (Configuración del repositorio).
+3. En la primera sección (**General**), marca la casilla:  
+   ✅ **Template repository**.
+4. ¡Listo! A partir de ese momento, cualquier participante o tú mismo podrán pulsar el botón verde **"Use this template"** $\rightarrow$ **"Create a new repository"**.
 
-1. **El Problema que Resolvemos**: Los desarrolladores y estudiantes acumulan decenas de videos en YouTube, pero los pierden en listas interminables. **YouTubeVolt** crea un espacio privado enfocado en aprendizaje, notas y categorización personal.
-2. **Comparativa de Arquitectura (Web vs Mobile)**:
-   - *Enfoque Kotlin Multiplatform (KMP)*: Compila a binario nativo con Jetpack Compose y SQLDelight (ideal para apps que requieren acceso a hardware y distribución en App Store/Play Store).
-   - *Enfoque 3 Capas Web/PWA*: Con HTML, CSS, React, Astro y Node.js, obtienes **3 productos funcionales desplegables al instante** en cualquier navegador, móvil o escritorio con una sola base de código y CI/CD en Dokploy.
-3. **Flujo de la Bóveda en Vivo**:
-   - Abrir el **Panel Studio (`/admin`)** y copiar un enlace de YouTube.
-   - Ver cómo se autodetecta el ID y la miniatura al instante.
-   - Guardar el video y escribir una nota de estudio.
-   - Abrir la **PWA Mobile (`/app`)** para mostrar la experiencia táctil con el reproductor embebido.
-   - Abrir el **Portal Público (`/`)** para ver cómo la biblioteca curada se publica para los usuarios.
+---
+
+## 🐳 Despliegue Inicial en Dokploy
+
+1. **Crear MySQL:** En Dokploy $\rightarrow$ *Create Service* $\rightarrow$ *Database* $\rightarrow$ *MySQL* (base: `demo`, usuario: `pablovaldivia`, puerto externo: `3306`).
+2. **Crear Aplicación:** En el mismo proyecto $\rightarrow$ *Create Service* $\rightarrow$ *Application* $\rightarrow$ *Git* $\rightarrow$ Rama `main` $\rightarrow$ Build Type: `Dockerfile` $\rightarrow$ Puerto: `3000`.
+3. **Environment Variables:**
+   ```env
+   NODE_ENV=production
+   PORT=3000
+   DB_HOST=172.18.0.1
+   DB_PORT=3306
+   DB_USER=pablovaldivia
+   DB_PASSWORD=tu_password
+   DB_NAME=demo
+   ```
+4. **Auto Deploy:** Activa el Webhook de GitHub (Content Type: `application/json`).

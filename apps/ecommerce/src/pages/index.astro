@@ -1,121 +1,6 @@
 ---
-// apps/ecommerce/src/pages/index.astro - YouTubeVolt Portal de Videos Musicales
-const title = "YouTubeVolt - Bóveda Musical: Salsa, Cumbia & Rock Latino";
-
-const INITIAL_VIDEOS = [
-  {
-    id: 1,
-    youtubeVideoId: "SiVq_x_lfxE",
-    title: "Brunella Torpoco - Mix Héctor Lavoe (Live Session)",
-    channelName: "Brunella Torpoco Oficial",
-    thumbnailUrl: "https://img.youtube.com/vi/SiVq_x_lfxE/hqdefault.jpg",
-    duration: "6:49",
-    collectionId: "salsa",
-    collectionName: "Salsa Brava & Fania",
-    tags: ["Brunella Torpoco", "Mix Hector Lavoe", "Salsa", "Live Session"],
-    description: "Potente sesión en vivo rindiendo tributo a Héctor Lavoe con toda la fuerza y sentimiento de Brunella Torpoco.",
-    notes: "Salsa perucha en vivo con arreglos excepcionales de metales y percusión."
-  },
-  {
-    id: 2,
-    youtubeVideoId: "a4Z5HRiN3rc",
-    title: "Corazón Serrano - Te Vas Y No Volverás (Estadio San Marcos)",
-    channelName: "Corazón Serrano",
-    thumbnailUrl: "https://img.youtube.com/vi/a4Z5HRiN3rc/hqdefault.jpg",
-    duration: "3:04",
-    collectionId: "pop-latino",
-    collectionName: "Cumbia & Fiesta Latina",
-    tags: ["Corazon Serrano", "Te Vas Y No Volveras", "Cumbia", "Estadio San Marcos"],
-    description: "Interpretación en vivo en el Estadio San Marcos durante el 32 Aniversario de Corazón Serrano - Camino a un Sueño.",
-    notes: "Éxito rotundo de cumbia sanjuanera ante más de 40 mil personas."
-  },
-  {
-    id: 3,
-    youtubeVideoId: "7KxkMLAZlzw",
-    title: "Grupo Niche - Cali Pachanguero (Video Oficial)",
-    channelName: "Codiscos / Grupo Niche",
-    thumbnailUrl: "https://img.youtube.com/vi/7KxkMLAZlzw/hqdefault.jpg",
-    duration: "4:50",
-    collectionId: "salsa",
-    collectionName: "Salsa Brava & Fania",
-    tags: ["Grupo Niche", "Cali Pachanguero", "Salsa", "Jairo Varela"],
-    description: "El himno absoluto de la salsa colombiana compuesto por el gran maestro Jairo Varela e interpretado por Grupo Niche.",
-    notes: "Arreglos de metales y percusión insuperables. Clave para animar la clase."
-  },
-  {
-    id: 4,
-    youtubeVideoId: "hReAuaAuJOE",
-    title: "Los Enanitos Verdes - Lamento Boliviano (Video Oficial)",
-    channelName: "EnanitosVerdesVEVO",
-    thumbnailUrl: "https://img.youtube.com/vi/hReAuaAuJOE/hqdefault.jpg",
-    duration: "3:44",
-    collectionId: "rock-espanol",
-    collectionName: "Rock en Español Clásico",
-    tags: ["Los Enanitos Verdes", "Lamento Boliviano", "Latin Rock", "Marciano Cantero"],
-    description: "Uno de los clásicos más grandes e históricos del rock en español, lanzado en 1994 con la voz inolvidable de Marciano Cantero.",
-    notes: "El coro y solo de guitarra más coreado de la música en español."
-  },
-  {
-    id: 5,
-    youtubeVideoId: "YIbMejfd9KE",
-    title: "Charlie Zaa ft. Leslie Grace - Nuestro Juramento (En Vivo)",
-    channelName: "CharlieZaaVEVO",
-    thumbnailUrl: "https://img.youtube.com/vi/YIbMejfd9KE/hqdefault.jpg",
-    duration: "4:06",
-    collectionId: "baladas-charlie-zaa",
-    collectionName: "Baladas & Boleros de Charlie Zaa",
-    tags: ["Charlie Zaa", "Leslie Grace", "Nuestro Juramento", "Bolero", "Celebracion"],
-    description: "Versión acústica en vivo de Nuestro Juramento de Charlie Zaa en colaboración con Leslie Grace del álbum Celebración.",
-    notes: "Bolero moderno inolvidable con guitarras románticas y gran armonía vocal."
-  },
-  {
-    id: 6,
-    youtubeVideoId: "BNo0vkEYWRc",
-    title: "Héctor Lavoe - El Cantante (Video Oficial Fania)",
-    channelName: "Fania Records",
-    thumbnailUrl: "https://img.youtube.com/vi/BNo0vkEYWRc/hqdefault.jpg",
-    duration: "10:52",
-    collectionId: "salsa",
-    collectionName: "Salsa Brava & Fania",
-    tags: ["Hector Lavoe", "El Cantante", "Fania Records", "Salsa Dura"],
-    description: "La obra maestra de la salsa dura por Héctor Lavoe con Fania Records, compuesta por Rubén Blades y producida por Willie Colón.",
-    notes: "Himno legendario: 'Yo soy el cantante, que hoy han venido a escuchar...'"
-  },
-  {
-    id: 7,
-    youtubeVideoId: "IBlqPAkwKfY",
-    title: "Mix Cumbias Pegaditas (Grupo 5, Rossy War, Chane Meza)",
-    channelName: "Luis Rodriguez DJ",
-    thumbnailUrl: "https://img.youtube.com/vi/IBlqPAkwKfY/hqdefault.jpg",
-    duration: "17:03",
-    collectionId: "pop-latino",
-    collectionName: "Cumbia & Fiesta Latina",
-    tags: ["Grupo 5", "Rossy War", "Cumbia Peruana", "Mix", "Bailable"],
-    description: "Enganchado festivo de cumbias peruanas y colombianas con los mejores temas de Grupo 5, Rossy War y Chane Meza.",
-    notes: "Mix bailable de 17 minutos cargado de alegría y ritmo para festejar."
-  },
-  {
-    id: 8,
-    youtubeVideoId: "YXnjy5YlDwk",
-    title: "Marc Anthony - Vivir Mi Vida (Video Oficial)",
-    channelName: "marcanthonyVEVO",
-    thumbnailUrl: "https://img.youtube.com/vi/YXnjy5YlDwk/hqdefault.jpg",
-    duration: "5:26",
-    collectionId: "salsa",
-    collectionName: "Salsa Brava & Fania",
-    tags: ["Marc Anthony", "Vivir Mi Vida", "Salsa", "Sergio George"],
-    description: "Video oficial de Vivir Mi Vida por Marc Anthony, uno de los himnos de salsa moderna más populares del mundo producido por Sergio George.",
-    notes: "Cierre lleno de energía y optimismo para la sesión y el auditorio."
-  }
-];
-
-const COLLECTIONS = [
-  { id: "all", name: "🎵 Todos los Éxitos" },
-  { id: "salsa", name: "🎺 Salsa Brava & Fania" },
-  { id: "pop-latino", name: "🌴 Cumbia & Fiesta Latina" },
-  { id: "rock-espanol", name: "🎸 Rock en Español" },
-  { id: "baladas-charlie-zaa", name: "🌹 Boleros de Charlie Zaa" }
-];
+// apps/ecommerce/src/pages/index.astro
+const title = "Bienvenidos a NextCollege";
 ---
 
 <!DOCTYPE html>
@@ -130,725 +15,120 @@ const COLLECTIONS = [
   <style>
     :root {
       --bg: #090d16;
-      --surface: #111827;
-      --card: #151d2f;
+      --card: #131b2e;
       --border: #1e293b;
       --text: #f8fafc;
       --text-muted: #94a3b8;
-      --primary: #ff0033;
-      --primary-hover: #e11d48;
-      --accent-coral: #f43f5e;
-      --glow: rgba(255, 0, 51, 0.35);
+      --primary: #2563eb;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
-      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       background-color: var(--bg);
       color: var(--text);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      overflow-x: hidden;
-    }
-
-    /* Top Navbar */
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(11, 15, 23, 0.9);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 0.85rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      text-decoration: none;
-      color: white;
-    }
-    .brand-logo {
-      width: 36px;
-      height: 36px;
-      border-radius: 9px;
-      background: linear-gradient(135deg, #ff0033 0%, #b91c1c 100%);
-      display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 14px var(--glow);
+      padding: 2rem;
+      text-align: center;
     }
-    .brand-name {
-      font-size: 1.3rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
-    .brand-name span { color: var(--accent-coral); }
-
-    .search-box {
-      flex: 1;
-      max-width: 500px;
-      position: relative;
-    }
-    .search-input {
-      width: 100%;
-      background: #151d2f;
-      border: 1px solid #243048;
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(37, 99, 235, 0.1);
+      border: 1px solid rgba(37, 99, 235, 0.3);
+      color: #38bdf8;
+      padding: 0.4rem 1rem;
       border-radius: 9999px;
-      padding: 0.65rem 1.25rem;
-      color: white;
-      font-size: 0.88rem;
-      outline: none;
-      transition: all 0.2s;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
     }
-    .search-input:focus {
-      border-color: var(--accent-coral);
-      box-shadow: 0 0 15px rgba(244, 63, 94, 0.25);
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+      background: linear-gradient(135deg, #ffffff 40%, #94a3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-
-    .nav-actions {
+    p {
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
+    .nav-cards {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 700px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 1.25rem 1.75rem;
+      border-radius: 1rem;
+      text-decoration: none;
+      color: var(--text);
       display: flex;
       align-items: center;
       gap: 0.75rem;
-    }
-    .btn-nav {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.55rem 1rem;
-      border-radius: 0.5rem;
-      font-size: 0.84rem;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .btn-pwa {
-      background: linear-gradient(135deg, #ff0033 0%, #be123c 100%);
-      color: white;
-      box-shadow: 0 4px 14px rgba(255, 0, 51, 0.35);
-    }
-    .btn-pwa:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(255, 0, 51, 0.5);
-    }
-    .btn-admin {
-      background: #1e293b;
-      color: #38bdf8;
-      border: 1px solid #334155;
-    }
-    .btn-admin:hover {
-      background: #25334d;
-      color: white;
-    }
-
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem;
-      width: 100%;
-    }
-
-    /* Hero Featured Spotlight */
-    .hero-spotlight {
-      position: relative;
-      background: linear-gradient(135deg, #151d2f 0%, #0d131f 100%);
-      border: 1px solid #243048;
-      border-radius: 1.5rem;
-      overflow: hidden;
-      margin-bottom: 2.5rem;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      align-items: center;
-    }
-    @media (max-width: 860px) {
-      .hero-spotlight { grid-template-columns: 1fr; }
-    }
-    .hero-video-wrapper {
-      position: relative;
-      width: 100%;
-      padding-top: 56.25%;
-      background: #000;
-      cursor: pointer;
-    }
-    .hero-thumb {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s;
-    }
-    .hero-video-wrapper:hover .hero-thumb {
-      transform: scale(1.02);
-    }
-    .hero-play-btn {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0,0,0,0.4);
-    }
-    .play-circle {
-      width: 68px;
-      height: 68px;
-      border-radius: 50%;
-      background: #ff0033;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 30px rgba(255, 0, 51, 0.7);
-      transition: all 0.2s;
-    }
-    .play-circle:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 45px rgba(255, 0, 51, 0.9);
-    }
-    .hero-info {
-      padding: 2.5rem;
-    }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: rgba(244, 63, 94, 0.15);
-      border: 1px solid rgba(244, 63, 94, 0.3);
-      color: #f43f5e;
-      padding: 0.35rem 0.8rem;
-      border-radius: 9999px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-    .hero-title {
-      font-size: 1.8rem;
-      font-weight: 800;
-      line-height: 1.25;
-      margin-bottom: 0.75rem;
-      color: white;
-    }
-    .hero-desc {
-      color: var(--text-muted);
-      font-size: 0.92rem;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-    .hero-notes {
-      background: rgba(245, 158, 11, 0.1);
-      border-left: 3px solid #f59e0b;
-      padding: 0.75rem 1rem;
-      border-radius: 0.5rem;
-      font-size: 0.82rem;
-      color: #fde68a;
-      margin-bottom: 1.5rem;
-    }
-
-    /* Filter Pills */
-    .filter-bar {
-      display: flex;
-      gap: 0.65rem;
-      overflow-x: auto;
-      padding-bottom: 1rem;
-      margin-bottom: 1.75rem;
-      scrollbar-width: none;
-    }
-    .filter-bar::-webkit-scrollbar { display: none; }
-    .filter-chip {
-      background: #151d2f;
-      color: var(--text-muted);
-      border: 1px solid #243048;
-      padding: 0.5rem 1.15rem;
-      border-radius: 9999px;
-      font-size: 0.82rem;
       font-weight: 600;
-      cursor: pointer;
-      white-space: nowrap;
+      font-size: 0.95rem;
       transition: all 0.2s;
     }
-    .filter-chip.active, .filter-chip:hover {
-      background: #ff0033;
-      color: white;
-      border-color: #ff0033;
-      box-shadow: 0 4px 14px rgba(255, 0, 51, 0.35);
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: var(--primary);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
     }
-
-    /* Video Grid */
-    .video-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.75rem;
-      margin-bottom: 4rem;
-    }
-    .video-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      overflow: hidden;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      display: flex;
-      flex-direction: column;
-    }
-    .video-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(244, 63, 94, 0.5);
-      box-shadow: 0 16px 36px rgba(0,0,0,0.5);
-    }
-    .card-thumb-wrap {
-      position: relative;
-      width: 100%;
-      padding-top: 56.25%;
-      background: #000;
-    }
-    .card-thumb {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s;
-    }
-    .video-card:hover .card-thumb {
-      transform: scale(1.03);
-    }
-    .card-duration {
-      position: absolute;
-      bottom: 8px;
-      right: 8px;
-      background: rgba(0,0,0,0.85);
-      color: white;
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 2px 6px;
-      border-radius: 4px;
-    }
-    .card-content {
-      padding: 1.25rem;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-    .card-title {
-      font-size: 1rem;
-      font-weight: 700;
-      line-height: 1.35;
-      color: white;
-      margin-bottom: 0.6rem;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-    .card-meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 0.75rem;
-      font-size: 0.8rem;
-    }
-    .card-channel {
-      color: #cbd5e1;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-    .channel-avatar {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: var(--accent-coral);
-      color: white;
-      font-size: 0.65rem;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .card-col {
-      color: var(--accent-coral);
-      font-size: 0.74rem;
-    }
-    .card-tags {
-      display: flex;
-      gap: 0.4rem;
-      flex-wrap: wrap;
-      margin-top: auto;
-      padding-top: 0.75rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    .tag-chip {
-      background: #1e293b;
-      color: #94a3b8;
-      font-size: 0.68rem;
-      padding: 2px 8px;
-      border-radius: 4px;
-    }
-
-    /* Modal Player */
-    .modal-backdrop {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.92);
-      backdrop-filter: blur(10px);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-    }
-    .modal-backdrop.open {
-      display: flex;
-    }
-    .modal-content {
-      background: #111827;
-      border: 1px solid #1f2937;
-      border-radius: 1.25rem;
-      max-width: 900px;
-      width: 100%;
-      overflow: hidden;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.8);
-      position: relative;
-    }
-    .modal-header {
-      padding: 1rem 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #1f2937;
-    }
-    .modal-close {
-      background: transparent;
-      border: none;
-      color: #94a3b8;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-    .modal-video-frame {
-      position: relative;
-      width: 100%;
-      padding-top: 56.25%;
-      background: #000;
-    }
-    .modal-video-frame iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-    .modal-body {
-      padding: 1.5rem;
-    }
-
     footer {
-      background: #070a12;
-      border-top: 1px solid #151d2f;
-      padding: 3rem 1.5rem;
-      margin-top: auto;
-      text-align: center;
+      margin-top: 4rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
-      font-size: 0.88rem;
     }
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-    }
-    .footer-link {
-      color: #cbd5e1;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.2s;
-    }
-    .footer-link:hover { color: var(--accent-coral); }
   </style>
 </head>
 <body>
-  <!-- Top Navbar -->
-  <header class="navbar">
-    <a href="/" class="brand">
-      <div class="brand-logo">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-          <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
-        </svg>
-      </div>
-      <div class="brand-name">
-        YouTube<span>Volt Music</span>
+  <div class="badge">🚀 Scaffold Base &bull; MasterClass CI/CD</div>
+  <h1>Bienvenidos a NextCollege</h1>
+  <p>
+    Plataforma base lista para desarrollo acelerado con Inteligencia Artificial y Entrega Continua en Dokploy.
+  </p>
+
+  <div class="nav-cards">
+    <a href="/app" class="card">
+      <span style="font-size: 1.5rem;">📱</span>
+      <div style="text-align: left;">
+        <div>Ver PWA Mobile</div>
+        <small style="color: var(--text-muted); font-size: 0.75rem;">/app</small>
       </div>
     </a>
-
-    <div class="search-box">
-      <input
-        type="text"
-        id="liveSearchInput"
-        class="search-input"
-        placeholder="Buscar canciones por título, artista o género..."
-      />
-    </div>
-
-    <div class="nav-actions">
-      <a href="/YouTubeVolt.apk" download class="btn-nav" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4);">
-        ⬇️ APK Android
-      </a>
-      <a href="/app" class="btn-nav btn-pwa">
-        📱 Bóveda Mobile PWA
-      </a>
-      <a href="/admin" class="btn-nav btn-admin">
-        ⚙️ Studio Admin
-      </a>
-    </div>
-  </header>
-
-  <main class="container">
-    <!-- Hero Spotlight Video (Charlie Zaa - Nuestro Juramento) -->
-    <section class="hero-spotlight">
-      <div class="hero-video-wrapper" onclick="openPlayerModal('C4aSVN3HOOY', 'Cariñito - Mauricio Mesones', 'Mauricio Mesones', 'Cumbia peruana con una increíble interpretación de Mauricio Mesones.')">
-        <img
-          src="https://img.youtube.com/vi/C4aSVN3HOOY/hqdefault.jpg"
-          alt="Video Destacado"
-          class="hero-thumb"
-        />
-        <div class="hero-play-btn">
-          <div class="play-circle">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
-              <polygon points="5 3 19 12 5 21 5 3"/>
-            </svg>
-          </div>
-        </div>
+    <a href="/admin" class="card">
+      <span style="font-size: 1.5rem;">⚙️</span>
+      <div style="text-align: left;">
+        <div>Panel Administrativo</div>
+        <small style="color: var(--text-muted); font-size: 0.75rem;">/admin</small>
       </div>
-      <div class="hero-info">
-        <div class="hero-badge">🌟 Joya de la Bóveda Musical</div>
-        <h1 class="hero-title">Mauricio Mesones - Cariñito</h1>
-        <p class="hero-desc">
-          Cumbia peruana con una increíble interpretación de Mauricio Mesones. Un clásico inolvidable con guitarras tropicales y toda la fiesta del folklore peruano.
-        </p>
-        <div class="hero-notes">
-          💡 <strong>Nota del Curador:</strong> "Interpretación vibrante y festiva que eleva el clásico de la cumbia con sonido moderno y energía contagiosa."
-        </div>
-        <div style="display: flex; gap: 0.75rem;">
-          <button
-            onclick="openPlayerModal('C4aSVN3HOOY', 'Cariñito - Mauricio Mesones', 'Mauricio Mesones', 'Cumbia peruana con una increíble interpretación de Mauricio Mesones.')"
-            class="btn-nav btn-pwa"
-            style="border: none; cursor: pointer; padding: 0.75rem 1.5rem;"
-          >
-            ▶️ Escuchar Ahora
-          </button>
-          <a href="/app" class="btn-nav btn-admin" style="padding: 0.75rem 1.25rem;">
-            📱 Abrir en Bóveda PWA
-          </a>
-        </div>
+    </a>
+    <a href="/api/health" class="card">
+      <span style="font-size: 1.5rem;">🩺</span>
+      <div style="text-align: left;">
+        <div>Health Check API</div>
+        <small style="color: var(--text-muted); font-size: 0.75rem;">/api/health</small>
       </div>
-    </section>
-
-    <!-- Filter Chips -->
-    <div class="filter-bar">
-      {COLLECTIONS.map(c => (
-        <button class={`filter-chip ${c.id === 'all' ? 'active' : ''}`} data-col={c.id}>
-          {c.name}
-        </button>
-      ))}
-    </div>
-
-    <!-- Video Grid -->
-    <section class="video-grid" id="videosGrid">
-      {INITIAL_VIDEOS.map(video => (
-        <div
-          class="video-card"
-          data-collection={video.collectionId}
-          data-title={video.title.toLowerCase()}
-          data-channel={video.channelName.toLowerCase()}
-          data-tags={video.tags.join(' ').toLowerCase()}
-          onclick={`openPlayerModal('${video.youtubeVideoId}', '${video.title.replace(/'/g, "\\'")}', '${video.channelName}', '${video.notes.replace(/'/g, "\\'")}')`}
-        >
-          <div class="card-thumb-wrap">
-            <img src={video.thumbnailUrl} alt={video.title} class="card-thumb" loading="lazy" />
-            <div class="card-duration">{video.duration}</div>
-          </div>
-          <div class="card-content">
-            <h3 class="card-title">{video.title}</h3>
-            <div class="card-meta">
-              <div class="card-channel">
-                <span class="channel-avatar">{video.channelName[0]}</span>
-                {video.channelName}
-              </div>
-              <span class="card-col">{video.collectionName}</span>
-            </div>
-            <div class="card-tags">
-              {video.tags.map(t => (
-                <span class="tag-chip">#{t}</span>
-              ))}
-            </div>
-          </div>
-        </div>
-      ))}
-    </section>
-  </main>
-
-  <!-- Modal Player -->
-  <div class="modal-backdrop" id="playerModal" onclick="closeModalOnBackdrop(event)">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 id="modalVideoTitle" style="color: white; font-size: 1.1rem; font-weight: 700;">Título del Video</h3>
-        <button class="modal-close" onclick="closePlayerModal()">&times;</button>
-      </div>
-      <div class="modal-video-frame">
-        <iframe id="modalIframe" src="" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="modal-body">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-          <div style="color: var(--accent-coral); font-weight: 700;" id="modalChannel">Canal</div>
-          <a id="modalExternalLink" href="#" target="_blank" style="color: #38bdf8; text-decoration: none; font-size: 0.85rem; font-weight: 600;">
-            ↗️ Ver en YouTube Oficial
-          </a>
-        </div>
-        <div id="modalNotesBox" style="background: rgba(245, 158, 11, 0.08); border-left: 3px solid #f59e0b; padding: 0.75rem 1rem; border-radius: 0.5rem; font-size: 0.84rem; color: #fde68a;">
-          💡 <strong>Nota del Curador:</strong> <span id="modalNotesText">Notas</span>
-        </div>
-      </div>
-    </div>
+    </a>
   </div>
 
   <footer>
-    <div class="footer-links">
-      <a href="/" class="footer-link">🎵 Portal Musical</a>
-      <a href="/app" class="footer-link">📱 Bóveda Mobile PWA</a>
-      <a href="/YouTubeVolt.apk" class="footer-link" style="color: #34d399;">⬇️ Descargar APK</a>
-      <a href="/admin" class="footer-link">⚙️ Panel Studio</a>
-      <a href="/api/health" class="footer-link">🩺 Health Check</a>
-      <a href="/api/videos" class="footer-link">🎬 API REST</a>
-    </div>
-    <p>
-      YouTubeVolt &bull; Bóveda Musical: Salsa Brava, Cumbia & Rock Latino &bull; Dokploy CI/CD Live MasterClass
-    </p>
+    NextCollege Scaffold &bull; Astro + React + Node.js + MySQL + Dokploy
   </footer>
-
-  <script is:inline>
-    async function syncVideosFromApi() {
-      try {
-        const res = await fetch('/api/videos');
-        if (!res.ok) return;
-        const json = await res.json();
-        if (!json.data || json.data.length === 0) return;
-
-        const grid = document.getElementById('videosGrid');
-        if (!grid) return;
-
-        grid.innerHTML = json.data.map(video => `
-          <div
-            class="video-card"
-            data-collection="${video.collectionId}"
-            data-title="${(video.title || '').toLowerCase()}"
-            data-channel="${(video.channelName || '').toLowerCase()}"
-            data-tags="${(video.tags || []).join(' ').toLowerCase()}"
-            onclick="openPlayerModal('${video.youtubeVideoId}', '${(video.title || '').replace(/'/g, "\\'")}', '${video.channelName}', '${(video.personalNotes || '').replace(/'/g, "\\'")}')"
-          >
-            <div class="card-thumb-wrap">
-              <img src="${video.thumbnailUrl || 'https://img.youtube.com/vi/' + video.youtubeVideoId + '/hqdefault.jpg'}" alt="${video.title}" class="card-thumb" loading="lazy" />
-              <div class="card-duration">${video.duration || '4:00'}</div>
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">${video.title}</h3>
-              <div class="card-meta">
-                <div class="card-channel">
-                  <span class="channel-avatar">${(video.channelName || 'M')[0]}</span>
-                  ${video.channelName}
-                </div>
-                <span class="card-col">${video.collectionName || 'General'}</span>
-              </div>
-              <div class="card-tags">
-                ${(video.tags || []).map(t => `<span class="tag-chip">#${t}</span>`).join('')}
-              </div>
-            </div>
-          </div>
-        `).join('');
-      } catch (err) {
-        console.warn('API sync fallback:', err);
-      }
-    }
-
-    function openPlayerModal(videoId, title, channel, notes) {
-      const modal = document.getElementById('playerModal');
-      const iframe = document.getElementById('modalIframe');
-      const titleElem = document.getElementById('modalVideoTitle');
-      const channelElem = document.getElementById('modalChannel');
-      const linkElem = document.getElementById('modalExternalLink');
-      const notesElem = document.getElementById('modalNotesText');
-
-      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
-      titleElem.textContent = title;
-      channelElem.textContent = `Artista / Canal: ${channel}`;
-      linkElem.href = `https://www.youtube.com/watch?v=${videoId}`;
-      notesElem.textContent = notes || 'Sin notas adicionales en la bóveda.';
-
-      modal.classList.add('open');
-    }
-
-    function closePlayerModal() {
-      const modal = document.getElementById('playerModal');
-      const iframe = document.getElementById('modalIframe');
-      iframe.src = '';
-      modal.classList.remove('open');
-    }
-
-    function closeModalOnBackdrop(e) {
-      if (e.target.id === 'playerModal') {
-        closePlayerModal();
-      }
-    }
-
-    document.querySelectorAll('.filter-chip').forEach(chip => {
-      chip.addEventListener('click', () => {
-        document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
-        const col = chip.getAttribute('data-col');
-        applyFilters(col, document.getElementById('liveSearchInput').value);
-      });
-    });
-
-    const searchInput = document.getElementById('liveSearchInput');
-    if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-        const activeChip = document.querySelector('.filter-chip.active');
-        const col = activeChip ? activeChip.getAttribute('data-col') : 'all';
-        applyFilters(col, e.target.value);
-      });
-    }
-
-    function applyFilters(collection, query) {
-      const q = (query || '').toLowerCase().trim();
-      const cards = document.querySelectorAll('.video-card');
-
-      cards.forEach(card => {
-        const cardCol = card.getAttribute('data-collection');
-        const title = card.getAttribute('data-title') || '';
-        const channel = card.getAttribute('data-channel') || '';
-        const tags = card.getAttribute('data-tags') || '';
-
-        const matchCol = (collection === 'all' || cardCol === collection);
-        const matchQuery = !q || title.includes(q) || channel.includes(q) || tags.includes(q);
-
-        if (matchCol && matchQuery) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      syncVideosFromApi();
-    });
-  </script>
 </body>
 </html>

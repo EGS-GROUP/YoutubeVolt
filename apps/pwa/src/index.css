@@ -1,20 +1,12 @@
 :root {
-  --primary: #f43f5e;
-  --primary-hover: #e11d48;
-  --primary-glow: rgba(244, 63, 94, 0.3);
-  --volt-red: #ff0033;
-  --bg: #0b0f17;
-  --surface: #121826;
-  --surface-hover: #192235;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --bg: #090d16;
+  --surface: #131b2e;
   --surface-border: #1e293b;
-  --surface-card: #141b2b;
   --text: #f8fafc;
   --text-muted: #94a3b8;
-  --text-subtle: #64748b;
   --success: #10b981;
-  --warning: #f59e0b;
-  --info: #38bdf8;
-  --safe-bottom: env(safe-area-inset-bottom, 16px);
 }
 
 * {
@@ -25,13 +17,12 @@
 }
 
 body {
-  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: #030712;
   color: var(--text);
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  overflow-x: hidden;
 }
 
 #root {
@@ -39,66 +30,19 @@ body {
   max-width: 480px;
   min-height: 100vh;
   background-color: var(--bg);
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
   display: flex;
   flex-direction: column;
   position: relative;
-  border-left: 1px solid rgba(255, 255, 255, 0.07);
-  border-right: 1px solid rgba(255, 255, 255, 0.07);
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Custom Sleek Scrollbar */
-::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 4px;
-}
-
-/* Utility Animations */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 15px rgba(244, 63, 94, 0.3); }
-  50% { box-shadow: 0 0 25px rgba(244, 63, 94, 0.6); }
-}
-
 .fade-in {
-  animation: fadeIn 0.25s ease-out;
-}
-
-.pulse-glow {
-  animation: pulseGlow 2.5s infinite;
-}
-
-/* Glassmorphism */
-.glass-header {
-  background: rgba(11, 15, 23, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.glass-nav {
-  background: rgba(11, 15, 23, 0.92);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-/* Hide scrollbars for pill lists */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  animation: fadeIn 0.3s ease-out;
 }
